@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -10,14 +11,14 @@ import FormContainer from 'components/forms/Container'
 // Utils
 import { renderField } from './utils/RenderComponents'
 
-export default class Contact extends BaseComponent {
+class Contact extends BaseComponent {
   constructor(props) {
     super(props)
 
     const {
       email,
       phone
-    } = props
+    } = props.contact.toJS()
 
     this.data = [
       {
@@ -52,3 +53,11 @@ export default class Contact extends BaseComponent {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    contact: state.sceneBricksEdit.get('contact')
+  }
+}
+
+export default connect(mapStateToProps)(Contact)

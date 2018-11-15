@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -10,7 +11,7 @@ import FormContainer from 'components/forms/Container'
 // Utils
 import { renderField } from './utils/RenderComponents'
 
-export default class Owner extends BaseComponent {
+class Owner extends BaseComponent {
   constructor(props) {
     super(props)
 
@@ -19,7 +20,7 @@ export default class Owner extends BaseComponent {
       email,
       name,
       phone
-    } = props
+    } = props.owner.toJS()
 
     this.data = [
       {
@@ -64,3 +65,11 @@ export default class Owner extends BaseComponent {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    owner: state.sceneBricksEdit.get('owner')
+  }
+}
+
+export default connect(mapStateToProps)(Owner)

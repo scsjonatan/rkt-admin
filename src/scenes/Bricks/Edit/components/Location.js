@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -10,7 +11,7 @@ import FormContainer from 'components/forms/Container'
 // Utils
 import { renderField, renderSelect } from './utils/RenderComponents'
 
-export default class Location extends BaseComponent {
+class Location extends BaseComponent {
   constructor() {
     super()
 
@@ -31,7 +32,7 @@ export default class Location extends BaseComponent {
       direction,
       latitude,
       longitude
-    } = this.props
+    } = this.props.location.toJS()
     const options = this.state.options
     return (
       <FormContainer title="Ubicación del desarrollo">
@@ -47,3 +48,12 @@ export default class Location extends BaseComponent {
     )
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    location: state.sceneBricksEdit.get('location')
+  }
+}
+
+export default connect(mapStateToProps)(Location)

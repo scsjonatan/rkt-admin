@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -11,7 +12,7 @@ import FormContainer from 'components/forms/Container'
 // Utils
 import { renderField, renderSelect, renderArea } from './utils/RenderComponents'
 
-export default class Growth extends BaseComponent {
+class Growth extends BaseComponent {
   constructor() {
     super()
 
@@ -37,7 +38,7 @@ export default class Growth extends BaseComponent {
       description,
       internal_key,
       external_key
-    } = this.props
+    } = this.props.growth.toJS()
     const options = this.state.options
 
     return (
@@ -55,3 +56,12 @@ export default class Growth extends BaseComponent {
     )
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    growth: state.sceneBricksEdit.get('growth')
+  }
+}
+
+export default connect(mapStateToProps)(Growth)
