@@ -9,6 +9,12 @@ import { renderCheckbox } from '../utils/RenderComponents'
 // Components
 import FormContainer from 'components/forms/Container'
 
+// Actions
+import { updateCheckboxByName } from 'scenes/Bricks/Edit/actions'
+
+// Styles
+import './styles.scss'
+
 class General extends BaseComponent {
   constructor() {
     super()
@@ -17,12 +23,8 @@ class General extends BaseComponent {
   }
 
   _handleChange(e) {
-    const {
-      name,
-      checked
-    } = e.target
-
-    console.log(name, checked)
+    const { name, checked } = e.target
+    this.props.updateCheckbox(name, checked)
   }
 
   _renderCheckbox(name) {
@@ -51,4 +53,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(General)
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCheckbox: (name, checked) => dispatch(updateCheckboxByName(name, checked))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(General)

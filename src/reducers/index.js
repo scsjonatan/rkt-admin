@@ -9,7 +9,9 @@ import sceneBricksEdit from 'scenes/Bricks/Edit/reducer'
     * @param {object} history of reducer
     * @return { combineReducers } from 'redux'
 */
-export default (history) => combineReducers({
-  sceneBricksEdit,
-  router: connectRouter(history)
-})
+export default function createReducer(history) {
+  return combineReducers({
+    sceneBricksEdit,
+    router: connectRouter(history)
+  })
+}

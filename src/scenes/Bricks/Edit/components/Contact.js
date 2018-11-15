@@ -7,48 +7,42 @@ import BaseComponent from 'utils/BaseComponent'
 
 // Components
 import FormContainer from 'components/forms/Container'
+import FormField from 'components/forms/Field'
 
-// Utils
-import { renderField } from './utils/RenderComponents'
+// Actions
+import { updateFieldByName } from 'scenes/Bricks/Edit/actions'
 
 class Contact extends BaseComponent {
   constructor(props) {
     super(props)
 
-    const {
-      email,
-      phone
-    } = props.contact.toJS()
-
-    this.data = [
-      {
-        title: 'Email del contacto',
-        value: email,
-        disabled: false
-      },
-      {
-        title: 'Teléfono del contacto',
-        value: phone,
-        disabled: false
-      }
-    ]
+    this._bind('_handleFieldChange')
   }
 
-  _renderField(field) {
-    const {
-      disabled,
-      value,
-      title
-    } = field
-    return renderField(title, value, disabled)
+  _handleFieldChange(e) {
+    const { name, value } = e.target
+    this.props.updateField(name, value, 'contact')
   }
 
   render() {
+    const {
+      email,
+      phone
+    } = this.props.contact.toJS()
     return (
-      <FormContainer
-        title="Información de contacto del desarrollo"
-      >
-        {this.data.map(this._renderField)}
+      <FormContainer title="Información de contacto del desarrollo">
+        <FormField
+          name="email"
+          onChange={this._handleFieldChange}
+          title="Email del contacto"
+          value={email}
+        />
+        <FormField
+          name="phone"
+          onChange={this._handleFieldChange}
+          title="Teléfono del contacto"
+          value={phone}
+        />
       </FormContainer>
     )
   }
@@ -60,4 +54,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Contact)
+const mapDispatchToProps = dispatch => {
+  return {
+    updateField: (name, value, group) => dispatch(updateFieldByName(name, value, group))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact)

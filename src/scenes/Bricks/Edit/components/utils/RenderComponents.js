@@ -10,11 +10,19 @@ import FormCheckbox from 'components/forms/Checkbox'
 // Utils
 import uuid from 'utils/uuid'
 
-export const renderField = (title, value, disabled = false) => {
+export const renderField = (
+  disabled = false,
+  name,
+  onChange,
+  title,
+  value,
+) => {
   return (
     <FormField
       disabled={disabled}
       key={uuid()}
+      name={name}
+      onChange={onChange}
       title={title}
       value={value}
     />

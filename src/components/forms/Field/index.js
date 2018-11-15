@@ -12,19 +12,21 @@ export default class Field extends BaseComponent {
   render() {
     const {
       disabled,
-      handleChange,
+      onChange,
       placeholder,
       title,
-      value
+      value,
+      name
     } = this.props
     return (
       <div className="FormField">
         <p className="FormField__Title">{title}</p>
         <input
+          name={name}
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
         />
       </div>
     )
@@ -36,11 +38,11 @@ Field.propTypes = {
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func
+  onChange: PropTypes.func
 }
 
 Field.defaultProps = {
   disabled: false,
   placeholder: '',
-  handleChange: () => {}
+  onChange: () => {}
 }

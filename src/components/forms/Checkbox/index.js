@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Styles
+import './styles.scss'
+
 export default class Checkbox extends BaseComponent {
   render() {
     const { checked, title, onChange, name } = this.props

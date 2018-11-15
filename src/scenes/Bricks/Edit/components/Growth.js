@@ -7,14 +7,17 @@ import BaseComponent from 'utils/BaseComponent'
 
 // Components
 import FormContainer from 'components/forms/Container'
-
+import FormField from 'components/forms/Field'
 
 // Utils
-import { renderField, renderSelect, renderArea } from './utils/RenderComponents'
+import { renderSelect, renderArea } from './utils/RenderComponents'
+
+// Actions
+import { updateFieldByName } from 'scenes/Bricks/Edit/actions'
 
 class Growth extends BaseComponent {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       options: {
@@ -30,33 +33,53 @@ class Growth extends BaseComponent {
         ]
       }
     }
+    this._bind('_handleFieldChange')
   }
+
+  _handleFieldChange(e) {
+    const { name, value } = e.target
+    this.props.updateField(name, value, 'growth')
+  }
+
 
   render() {
     const {
-      name,
       description,
+      external_key,
       internal_key,
-      external_key
+      name
     } = this.props.growth.toJS()
     const options = this.state.options
 
     return (
       <FormContainer title="Información del desarrollo">
-        {renderField('Nombre del proyecto', name)}
+        <FormField
+          name="name"
+          onChange={this._handleFieldChange}
+          title="Nombre del proyecto"
+          value={name}
+        />
         {renderSelect('Tipo de Unidad', options.unit)}
         {renderArea('Descripción del proyecto', description)}
         {renderSelect('Etapa de desarrollo', options.unit)}
         {renderSelect('Entrega', options.unit)}
         {renderSelect('Año', options.unit)}
-        {renderField('Clave interna', internal_key)}
-        {renderField('Clave externa', external_key)}
-        {renderField('Paquete ProBroker Desarrollos', external_key)}
+        <FormField
+          name="external_key"
+          onChange={this._handleFieldChange}
+          title="Clave externa"
+          value={external_key}
+        />
+        <FormField
+          name="internal_key"
+          onChange={this._handleFieldChange}
+          title="Clave interna"
+          value={internal_key}
+        />
       </FormContainer>
     )
   }
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -64,4 +87,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Growth)
+const mapDispatchToProps = dispatch => {
+  return {
+    updateField: (name, value, group) => dispatch(updateFieldByName(name, value, group))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Growth)
