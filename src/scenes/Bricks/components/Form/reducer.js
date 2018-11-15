@@ -5,35 +5,36 @@ import { fromJS } from 'immutable'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import {
   UPDATE_FIELD,
-  UPDATE_CHECKBOX
+  UPDATE_CHECKBOX,
+  FETCH_BRICK_DATA
 } from './constants'
 
 export const initialState = fromJS({
   owner: {
-    company_id: 'PD_123',
-    email: 'j@ihk.io',
-    name: 'Jonatan Santa Cruz',
-    phone: '5554968900'
+    company_id: '',
+    email: '',
+    name: '',
+    phone: ''
   },
   contact: {
-    email: 'j@ihk.io',
-    phone: '5534543345'
+    email: '',
+    phone: ''
   },
   growth: {
-    description: 'Definido por un lujo incomparable, es un proyecto extraordinario que...',
-    external_key: '123',
-    internal_key: '321',
-    name: 'Vertiz 234'
+    description: '',
+    external_key: '',
+    internal_key: '',
+    name: ''
   },
   location: {
-    cp: '09360',
-    direction: 'Dr Vertiz 234',
-    latitude: '40.43243',
-    longitude: '-23.432'
+    cp: '',
+    direction: '',
+    latitude: '',
+    longitude: ''
   },
   general: {
     alberca: {
-      checked: true,
+      checked: false,
       label: 'Alberca'
     },
     escuelas_cercanas: {
@@ -41,7 +42,7 @@ export const initialState = fromJS({
       label: 'Escuelas Cercanas'
     },
     jacuzzi: {
-      checked: true,
+      checked: false,
       label: 'Jacuzzi'
     }
   }
@@ -56,6 +57,8 @@ export const initialState = fromJS({
 export default function reducer(state = initialState, action) {
   const _state = state.toJS()
   switch (action.type) {
+    case FETCH_BRICK_DATA:
+      return state.merge(fromJS({ ...action.data }))
     case UPDATE_FIELD:
       const { name, group, value } = action
       return state.merge(fromJS({

@@ -10,7 +10,7 @@ import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/Edit/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
 
 class Owner extends BaseComponent {
@@ -66,7 +66,7 @@ class Owner extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    owner: state.sceneBricksEdit.get('owner')
+    owner: state.sceneBricksComponentsForm.get('owner')
   }
 }
 

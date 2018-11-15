@@ -53,7 +53,7 @@ Button.propTypes = {
   className: PropTypes.string,
   direction: PropTypes.string,
   disabled: PropTypes.bool,
-  isLink: PropTypes.bool.isRequired,
+  isLink: PropTypes.bool,
   label: PropTypes.string.isRequired
 }
 

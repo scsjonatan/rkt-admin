@@ -10,7 +10,7 @@ import { renderCheckbox } from '../utils/RenderComponents'
 import FormContainer from 'components/forms/Container'
 
 // Actions
-import { updateCheckboxByName } from 'scenes/Bricks/Edit/actions'
+import { updateCheckboxByName } from 'scenes/Bricks/components/Form/actions'
 
 // Styles
 import './styles.scss'
@@ -49,7 +49,7 @@ class General extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    general: state.sceneBricksEdit.get('general')
+    general: state.sceneBricksComponentsForm.get('general')
   }
 }
 

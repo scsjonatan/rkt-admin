@@ -10,7 +10,7 @@ import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/Edit/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
 class Contact extends BaseComponent {
   constructor(props) {
@@ -50,7 +50,7 @@ class Contact extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    contact: state.sceneBricksEdit.get('contact')
+    contact: state.sceneBricksComponentsForm.get('contact')
   }
 }
 

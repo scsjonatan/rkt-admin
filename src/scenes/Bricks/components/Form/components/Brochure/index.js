@@ -20,7 +20,7 @@ class Brochure extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    owner: state.sceneBricksEdit.get('owner')
+    owner: state.sceneBricksComponentsForm.get('owner')
   }
 }
 

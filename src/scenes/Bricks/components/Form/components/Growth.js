@@ -13,7 +13,7 @@ import FormField from 'components/forms/Field'
 import { renderSelect, renderArea } from './utils/RenderComponents'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/Edit/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
 class Growth extends BaseComponent {
   constructor(props) {
@@ -83,7 +83,7 @@ class Growth extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    growth: state.sceneBricksEdit.get('growth')
+    growth: state.sceneBricksComponentsForm.get('growth')
   }
 }
 
