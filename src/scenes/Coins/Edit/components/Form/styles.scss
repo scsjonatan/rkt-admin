@@ -1,0 +1,23 @@
+.FormCoinsEdit {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  &__Data {
+    &__Email {
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: .5rem;
+    }
+  }
+  &__Actions {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    .FormField, &__Button, .CoinsFormAction {
+      margin: 0 .3rem;
+    }
+    &__Button {
+      width: 10rem;
+    }
+  }
+}

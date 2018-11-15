@@ -9,6 +9,13 @@ import BaseComponent from 'utils/BaseComponent'
 import './styles.scss'
 
 export default class Field extends BaseComponent {
+  _renderTitle() {
+    const { title } = this.props
+    return title ? (
+      <p className="FormField__Title">{title}</p>
+    ) : null
+  }
+
   render() {
     const {
       className,
@@ -16,12 +23,11 @@ export default class Field extends BaseComponent {
       name,
       onChange,
       placeholder,
-      title,
       value
     } = this.props
     return (
       <div className={`FormField ${className}`}>
-        <p className="FormField__Title">{title}</p>
+        {this._renderTitle()}
         <input
           name={name}
           disabled={disabled}
@@ -39,7 +45,7 @@ Field.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   value: PropTypes.string.isRequired
 }
 
@@ -47,5 +53,6 @@ Field.defaultProps = {
   className: '',
   disabled: false,
   onChange: () => {},
-  placeholder: ''
+  placeholder: '',
+  title: ''
 }

@@ -1,0 +1,38 @@
+@import 'styles/variables.scss';
+
+.CoinsFormAction {
+  align-items: center;
+  background: #f8f8f8;
+  border-radius: 4px;
+  border: 1px solid $medium-grey-color;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: .23rem 1rem;
+  width: 11rem;
+  position: relative;
+  p {
+    align-items: center;
+    display: flex;
+    color: $medium-grey-color;
+  }
+  svg {
+    g {
+      g {
+        fill: $medium-grey-color;
+      }
+    }
+  }
+  .CoinsFormActionOptions {
+    position: absolute;
+    left: 0;
+    top: -.5rem;
+    width: 8rem;
+    ul {
+      li {
+        margin: 1rem;
+        font-size: .9rem;
+      }
+    }
+  }
+}

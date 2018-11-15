@@ -66,6 +66,11 @@ export default class SideBar extends BaseComponent {
         icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
         label: 'Houston',
         path: reverse('pandas')
+      },
+      {
+        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
+        label: 'Monedas',
+        path: reverse('coins')
       }
     ]
   }

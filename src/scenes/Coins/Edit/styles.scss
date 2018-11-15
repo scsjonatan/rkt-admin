@@ -1,8 +1,10 @@
-.ScenePandasHome {
+@import 'styles/general/containers.scss';
+
+.CoinsEdit {
   &__Content {
     max-width: 1100px;
     padding: 2.0625rem 2rem;
-    &__Search {
+     &__Search {
       width: 25rem;
     }
   }

@@ -16,6 +16,8 @@ import BricksHome from 'scenes/Bricks/Home'
 
 import PandasHome from 'scenes/Pandas/Home'
 
+import CoinstEdit from 'scenes/Coins/Edit'
+
 // Routes
 import bricks from './bricks'
 import pandas from './pandas'
@@ -79,6 +81,11 @@ const AppRoutes = {
     container: App,
     component: PandasHome,
     routes: { ...pandas }
+  },
+  coins: {
+    path: '/rocket/coins',
+    container: App,
+    component: CoinstEdit
   }
 }
 
