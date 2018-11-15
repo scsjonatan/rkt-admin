@@ -1,0 +1,25 @@
+@import 'styles/variables.scss';
+
+.ListNav {
+  align-items: center;
+  display: flex;
+  .BricksNavTab {
+    align-items: center;
+    border-bottom: 1px solid $light-grey-color;
+    color: $dark-grey-color;
+    cursor: pointer;
+    display: flex;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    height: 3rem;
+    justify-content: center;
+    letter-spacing: normal;
+    line-height: 1.5;
+    width: 11.25rem;
+  }
+  .ActiveTab {
+    border-bottom: 2px solid $primary-color;
+    color: $primary-color;
+  }
+}

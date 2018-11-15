@@ -1,0 +1,17 @@
+@import 'styles/variables.scss';
+
+.FormsContainer {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  &__Title {
+    color: $dark-color;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+  }
+  &__Fields {
+    background: $light-color;
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+}

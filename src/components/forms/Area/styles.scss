@@ -1,0 +1,21 @@
+@import 'styles/variables.scss';
+
+.FormArea {
+  margin-bottom: 1rem;
+  &__Title {
+    color: $dark-color;
+    margin-bottom: .5rem;
+  }
+  textarea {
+    border-radius: 4px;
+    border: 1px solid $medium-grey-color;
+    height: 7rem;
+    padding: .5rem 1rem;
+    resize: none;
+    width: 20rem;
+    &:disabled {
+      background: $light-grey-color;
+      color: $medium-grey-color;
+    }
+  }
+}

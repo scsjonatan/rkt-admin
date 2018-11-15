@@ -1,0 +1,62 @@
+@import 'styles/variables.scss';
+
+.BricksListItem {
+  border-bottom: 1px solid $medium-grey-color;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  &:last-child {
+    border: 0;
+  }
+  &__MainData {
+    &__Brick {
+      display: flex;
+      &__Image {
+        border-radius: 4px;
+        height: 4.5rem;
+        margin-right: .5rem;
+        width: 4.5rem;
+      }
+      &__Data {
+        &__Name {
+          align-items: center;
+          display: flex;
+          font-size: 1rem;
+          font-weight: 500;
+          margin-bottom: .2rem;
+          span {
+            background: $validate-color;
+            border-radius: 50%;
+            height: .5rem;
+            margin-right: .5rem;
+            width: .5rem;
+          }
+        }
+      }
+    }
+    &__Units {
+      p {
+        color: $dark-grey-color;
+        margin: .5rem 0;
+      }
+    }
+  }
+
+  &__MetaData {
+    display: flex;
+    &__List {
+      p {
+        color: $very-dark-color;
+        margin: .3rem;
+        span {
+          color: $dark-grey-color;
+        }
+      }
+      &__Focus {
+        span {
+          color: $primary-color !important;
+        }
+      }
+    }
+  }
+}

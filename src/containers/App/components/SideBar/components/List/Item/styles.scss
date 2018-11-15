@@ -1,0 +1,26 @@
+@import 'styles/variables.scss';
+
+.SideBar__Item {
+  margin-bottom: .8rem;
+  &__Link {
+    opacity: 0.6;
+  }
+  &__Active {
+    opacity: 1;
+  }
+  a {
+    align-items: flex-start;
+    color: $light-color;
+    display: flex;
+    font-size: .875rem;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    justify-content: flex-start;
+    letter-spacing: normal;
+    line-height: 1.71;
+    p {
+      margin-left: 1rem;
+    }
+  }
+}

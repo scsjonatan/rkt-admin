@@ -1,0 +1,32 @@
+@import 'styles/variables.scss';
+
+.SideBar__List {
+  padding: 1rem 1rem 0 1rem;
+  &__Head {
+    p {
+      color: $light-color;
+      font-size: 1rem;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 1.5;
+      padding: .5rem 0;
+    }
+  }
+  &__HeadSecond {
+    color: $light-color;
+    font-size: .875rem;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: 1.5;
+  }
+  &__Items {
+    padding: 1.2rem 0 0 .7rem;
+  }
+}
+
+.Main {
+  border-bottom: 2px solid $very-dark-color;
+}

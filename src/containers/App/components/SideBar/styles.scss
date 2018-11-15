@@ -1,0 +1,9 @@
+@import 'styles/variables.scss';
+
+.SideBar {
+  background: $dark-color;
+  height: 100%;
+  position: fixed;
+  width: 17.5rem;
+  z-index: 99;
+}

@@ -1,0 +1,19 @@
+@import 'styles/variables.scss';
+
+.GeneralContainer {
+  background: $light-color;
+  border-radius: 4px;
+  border: 1px solid $light-grey-color;
+  margin-bottom: 1.75rem;
+  min-width: 600px;
+  position: relative;
+}
+
+.GeneralContainerSmall {
+  background: $light-color;
+  border-radius: 4px;
+  border: 1px solid $light-grey-color;
+  margin-bottom: 1.75rem;
+  min-width: auto;
+  position: relative;
+}

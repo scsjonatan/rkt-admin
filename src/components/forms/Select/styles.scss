@@ -1,0 +1,13 @@
+@import 'styles/variables.scss';
+
+.FormSelect {
+  margin-bottom: 1rem;
+  &__Title {
+    color: $dark-color;
+    margin-bottom: .5rem;
+  }
+
+  &__Select {
+    width: 22rem;
+  }
+}

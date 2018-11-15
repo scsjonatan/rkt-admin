@@ -1,0 +1,21 @@
+@import 'styles/variables.scss';
+
+.AtomButton {
+  background: $primary-color;
+  border-radius: 4px;
+  border: 0;
+  color: $light-color;
+  display: flex;
+  justify-content: space-around;
+  padding: .4rem .5rem;
+  width: 100%;
+  div {
+    align-items: center;
+    display: flex;
+    span {
+      font-size: .6rem;
+      margin-right: 1rem;
+      padding-top: .2rem;
+    }
+  }
+}
