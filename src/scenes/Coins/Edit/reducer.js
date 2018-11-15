@@ -5,10 +5,14 @@ import { fromJS } from 'immutable'
 import {
   SET_USER_DATA,
   UPDATE_FORM_FIELD,
-  TOGGLE_MODAL
+  TOGGLE_MODAL,
+  RESET_FORM,
+  START_SEARCH
 } from './constants'
 
 export const initialState = fromJS({
+  isLoading: false,
+  isSearched: false,
   showModal: false,
   form: {
     coins: '',
@@ -34,8 +38,18 @@ export default function reducer(state = initialState, action) {
         ..._state.form,
         [field]: value
       }))
+    case RESET_FORM:
+      return initialState
     case SET_USER_DATA:
-      return state.set('user', fromJS(action.user))
+      return state.merge(fromJS({
+        isLoading: false,
+        user: action.user
+      }))
+    case START_SEARCH:
+      return state.merge(fromJS({
+        isLoading: true,
+        isSearched: true
+      }))
     default:
       return state
   }

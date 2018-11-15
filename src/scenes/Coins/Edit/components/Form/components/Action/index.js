@@ -55,9 +55,10 @@ export default class Action extends BaseComponent {
   }
 
   render() {
+    const activeClass = this.state.label !== 'Action' ? 'Active' : ''
     return (
       <div className="CoinsFormAction" onClick={this._toggleMenu}>
-        <p>{this.state.label}</p>
+        <p className={activeClass}>{this.state.label}</p>
         <ReactSVG src={require('./add.svg')} />
         {this._renderMenu()}
       </div>

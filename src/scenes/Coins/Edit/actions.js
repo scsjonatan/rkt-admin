@@ -1,7 +1,9 @@
 import {
   SET_USER_DATA,
   UPDATE_FORM_FIELD,
-  TOGGLE_MODAL
+  TOGGLE_MODAL,
+  RESET_FORM,
+  START_SEARCH
 } from './constants'
 
 export const setUserData = user => {
@@ -24,4 +26,12 @@ export const toggleModal = status => {
     type: TOGGLE_MODAL,
     status
   }
+}
+
+export const resetCoinsForm = () => {
+  return { type: RESET_FORM }
+}
+
+export const startSearch = () => {
+  return { type: START_SEARCH }
 }

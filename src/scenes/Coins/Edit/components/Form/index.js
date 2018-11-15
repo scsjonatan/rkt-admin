@@ -69,7 +69,7 @@ class Form extends BaseComponent {
     return (
       <div className="FormCoinsEdit">
         <div className="FormCoinsEdit__Data">
-          <p className="FormCoinsEdit__Data__Email">carlos.arce@hotmail.com</p>
+          <p className="FormCoinsEdit__Data__Email">{user.email}</p>
           <p>{user.coins}</p>
         </div>
         <div className="FormCoinsEdit__Actions">

@@ -14,7 +14,10 @@ import { ClipLoader } from 'react-spinners'
 import Form from './components/Form'
 
 // Actions
-import { setUserData } from './actions'
+import { setUserData, resetCoinsForm, startSearch } from './actions'
+
+// Services
+import { searchUserByEmail } from 'services/coins'
 
 // Styles.scss
 import './styles.scss'
@@ -23,45 +26,30 @@ class Edit extends BaseComponent {
   constructor() {
     super()
 
-    this.state = {
-      isLoading: false,
-      isSearched: false
-    }
-
     this._bind('_handleSearch', '_validateUser', '_renderUser')
   }
   _handleSearch(search) {
-    console.log('Search: ', search)
-    this.setState({
-      isLoading: true,
-      isSearched: true
-    })
-    // Fake search
-    setTimeout(() => {
-      this.setState({ isLoading: false })
-      this.props.setUserData({
-        id: '24343214321',
-        email: 'carlos.arceo@hotmail.com',
-        coins: 180
+    this.props.resetCoinsForm()
+    this.props.startSearch()
+    searchUserByEmail(search)
+      .then(user => {
+        this.props.setUserData(user)
       })
-    }, 1000)
   }
 
   _validateUser() {
     const user = this.props.user.toJS()
-    return user ? (
+    return user.id ? (
       <div className="GeneralContainer CoinsEdit__Content__User__Form">
         <Form />
       </div>
     ) : (
-      <div className="CoinsEdit__Content__User__NoResul">
-        No result
-      </div>
+      <div className="CoinsEdit__Content__User__NoResul">No result</div>
     )
   }
 
   _renderUser() {
-    return this.state.isLoading ? (
+    return this.props.isLoading ? (
       <div className="CoinsEdit__Content__User__Loader">
         <ClipLoader color="#1d72db" />
       </div>
@@ -81,7 +69,7 @@ class Edit extends BaseComponent {
             />
           </div>
           <div className="CoinsEdit__Content__User">
-            {this.state.isSearched && this._renderUser()}
+            {this.props.isSearched && this._renderUser()}
           </div>
         </div>
       </div>
@@ -91,13 +79,17 @@ class Edit extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    user: state.sceneCoinsEdit.get('user')
+    user: state.sceneCoinsEdit.get('user'),
+    isLoading: state.sceneCoinsEdit.get('isLoading'),
+    isSearched: state.sceneCoinsEdit.get('isSearched')
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUserData: (user) => dispatch(setUserData(user))
+    setUserData: (user) => dispatch(setUserData(user)),
+    resetCoinsForm: () => dispatch(resetCoinsForm()),
+    startSearch: () => dispatch(startSearch())
   }
 }
 
