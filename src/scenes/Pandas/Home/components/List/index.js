@@ -6,7 +6,7 @@ import BaseComponent from 'utils/BaseComponent'
 
 // Components
 import Nav from 'components/lists/Nav'
-import Item from './components/Item'
+import Item from './Item'
 
 // Styles
 import './styles.scss'
@@ -23,14 +23,24 @@ export default class List extends BaseComponent {
           slug_name: 'all'
         },
         {
-          label: 'Publicados',
+          label: 'New',
           number: 0,
-          slug_name: 'public'
+          slug_name: 'new'
         },
         {
-          label: 'Eliminados',
+          label: 'Pending PickUp',
           number: 0,
-          slug_name: 'deleted'
+          slug_name: 'pending'
+        },
+        {
+          label: 'Exception',
+          number: 0,
+          slug_name: 'exception'
+        },
+        {
+          label: 'Return Asked',
+          number: 0,
+          slug_name: 'return'
         }
       ]
     }
@@ -38,9 +48,9 @@ export default class List extends BaseComponent {
 
   render() {
     return (
-      <div className="GeneralContainer BricksList">
+      <div className="GeneralContainer Pandas">
         <Nav tabs={this.state.tabs} />
-        <div className="BricksList__Content">
+        <div className="Pandas__Content">
           <Item />
           <Item />
           <Item />

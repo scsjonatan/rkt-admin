@@ -1,13 +1,24 @@
+// Dependencies
 import React from 'react'
+
+// Components
 import { Route as ReactRoute, Switch } from 'react-router-dom'
+
+// Utils
 import _map from 'lodash/map'
 
+// Containers
 import App from 'containers/App'
 
+// Scenes
 import Home from 'scenes/Home'
 import BricksHome from 'scenes/Bricks/Home'
 
+import PandasHome from 'scenes/Pandas/Home'
+
+// Routes
 import bricks from './bricks'
+import pandas from './pandas'
 
 /*
  * Routes Object. Accepts nested routes.
@@ -62,6 +73,12 @@ const AppRoutes = {
     container: App,
     component: BricksHome,
     routes: { ...bricks }
+  },
+  pandas: {
+    path: '/rocket/panda',
+    container: App,
+    component: PandasHome,
+    routes: { ...pandas }
   }
 }
 

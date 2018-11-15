@@ -7,8 +7,10 @@ import BaseComponent from 'utils/BaseComponent'
 // Components
 import Header from 'components/views/Header'
 import Button from 'components/atoms/Button'
+import SearchBox from 'components/forms/SearchBox'
+
 import ReactSVG from 'react-svg'
-import SearchBox from './components/SearchBox'
+
 import List from './components/List'
 
 // Routes
@@ -45,9 +47,7 @@ export default class Bricks extends BaseComponent {
               placeholder="Nombre del desarrollo"
               title="Buscar Desarrollo"
               action={this._handleAction}
-            >
-              <ReactSVG src={require('scenes/Bricks/Home/assets/add.svg')} />
-            </SearchBox>
+            />
           </div>
           <List />
         </div>

@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Components
+import ReactSVG from 'react-svg'
+
 // Styles
 import './styles.scss'
 
@@ -30,9 +33,15 @@ export default class SearchBox extends BaseComponent {
     })
   }
 
+  _renderChildren() {
+    const { children } = this.props
+    return children ? children : (
+      <ReactSVG src={require('./add.svg')} />
+    )
+  }
+
   render() {
     const {
-      children,
       placeholder,
       title
     } = this.props
@@ -52,7 +61,7 @@ export default class SearchBox extends BaseComponent {
             className="BricksSearchBox__Text__Icon"
             onClick={this._handleSubmit}
           >
-            {children}
+            {this._renderChildren()}
           </div>
         </div>
       </form>
