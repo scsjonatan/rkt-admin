@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -7,10 +8,13 @@ import BaseComponent from 'utils/BaseComponent'
 // Components
 import Button from 'components/atoms/Button'
 
+// Actions
+import { toggleModal } from 'scenes/Coins/Edit/actions'
+
 // Styles
 import './styles.scss'
 
-export default class Modal extends BaseComponent {
+class Modal extends BaseComponent {
   constructor() {
     super()
 
@@ -21,11 +25,11 @@ export default class Modal extends BaseComponent {
     console.log('save')
     // Fake save
 
-    this.props.hideModal()
+    this.props.toggleModal(false)
   }
 
   _renderAction() {
-    const { action, coins } = this.props.form
+    const { action, coins } = this.props.form.toJS()
     const className = action === 'add' ? 'Add' : 'Remove'
     const label = action === 'add' ? 'Agregar' : 'Quitar'
 
@@ -39,17 +43,20 @@ export default class Modal extends BaseComponent {
   }
 
   _renderTotal() {
-    const { action } = this.props.form
-    const currentCoins = parseInt(this.props.user.coins, 10)
-    const actionCoins = parseInt(this.props.form.coins, 10)
-    const totalCoins = action === 'add' ?
+    const form = this.props.form.toJS()
+    const user = this.props.user.toJS()
+
+    const currentCoins = parseInt(user.coins, 10)
+    const actionCoins = parseInt(form.coins, 10)
+    const totalCoins = form.action === 'add' ?
       currentCoins + actionCoins :
       currentCoins - actionCoins
     return <p>{`Total: ${totalCoins} monedas`}</p>
   }
 
   render() {
-    const { email } = this.props.user
+    const user = this.props.user.toJS()
+    console.log(user)
     return (
       <div className="CoinsModal">
         <div className="CoinsModal__Content">
@@ -57,7 +64,7 @@ export default class Modal extends BaseComponent {
             Confirmación de la edición
           </p>
           <div className="CoinsModal__Content__Data">
-            <p>Usuario: <span>{email}</span></p>
+            <p>Usuario: <span>{this.props.user.toJS().email}</span></p>
             {this._renderAction()}
             {this._renderTotal()}
           </div>
@@ -70,3 +77,18 @@ export default class Modal extends BaseComponent {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    form: state.sceneCoinsEdit.get('form'),
+    user: state.sceneCoinsEdit.get('user')
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleModal: status => dispatch(toggleModal(status))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal)

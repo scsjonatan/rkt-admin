@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -12,26 +13,16 @@ import Button from 'components/atoms/Button'
 import Action from './components/Action'
 import Modal from './components/Modal'
 
+// Actions
+import { updateFormByField, toggleModal } from 'scenes/Coins/Edit/actions'
+
 // Styles
 import './styles.scss'
 
-export default class Form extends BaseComponent {
+class Form extends BaseComponent {
   constructor() {
     super()
-
-    this.state = {
-      form: {
-        coins: '',
-        action: null
-      },
-      user: {
-        coins: 180,
-        email: 'carlos.salcedo@hotmail.com'
-      },
-      showModal: false
-    }
-
-    this._bind('_handleChange', '_handleSave', '_handleAction', '_renderModal', '_hideModal')
+    this._bind('_handleChange', '_handleSave', '_handleAction', '_renderModal')
   }
   _handleSave(e) {
     e.preventDefault()
@@ -43,75 +34,50 @@ export default class Form extends BaseComponent {
       coins: 'required|numeric',
       action: 'required|string'
     }
+    const data = this.props.form.toJS()
 
-    let validation = new Validator(this.state.form, rules)
+    let validation = new Validator(data, rules)
     if (validation.passes()) {
       this._saveData()
     }
   }
 
   _saveData() {
-    const { action } = this.state.form
+    const { action } = this.props.form.toJS()
     if (action === 'add' || action === 'remove') {
-      this.setState({ showModal: true })
-    } else {
-      this.setState({
-        form: {
-          coins: '',
-          action: null
-        }
-      })
+      this.props.toggleModal(true)
     }
   }
 
   _handleChange(e) {
-    this.setState({
-      form: {
-        ...this.state.form,
-        coins: e.target.value
-      }
-    })
+    this.props.updateForm('coins', e.target.value)
   }
 
   _handleAction(action) {
-    this.setState({
-      form: {
-        ...this.state.form,
-        action
-      }
-    })
-  }
-
-  _hideModal() {
-    this.setState({
-      showModal: false
-    })
+    this.props.updateForm('action', action)
   }
 
   _renderModal() {
-    return this.state.showModal ? (
-      <Modal
-        form={this.state.form}
-        user={this.state.user}
-        hideModal={this._hideModal}
-      />
+    return this.props.showModal ? (
+      <Modal />
     ) : null
   }
 
   render() {
-    const { coins } = this.state.form
+    const form = this.props.form.toJS()
+    const user = this.props.user.toJS()
     return (
       <div className="FormCoinsEdit">
         <div className="FormCoinsEdit__Data">
           <p className="FormCoinsEdit__Data__Email">carlos.arce@hotmail.com</p>
-          <p>{this.state.user.coins}</p>
+          <p>{user.coins}</p>
         </div>
         <div className="FormCoinsEdit__Actions">
           <Action handleAction={this._handleAction} />
           <div className="FormCoinsEdit__Actions__Number">
             <FormField
               placeholder="Número de Monedas"
-              value={coins}
+              value={form.coins}
               onChange={this._handleChange}
             />
           </div>
@@ -127,3 +93,20 @@ export default class Form extends BaseComponent {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    form: state.sceneCoinsEdit.get('form'),
+    user: state.sceneCoinsEdit.get('user'),
+    showModal: state.sceneCoinsEdit.get('showModal')
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateForm: (field, value) => dispatch(updateFormByField(field, value)),
+    toggleModal: status => dispatch(toggleModal(status))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form)
