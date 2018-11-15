@@ -6,7 +6,7 @@ import BaseComponent from 'utils/BaseComponent'
 
 // Components
 import Nav from 'components/lists/Nav'
-import Item from './components/Item'
+import Item from './Item'
 
 // Styles
 import './styles.scss'

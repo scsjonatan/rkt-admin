@@ -9,15 +9,21 @@ import Header from 'components/views/Header'
 import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
 import FormArea from 'components/forms/Area'
+import Button from 'components/atoms/Button'
 
 import RowModel from './RowModel'
 import RowRooms from './RowRooms'
-import List from './components/List'
+import List from './List'
 
 // Styles
 import './styles.scss'
 
 export default class EditUnitsBricks extends BaseComponent {
+  _handleSave(e) {
+    e.preventDefault()
+    console.log('Guardar')
+  }
+
   render() {
     return (
       <div className="EditUnitsBricks">
@@ -40,6 +46,12 @@ export default class EditUnitsBricks extends BaseComponent {
               value=""
             />
           </FormContainer>
+          <div className="EditUnitsBricks__Content__Controls">
+            <Button
+              action={this._handleSave}
+              label="Agregar unidad"
+            />
+          </div>
           <List />
         </div>
       </div>

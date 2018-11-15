@@ -1,8 +1,7 @@
 @import 'styles/variables.scss';
 
 .PandasOrderDetail {
-  background: $very-light-grey-color;
-  height: 100%;
+  min-height: 100%;
   &__Content {
     border-radius: 4px;
     max-width: 1100px;
