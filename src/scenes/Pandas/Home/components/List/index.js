@@ -6,7 +6,7 @@ import BaseComponent from 'utils/BaseComponent'
 
 // Components
 import Nav from 'components/lists/Nav'
-import Item from './Item'
+import Order from 'scenes/Pandas/components/Order'
 
 // Styles
 import './styles.scss'
@@ -42,8 +42,23 @@ export default class List extends BaseComponent {
           number: 0,
           slug_name: 'return'
         }
-      ]
+      ],
+      orders: [{
+        ad_id: '43242314',
+        buyer: 'lorenamc.qweryty@gmail.com',
+        carrier: 'ups (1ZA9T9200480374)',
+        conekta_id: '653465346345634',
+        created: '9 Noviembre 2018 12:40',
+        id: '181124400005405',
+        last_update: '9 noviembre 2018 12:40',
+        phone: '5554968900',
+        seller: 'mascalso_3@hotmail.com'
+      }]
     }
+  }
+
+  _renderOrder(order) {
+    return <Order key={order.id} {...order} />
   }
 
   render() {
@@ -51,12 +66,7 @@ export default class List extends BaseComponent {
       <div className="GeneralContainer Pandas">
         <Nav tabs={this.state.tabs} />
         <div className="Pandas__Content">
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {this.state.orders.map(this._renderOrder)}
         </div>
       </div>
     )

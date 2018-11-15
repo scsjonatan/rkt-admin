@@ -1,0 +1,32 @@
+@import 'styles/variables.scss';
+
+.PandasOrderDetail {
+  background: $very-light-grey-color;
+  height: 100%;
+  &__Content {
+    border-radius: 4px;
+    max-width: 1100px;
+    padding: 2.0625rem 2rem;
+    &__History {
+      background: $light-color;
+      padding: 1rem;
+      &__Title {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      &__Content {
+        ul {
+          li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: .5rem;
+            width: 25rem;
+            span {
+              color: $dark-grey-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

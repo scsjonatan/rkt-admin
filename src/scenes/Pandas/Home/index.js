@@ -21,7 +21,7 @@ export default class Pandas extends BaseComponent {
   render() {
     return (
       <div className="ScenePandasHome">
-        <Header title="P&D: Order Admin"/>
+        <Header title="P&D: Order Admin" />
         <div className="ScenePandasHome__Content">
           <div className="ScenePandasHome__Content__Search">
             <SearchBox

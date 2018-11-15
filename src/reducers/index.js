@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 
 import sceneBricksComponentsForm from 'scenes/Bricks/components/Form/reducer'
+import scenePandasOrder from 'scenes/Pandas/Order/reducer'
 
 /**
     * Combine all reducers from all components
@@ -12,6 +13,7 @@ import sceneBricksComponentsForm from 'scenes/Bricks/components/Form/reducer'
 export default function createReducer(history) {
   return combineReducers({
     sceneBricksComponentsForm,
+    scenePandasOrder,
     router: connectRouter(history)
   })
 }
