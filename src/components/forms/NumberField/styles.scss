@@ -1,7 +1,6 @@
 @import 'styles/variables.scss';
 
-.FormField {
-  margin-bottom: 1rem;
+.FormNumberField {
   width: 100%;
   display: flex;
   flex-flow: wrap;
@@ -13,6 +12,7 @@
     border-radius: 4px;
     border: 1px solid $medium-grey-color;
     padding: .5rem 1rem;
+    width: 100%;
     &:disabled {
       background: $light-grey-color;
       color: $medium-grey-color;

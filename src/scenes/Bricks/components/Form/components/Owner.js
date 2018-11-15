@@ -34,31 +34,33 @@ class Owner extends BaseComponent {
 
     return (
       <FormContainer title="Información del desarrollador" >
-        <FormField
-          name="name"
-          onChange={this._handleFieldChange}
-          title="Nombre del desarrollador"
-          value={name}
-        />
-        <FormField
-          disabled
-          name="company_id"
-          onChange={this._handleFieldChange}
-          title="Identificador de compañia"
-          value={company_id}
-        />
-        <FormField
-          name="email"
-          onChange={this._handleFieldChange}
-          title="Email"
-          value={email}
-        />
-        <FormField
-          name="phone"
-          onChange={this._handleFieldChange}
-          title="Phone"
-          value={phone}
-        />
+        <div className="BricksFormCointaine">
+          <FormField
+            name="name"
+            onChange={this._handleFieldChange}
+            title="Nombre del desarrollador"
+            value={name}
+          />
+          <FormField
+            disabled
+            name="company_id"
+            onChange={this._handleFieldChange}
+            title="Identificador de compañia"
+            value={company_id}
+          />
+          <FormField
+            name="email"
+            onChange={this._handleFieldChange}
+            title="Email"
+            value={email}
+          />
+          <FormField
+            name="phone"
+            onChange={this._handleFieldChange}
+            title="Phone"
+            value={phone}
+          />
+        </div>
       </FormContainer>
     )
   }

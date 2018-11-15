@@ -53,29 +53,31 @@ class Growth extends BaseComponent {
 
     return (
       <FormContainer title="Información del desarrollo">
-        <FormField
-          name="name"
-          onChange={this._handleFieldChange}
-          title="Nombre del proyecto"
-          value={name}
-        />
-        {renderSelect('Tipo de Unidad', options.unit)}
-        {renderArea('Descripción del proyecto', description)}
-        {renderSelect('Etapa de desarrollo', options.unit)}
-        {renderSelect('Entrega', options.unit)}
-        {renderSelect('Año', options.unit)}
-        <FormField
-          name="external_key"
-          onChange={this._handleFieldChange}
-          title="Clave externa"
-          value={external_key}
-        />
-        <FormField
-          name="internal_key"
-          onChange={this._handleFieldChange}
-          title="Clave interna"
-          value={internal_key}
-        />
+        <div className="BricksFormCointaine">
+          <FormField
+            name="name"
+            onChange={this._handleFieldChange}
+            title="Nombre del proyecto"
+            value={name}
+          />
+          {renderSelect('Tipo de Unidad', options.unit)}
+          {renderArea('Descripción del proyecto', description)}
+          {renderSelect('Etapa de desarrollo', options.unit)}
+          {renderSelect('Entrega', options.unit)}
+          {renderSelect('Año', options.unit)}
+          <FormField
+            name="external_key"
+            onChange={this._handleFieldChange}
+            title="Clave externa"
+            value={external_key}
+          />
+          <FormField
+            name="internal_key"
+            onChange={this._handleFieldChange}
+            title="Clave interna"
+            value={internal_key}
+          />
+        </div>
       </FormContainer>
     )
   }

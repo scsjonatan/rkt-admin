@@ -11,18 +11,22 @@ import './styles.scss'
 export default class Field extends BaseComponent {
   render() {
     const {
-      className,
       disabled,
-      name,
       onChange,
       placeholder,
       title,
-      value
+      value,
+      name,
+      max,
+      min
     } = this.props
     return (
-      <div className={`FormField ${className}`}>
-        <p className="FormField__Title">{title}</p>
+      <div className="FormNumberField">
+        <p className="FormNumberField__Title">{title}</p>
         <input
+          type="number"
+          min={min}
+          max={max}
           name={name}
           disabled={disabled}
           placeholder={placeholder}
@@ -35,17 +39,19 @@ export default class Field extends BaseComponent {
 }
 
 Field.propTypes = {
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
   title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  disabled: PropTypes.bool,
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func
 }
 
 Field.defaultProps = {
-  className: '',
+  min: 0,
+  max: 100000,
   disabled: false,
-  onChange: () => {},
-  placeholder: ''
+  placeholder: '',
+  onChange: () => {}
 }

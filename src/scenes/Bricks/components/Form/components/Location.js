@@ -45,34 +45,36 @@ class Location extends BaseComponent {
     const options = this.state.options
     return (
       <FormContainer title="Ubicación del desarrollo">
-        <FormField
-          name="direction"
-          onChange={this._handleFieldChange}
-          title="Dirección"
-          value={direction}
-        />
-        {renderSelect('Estado', options.state)}
-        {renderSelect('Municipio', options.state)}
-        {renderSelect('Colonia', options.state)}
-        <FormField
-          name="cp"
-          onChange={this._handleFieldChange}
-          title="Código postal"
-          value={cp}
-        />
-        {renderSelect('Ubicación en mapa', options.state)}
-        <FormField
-          name="latitude"
-          onChange={this._handleFieldChange}
-          title="Map Lat"
-          value={latitude}
-        />
-        <FormField
-          name="longitude"
-          onChange={this._handleFieldChange}
-          title="Map Long"
-          value={longitude}
-        />
+        <div className="BricksFormCointaine">
+          <FormField
+            name="direction"
+            onChange={this._handleFieldChange}
+            title="Dirección"
+            value={direction}
+          />
+          {renderSelect('Estado', options.state)}
+          {renderSelect('Municipio', options.state)}
+          {renderSelect('Colonia', options.state)}
+          <FormField
+            name="cp"
+            onChange={this._handleFieldChange}
+            title="Código postal"
+            value={cp}
+          />
+          {renderSelect('Ubicación en mapa', options.state)}
+          <FormField
+            name="latitude"
+            onChange={this._handleFieldChange}
+            title="Map Lat"
+            value={latitude}
+          />
+          <FormField
+            name="longitude"
+            onChange={this._handleFieldChange}
+            title="Map Long"
+            value={longitude}
+          />
+        </div>
       </FormContainer>
     )
   }

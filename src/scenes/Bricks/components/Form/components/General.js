@@ -4,16 +4,13 @@ import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
-import { renderCheckbox } from '../utils/RenderComponents'
+import { renderCheckbox } from './utils/RenderComponents'
 
 // Components
 import FormContainer from 'components/forms/Container'
 
 // Actions
 import { updateCheckboxByName } from 'scenes/Bricks/components/Form/actions'
-
-// Styles
-import './styles.scss'
 
 class General extends BaseComponent {
   constructor() {

@@ -31,18 +31,20 @@ class Contact extends BaseComponent {
     } = this.props.contact.toJS()
     return (
       <FormContainer title="Información de contacto del desarrollo">
-        <FormField
-          name="email"
-          onChange={this._handleFieldChange}
-          title="Email del contacto"
-          value={email}
-        />
-        <FormField
-          name="phone"
-          onChange={this._handleFieldChange}
-          title="Teléfono del contacto"
-          value={phone}
-        />
+        <div className="BricksFormCointaine">
+          <FormField
+            name="email"
+            onChange={this._handleFieldChange}
+            title="Email del contacto"
+            value={email}
+          />
+          <FormField
+            name="phone"
+            onChange={this._handleFieldChange}
+            title="Teléfono del contacto"
+            value={phone}
+          />
+        </div>
       </FormContainer>
     )
   }
