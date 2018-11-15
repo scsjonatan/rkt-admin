@@ -5,24 +5,57 @@ import React from 'react'
 import BaseComponent from 'utils/BaseComponent'
 
 // Components
-import Nav from './components/Nav'
+import Nav from 'components/lists/Nav'
 import Item from './components/Item'
 
 // Styles
 import './styles.scss'
 
 export default class List extends BaseComponent {
+  constructor() {
+    super()
+
+    this.state = {
+      tabs: [
+        {
+          label: 'Todos',
+          number: 0,
+          slug_name: 'all'
+        },
+        {
+          label: 'Publicados',
+          number: 0,
+          slug_name: 'public'
+        },
+        {
+          label: 'Eliminados',
+          number: 0,
+          slug_name: 'deleted'
+        }
+      ],
+      bricks: [{
+        ad_id: '364382747983',
+        category: 'Desarrollos inmobiliarios',
+        created: '04 Abr 2018 13:45',
+        email: 'hola@puntodestino.com',
+        name: 'Guillermo Prieto 40',
+        phone: '55 54968900',
+        price: '$3,000,000 MXN',
+        units: 24
+      }]
+    }
+  }
+
+  _renderBricks(brick) {
+    return <Item key={brick.ad_id} {...brick} />
+  }
+
   render() {
     return (
       <div className="GeneralContainer BricksList">
-        <Nav />
+        <Nav tabs={this.state.tabs} />
         <div className="BricksList__Content">
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {this.state.bricks.map(this._renderBricks)}
         </div>
       </div>
     )

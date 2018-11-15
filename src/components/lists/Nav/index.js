@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -18,24 +19,6 @@ export default class Nav extends BaseComponent {
     this.state = {
       active: 'all'
     }
-
-    this.tabs = [
-      {
-        label: 'Todos',
-        number: 0,
-        slug_name: 'all'
-      },
-      {
-        label: 'Publicados',
-        number: 0,
-        slug_name: 'public'
-      },
-      {
-        label: 'Eliminados',
-        number: 0,
-        slug_name: 'deleted'
-      }
-    ]
 
     this._bind('_renderTabs', '_handleTab')
   }
@@ -58,8 +41,16 @@ export default class Nav extends BaseComponent {
   render() {
     return (
       <div className="ListNav">
-        {this.tabs.map(this._renderTabs)}
+        {this.props.tabs.map(this._renderTabs)}
       </div>
     )
   }
+}
+
+Nav.propTypes = {
+  tabs: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    number: PropTypes.number.isRequired,
+    slug_name: PropTypes.string.isRequired
+  }))
 }

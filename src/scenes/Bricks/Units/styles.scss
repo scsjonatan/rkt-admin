@@ -1,0 +1,36 @@
+@import 'styles/variables.scss';
+
+.EditUnitsBricks {
+  &__Content {
+    max-width: 1100px;
+    padding: 2.0625rem 2rem;
+    &__Controls {
+      width: 14rem;
+      margin: auto;
+      padding-bottom: 4rem;
+    }
+    &__Title {
+      input {
+        width: 100%;
+      }
+    }
+    &__Row {
+      display: flex;
+      flex-grow: 0;
+      justify-content: space-between;
+      margin-bottom: 1.375rem;
+      .FormField, .FormNumberField, .FormSelect {
+        margin: 0 .3rem;
+        &:first-child {
+          margin-left: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      .FormSelect {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

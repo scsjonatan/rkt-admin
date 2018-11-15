@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -13,6 +14,17 @@ import './styles.scss'
 
 export default class Item extends BaseComponent {
   render() {
+    const {
+      ad_id,
+      category,
+      created,
+      email,
+      name,
+      phone,
+      price,
+      units
+    } = this.props
+
     return (
       <div className="BricksListItem">
         <div className="BricksListItem__MainData">
@@ -24,39 +36,50 @@ export default class Item extends BaseComponent {
             <div className="BricksListItem__MainData__Brick__Data">
               <p className="BricksListItem__MainData__Brick__Data__Name">
                 <span />
-                Guillermo Prieto 40
+                {name}
               </p>
-              <p>Desde $3,000,000 MXN</p>
+              <p>{`Desde ${price}`}</p>
             </div>
           </div>
           <div className="BricksListItem__MainData__Units">
-            <p>24 Unidades</p>
+            <p>{`${units} Unidades`}</p>
           </div>
         </div>
         <div className="BricksListItem__MetaData">
           <div className="BricksListItem__MetaData__List">
             <p className="BricksListItem__MetaData__List__Focus">
-              Email: <span>hola@puntodestino.com</span>
+              Email: <span>{email}</span>
             </p>
             <p>
-              Categoría: <span>Desarrollos inmobiliarios</span>
+              Categoría: <span>{category}</span>
             </p>
             <p>
-              Fecha de creación: <span>04 Abr 2018 13:45</span>
+              Fecha de creación: <span>{created}</span>
             </p>
             <p>
-              ID de Anuncio: <span>364382747983</span>
+              ID de Anuncio: <span>{ad_id}</span>
             </p>
             <p>
-              Teléfono: <span>55 54968900</span>
+              Teléfono: <span>{phone}</span>
             </p>
             <p className="BricksListItem__MetaData__List__Focus">
               <span>Historial</span>
             </p>
           </div>
-          <Menu />
+          <Menu id={ad_id} />
         </div>
       </div>
     )
   }
+}
+
+Item.propTypes = {
+  ad_id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  units: PropTypes.number.isRequired
 }

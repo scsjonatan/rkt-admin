@@ -1,13 +1,8 @@
 @import 'styles/variables.scss';
 
-.SceneBricksCreate {
-  background: $very-light-grey-color;
+.SceneBricksEdit {
   &__Content {
     max-width: 1100px;
     padding: 2.0625rem 2rem;
-
-    &__Field {
-      width: 37.5rem;
-    }
   }
 }

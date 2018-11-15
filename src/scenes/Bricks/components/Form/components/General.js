@@ -1,14 +1,18 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
-import { renderCheckbox } from '../utils/RenderComponents'
+import { renderCheckbox } from './utils/RenderComponents'
 
 // Components
 import FormContainer from 'components/forms/Container'
 
-export default class General extends BaseComponent {
+// Actions
+import { updateCheckboxByName } from 'scenes/Bricks/components/Form/actions'
+
+class General extends BaseComponent {
   constructor() {
     super()
 
@@ -16,22 +20,18 @@ export default class General extends BaseComponent {
   }
 
   _handleChange(e) {
-    const {
-      name,
-      checked
-    } = e.target
-
-    this.props.handleCheckboxChange(name, checked)
+    const { name, checked } = e.target
+    this.props.updateCheckbox(name, checked)
   }
 
   _renderCheckbox(name) {
-    const fields = this.props.fields
+    const fields = this.props.general.toJS()
     const { label, checked } = fields[name]
     return renderCheckbox(name, label, checked, this._handleChange)
   }
 
   render() {
-    const fields = this.props.fields
+    const fields = this.props.general.toJS()
     return (
       <FormContainer title="Características generales">
         <div className="BricksEditGeneral">
@@ -43,3 +43,17 @@ export default class General extends BaseComponent {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    general: state.sceneBricksComponentsForm.get('general')
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCheckbox: (name, checked) => dispatch(updateCheckboxByName(name, checked))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(General)

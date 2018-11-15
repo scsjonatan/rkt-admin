@@ -1,0 +1,20 @@
+.BricksForm {
+  width: 37.5rem;
+  &__Controls {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    &__Save {
+      width: 15.625rem;
+    }
+  }
+  .FormField {
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.BricksFormCointaine {
+  width: 20rem;
+}

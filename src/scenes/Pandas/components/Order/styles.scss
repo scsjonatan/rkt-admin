@@ -1,0 +1,41 @@
+@import 'styles/variables.scss';
+
+.PandasListItem {
+  background: $light-color;
+  border-bottom: 1px solid $medium-grey-color;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  &__Image {
+    width: 20%;
+    &__Element {
+      border-radius: 4px;
+      height: 6.5rem;
+      margin-right: .5rem;
+      width: 6.5rem;
+    }
+  }
+  &__Data { 
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    &__Column {
+      p {
+        color: $very-dark-color;
+        margin: .3rem;
+        span {
+          color: $dark-grey-color;
+        }
+      }
+      &__Focus {
+        span {
+          color: $primary-color !important;
+        }
+      }
+    }
+  }
+}
+
+.Pointer {
+  cursor: pointer;
+}

@@ -1,6 +1,8 @@
 @import 'styles/variables.scss';
 
 .FormArea {
+  display: flex;
+  flex-flow: wrap;
   margin-bottom: 1rem;
   &__Title {
     color: $dark-color;
@@ -12,7 +14,7 @@
     height: 7rem;
     padding: .5rem 1rem;
     resize: none;
-    width: 20rem;
+    width: 100%;
     &:disabled {
       background: $light-grey-color;
       color: $medium-grey-color;
