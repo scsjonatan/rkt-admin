@@ -71,7 +71,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },
   "eslintConfig": {
     "extends": "react-app"
