@@ -1,6 +1,7 @@
 // Dependencies
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -15,6 +16,9 @@ import Brochure from './components/Brochure'
 import General from './components/General'
 
 import Button from 'components/atoms/Button'
+
+// Services
+import { searchBricksDataById } from 'services/bricks'
 
 // Actions
 import { fetchBrickData } from './actions'
@@ -37,44 +41,9 @@ class BricksForm extends BaseComponent {
 
   // Fake Fetch data
   _fetchData() {
-    this.props.fetchData({
-      owner: {
-        company_id: 'PD_123',
-        email: 'j@ihk.io',
-        name: 'Jonatan Santa Cruz',
-        phone: '5554968900'
-      },
-      contact: {
-        email: 'j@ihk.io',
-        phone: '5534543345'
-      },
-      growth: {
-        description:
-          'Definido por un lujo incomparable, es un proyecto extraordinario que...',
-        external_key: '123',
-        internal_key: '321',
-        name: 'Vertiz 234'
-      },
-      location: {
-        cp: '09360',
-        direction: 'Dr Vertiz 234',
-        latitude: '40.43243',
-        longitude: '-23.432'
-      },
-      general: {
-        alberca: {
-          checked: true,
-          label: 'Alberca'
-        },
-        escuelas_cercanas: {
-          checked: false,
-          label: 'Escuelas Cercanas'
-        },
-        jacuzzi: {
-          checked: true,
-          label: 'Jacuzzi'
-        }
-      }
+    const brickId = this.context.router.route.match.params.id
+    searchBricksDataById(brickId).then(brick => {
+      this.props.fetchData(brick)
     })
   }
 
@@ -105,6 +74,10 @@ class BricksForm extends BaseComponent {
       </div>
     )
   }
+}
+
+BricksForm.contextTypes = {
+  router: PropTypes.object.isRequired
 }
 
 const dispatchStateToProps = dispatch => {

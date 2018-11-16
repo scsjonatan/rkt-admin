@@ -35,7 +35,7 @@ export default class SearchBox extends BaseComponent {
 
   _renderChildren() {
     const { children } = this.props
-    return children ? children : <ReactSVG src={require('./add.svg')} />
+    return children ? children : <ReactSVG src={require('./search.svg')} />
   }
 
   render() {

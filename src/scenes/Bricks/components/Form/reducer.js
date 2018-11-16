@@ -2,10 +2,11 @@
 import { fromJS } from 'immutable'
 
 // Action
-import { LOCATION_CHANGE } from 'react-router-redux'
 import { UPDATE_FIELD, UPDATE_CHECKBOX, FETCH_BRICK_DATA } from './constants'
+import { LOCATION_CHANGE } from 'react-router-redux'
 
 export const initialState = fromJS({
+  id: null,
   owner: {
     company_id: '',
     email: '',

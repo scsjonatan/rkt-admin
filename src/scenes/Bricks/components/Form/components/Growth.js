@@ -60,7 +60,7 @@ class Growth extends BaseComponent {
             value={name}
           />
           {renderSelect('Tipo de Unidad', options.unit)}
-          {renderArea('Descripción del proyecto', description)}
+          {renderArea('Descripción del proyecto', description, 'description')}
           {renderSelect('Etapa de desarrollo', options.unit)}
           {renderSelect('Entrega', options.unit)}
           {renderSelect('Año', options.unit)}

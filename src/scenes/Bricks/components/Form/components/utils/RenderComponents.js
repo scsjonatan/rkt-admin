@@ -34,9 +34,15 @@ export const renderSelect = (title, options, disabled = false) => {
   )
 }
 
-export const renderArea = (title, value, disabled = false) => {
+export const renderArea = (title, value, name, disabled = false) => {
   return (
-    <FormArea disabled={disabled} key={uuid()} title={title} value={value} />
+    <FormArea
+      disabled={disabled}
+      key={uuid()}
+      title={title}
+      value={value}
+      name={name}
+    />
   )
 }
 
