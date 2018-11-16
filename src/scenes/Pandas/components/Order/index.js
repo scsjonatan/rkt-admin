@@ -49,7 +49,7 @@ class Order extends BaseComponent {
         <div className="PandasListItem__Image">
           <div
             className="PandasListItem__Image__Element"
-            style={setBackgroundImage('https://picsum.photos/200/300')}
+            style={setBackgroundImage('https://picsum.photos/75/75')}
           />
         </div>
         <div className="PandasListItem__Data">

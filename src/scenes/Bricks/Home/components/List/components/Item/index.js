@@ -31,7 +31,7 @@ export default class Item extends BaseComponent {
           <div className="BricksListItem__MainData__Brick">
             <div
               className="BricksListItem__MainData__Brick__Image"
-              style={setBackgroundImage('https://picsum.photos/200/300')}
+              style={setBackgroundImage('https://picsum.photos/75/75')}
             />
             <div className="BricksListItem__MainData__Brick__Data">
               <p className="BricksListItem__MainData__Brick__Data__Name">

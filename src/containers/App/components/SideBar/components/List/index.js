@@ -14,7 +14,7 @@ import './styles.scss'
 
 export default class List extends BaseComponent {
   _renderItems(item) {
-    return <Item {...item} key={uuid()} />
+    return item.path ? <Item {...item} key={uuid()} /> : null
   }
 
   render() {

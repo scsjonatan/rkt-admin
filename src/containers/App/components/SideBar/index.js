@@ -16,29 +16,6 @@ import './styles.scss'
 export default class SideBar extends BaseComponent {
   constructor() {
     super()
-
-    this.metricsItems = [
-      {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
-        label: 'Tableau'
-      },
-      {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
-        label: 'Geckboard'
-      },
-      {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
-        label: 'Amplitude'
-      },
-      {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
-        label: 'Appboy'
-      },
-      {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
-        label: 'Appsflyer'
-      }
-    ]
     this.navItems = [
       {
         icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
@@ -53,21 +30,21 @@ export default class SideBar extends BaseComponent {
         label: 'Ad managment'
       },
       {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
+        icon: require('containers/App/components/SideBar/assets/icons/userManage.svg'),
         label: 'User Managment'
       },
       {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
+        icon: require('containers/App/components/SideBar/assets/icons/bricks.svg'),
         label: 'Bricks',
         path: reverse('bricks')
       },
       {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
+        icon: require('containers/App/components/SideBar/assets/icons/houston.svg'),
         label: 'Houston',
         path: reverse('pandas')
       },
       {
-        icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
+        icon: require('containers/App/components/SideBar/assets/icons/coins.svg'),
         label: 'Monedas',
         path: reverse('coins')
       }
@@ -77,7 +54,6 @@ export default class SideBar extends BaseComponent {
     return (
       <div className="SideBar">
         <List isMain items={this.navItems} title="Merlin Admin Panel" />
-        <List items={this.metricsItems} title="Metrics" />
       </div>
     )
   }
