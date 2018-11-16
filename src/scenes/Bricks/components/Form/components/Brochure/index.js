@@ -6,13 +6,22 @@ import { connect } from 'react-redux'
 import BaseComponent from 'utils/BaseComponent'
 
 // Components
+import FileUploader from 'components/forms/FileUploader'
+
+// Components
 import FormContainer from 'components/forms/Container'
 
 class Brochure extends BaseComponent {
+  _handleFile(file) {
+    console.log(file)
+  }
   render() {
     return (
       <FormContainer title="Brochure">
-        Brochure
+        <FileUploader
+          title="Formato PDF"
+          onChange={this._handleFile}
+        />
       </FormContainer>
     )
   }
