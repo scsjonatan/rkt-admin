@@ -15,7 +15,6 @@ import './styles.scss'
 export default class Item extends BaseComponent {
   render() {
     const {
-      id,
       baths,
       brickId,
       field,
@@ -65,7 +64,7 @@ export default class Item extends BaseComponent {
               Terreno: <span>{`${field}m2`}</span>
             </p>
           </div>
-          <Menu unitId={id} brickId={brickId} />
+          <Menu {...this.props} brickId={brickId} />
         </div>
       </div>
     )

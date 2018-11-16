@@ -36,11 +36,11 @@ export default class Menu extends BaseComponent {
   }
 
   _renderMenu() {
-    const { unitId, brickId } = this.props
+    const { brickId } = this.props
     return this.state.isVisible ? (
       <Options
         handleOutside={this._handleClickOutside}
-        unitId={unitId}
+        {...this.props}
         brickId={brickId}
       />
     ) : null
@@ -59,6 +59,15 @@ export default class Menu extends BaseComponent {
 }
 
 Menu.propTypes = {
-  unitId: PropTypes.string.isRequired,
-  brickId: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  brickId: PropTypes.string.isRequired,
+  baths: PropTypes.number.isRequired,
+  field: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  parking: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
+  rooms: PropTypes.number.isRequired,
+  surface: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired
 }

@@ -29,3 +29,18 @@ export const fetchUnitsByBricksId = id => {
     ])
   })
 }
+
+export const fetchUnitDataById = id => {
+  console.log(id)
+  return new Promise(resolve => {
+    resolve({
+      title: 'Titulo Bonito',
+      model: 'Modelo A',
+      price: '432',
+      build_surface: 34,
+      field_surface: 43,
+      description: 'Mi Descripción',
+      id
+    })
+  })
+}

@@ -2,8 +2,7 @@
 import { fromJS } from 'immutable'
 
 // Constants
-import { UPDATE_FIELD } from './constants'
-import { LOCATION_CHANGE } from 'react-router-redux'
+import { UPDATE_FIELD, SET_UNIT_DATA } from './constants'
 
 export const initialState = fromJS({
   title: '',
@@ -11,7 +10,8 @@ export const initialState = fromJS({
   price: '',
   build_surface: '',
   field_surface: '',
-  description: ''
+  description: '',
+  id: ''
 })
 
 /**
@@ -25,8 +25,16 @@ export default function reducer(state = initialState, action) {
     case UPDATE_FIELD:
       const { name, value } = action
       return state.set(name, value)
-    case LOCATION_CHANGE:
-      return initialState
+    case SET_UNIT_DATA:
+      return fromJS({
+        title: action.data.title,
+        model: action.data.model,
+        price: action.data.price,
+        build_surface: action.data.build_surface,
+        field_surface: action.data.field_surface,
+        description: action.data.description,
+        id: action.data.id
+      })
     default:
       return state
   }

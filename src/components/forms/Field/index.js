@@ -44,7 +44,7 @@ Field.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   title: PropTypes.string,
-  value: PropTypes.string.isRequired
+  value: PropTypes.any.isRequired
 }
 
 Field.defaultProps = {

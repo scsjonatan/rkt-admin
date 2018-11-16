@@ -1,32 +1,58 @@
 // Dependencies
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 import onClickOutside from 'react-onclickoutside'
 
-// Components
-import { Link } from 'react-router-dom'
+// Actions
+import { setCompleteUnitData } from 'scenes/Bricks/Units/actions'
 
 // Routes
 import { reverse } from 'routes'
 
 class Options extends BaseComponent {
+  constructor() {
+    super()
+
+    this._bind('_handleEditClick')
+  }
+
   handleClickOutside() {
     this.props.handleOutside()
   }
 
-  render() {
-    const { unitId, brickId } = this.props
-    const editPath = reverse('bricks:units:edit', {
+  _handleEditClick() {
+    const { id, brickId } = this.props
+    const path = reverse('bricks:units:edit', {
       id: brickId,
-      unit_id: unitId
+      unit_id: id
     })
+
+    this.props.setUnitData({
+      id: this.props.id,
+      baths: this.props.baths,
+      field_surface: this.props.field,
+      image: this.props.image,
+      title: this.props.name,
+      parking: this.props.parking,
+      price: this.props.price,
+      rooms: this.props.rooms,
+      build_surface: this.props.surface,
+      type: this.props.type,
+      description: '',
+      model: this.props.name
+    })
+    this.context.router.history.push(path)
+  }
+
+  render() {
     return (
       <div className="BricksMenuOptions">
         <ul className="GeneralContainerSmall">
-          <Link to={editPath}>Editar Unidad</Link>
+          <li onClick={this._handleEditClick}>Editar Unidad</li>
           <a href="#">Eliminar Desarrollo</a>
         </ul>
       </div>
@@ -34,9 +60,31 @@ class Options extends BaseComponent {
   }
 }
 
-export default onClickOutside(Options)
+const mapDispatchToProps = dispatch => {
+  return {
+    setUnitData: (field, value) => dispatch(setCompleteUnitData(field, value))
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(onClickOutside(Options))
 
 Options.propTypes = {
-  unitId: PropTypes.string.isRequired,
-  brickId: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  brickId: PropTypes.string.isRequired,
+  baths: PropTypes.number.isRequired,
+  field: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  parking: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
+  rooms: PropTypes.number.isRequired,
+  surface: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired
+}
+
+Options.contextTypes = {
+  router: PropTypes.object.isRequired
 }
