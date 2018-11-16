@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -17,10 +18,15 @@ class Options extends BaseComponent {
   }
 
   render() {
+    const { unitId, brickId } = this.props
+    const editPath = reverse('bricks:units:edit', {
+      id: brickId,
+      unit_id: unitId
+    })
     return (
       <div className="BricksMenuOptions">
         <ul className="GeneralContainerSmall">
-          <Link to={reverse('bricks:edit')}>Editar Unidad</Link>
+          <Link to={editPath}>Editar Unidad</Link>
           <a href="#">Eliminar Desarrollo</a>
         </ul>
       </div>
@@ -29,3 +35,8 @@ class Options extends BaseComponent {
 }
 
 export default onClickOutside(Options)
+
+Options.propTypes = {
+  unitId: PropTypes.string.isRequired,
+  brickId: PropTypes.string.isRequired
+}

@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -35,8 +36,13 @@ export default class Menu extends BaseComponent {
   }
 
   _renderMenu() {
+    const { unitId, brickId } = this.props
     return this.state.isVisible ? (
-      <Options handleOutside={this._handleClickOutside} />
+      <Options
+        handleOutside={this._handleClickOutside}
+        unitId={unitId}
+        brickId={brickId}
+      />
     ) : null
   }
 
@@ -50,4 +56,9 @@ export default class Menu extends BaseComponent {
       </div>
     )
   }
+}
+
+Menu.propTypes = {
+  unitId: PropTypes.string.isRequired,
+  brickId: PropTypes.string.isRequired
 }

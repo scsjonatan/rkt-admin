@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -13,47 +14,74 @@ import './styles.scss'
 
 export default class Item extends BaseComponent {
   render() {
+    const {
+      id,
+      baths,
+      brickId,
+      field,
+      image,
+      name,
+      parking,
+      price,
+      rooms,
+      surface,
+      type
+    } = this.props
     return (
       <div className="UnitsListItem">
         <div className="UnitsListItem__MainData">
           <div
             className="UnitsListItem__MainData__Image"
-            style={setBackgroundImage('https://picsum.photos/200/300')}
+            style={setBackgroundImage(image)}
           />
           <div className="UnitsListItem__MainData__Data">
             <p className="UnitsListItem__MainData__Data__Name">
               <span />
-              Modelo A
+              {name}
             </p>
-            <p>Desde $3,000,000 MXN</p>
+            <p>{`Desde ${price} MXN`}</p>
           </div>
         </div>
         <div className="UnitsListItem__MetaData">
           <div className="UnitsListItem__MetaData__List">
             <p>
-              Tipo: <span>Departamento</span>
+              Tipo: <span>{type}</span>
             </p>
             <p>
-              Habitaciones: <span>2</span>
+              Habitaciones: <span>{rooms}</span>
             </p>
             <p>
-              Baños: <span>1</span>
+              Baños: <span>{baths}</span>
             </p>
           </div>
           <div className="UnitsListItem__MetaData__List">
             <p>
-              Estacionamiento: <span>1</span>
+              Estacionamiento: <span>{parking}</span>
             </p>
             <p>
-              Superficie: <span>98m2</span>
+              Superficie: <span>{`${surface}m2`}</span>
             </p>
             <p>
-              Terreno: <span>120m2</span>
+              Terreno: <span>{`${field}m2`}</span>
             </p>
           </div>
-          <Menu />
+          <Menu unitId={id} brickId={brickId} />
         </div>
       </div>
     )
   }
+}
+
+Item.propTypes = {
+  id: PropTypes.string.isRequired,
+  brickId: PropTypes.string.isRequired,
+  baths: PropTypes.number.isRequired,
+  field: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  parking: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
+  rooms: PropTypes.number.isRequired,
+  surface: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired
 }
