@@ -13,9 +13,7 @@ export default class Container extends BaseComponent {
     return (
       <div className="FormsContainer">
         <p className="FormsContainer__Title">{this.props.title}</p>
-        <div className="FormsContainer__Fields">
-          {this.props.children}
-        </div>
+        <div className="FormsContainer__Fields">{this.props.children}</div>
       </div>
     )
   }

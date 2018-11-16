@@ -11,7 +11,6 @@ import PandasOrder from 'scenes/Pandas/components/Order'
 import BaseComponent from 'utils/BaseComponent'
 import { setOrderDetail } from 'scenes/Pandas/Order/actions'
 
-
 // Styles
 import './styles.scss'
 
@@ -67,7 +66,6 @@ class Order extends BaseComponent {
                   <p>Pending PickUp</p>
                   <span>9 noviembre 2018 12:40</span>
                 </li>
-
               </ul>
             </div>
           </div>
@@ -89,8 +87,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setOrder: (data) => dispatch(setOrderDetail(data))
+    setOrder: data => dispatch(setOrderDetail(data))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Order)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Order)

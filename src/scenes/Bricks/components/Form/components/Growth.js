@@ -41,7 +41,6 @@ class Growth extends BaseComponent {
     this.props.updateField(name, value, 'growth')
   }
 
-
   render() {
     const {
       description,
@@ -91,8 +90,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateField: (name, value, group) => dispatch(updateFieldByName(name, value, group))
+    updateField: (name, value, group) =>
+      dispatch(updateFieldByName(name, value, group))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Growth)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Growth)

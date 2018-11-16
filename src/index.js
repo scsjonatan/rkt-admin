@@ -18,16 +18,11 @@ import createRoutes from './routes'
 import './styles.scss'
 import 'styles/utils/normalize.scss'
 
-
 const history = createBrowserHistory()
 
 const store = createStore(
   createReducer(history),
-  compose(
-    applyMiddleware(
-      routerMiddleware(history),
-    ),
-  ),
+  compose(applyMiddleware(routerMiddleware(history)))
 )
 
 export default class App extends Component {
@@ -35,9 +30,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <div id="RocketApp">
-            {createRoutes()}
-          </div>
+          <div id="RocketApp">{createRoutes()}</div>
         </ConnectedRouter>
       </Provider>
     )
@@ -47,7 +40,4 @@ export default class App extends Component {
 // The main `store` component of the application:
 const ConnectedApp = connect(null)(App)
 
-ReactDOM.render(
-  <ConnectedApp store={store} />,
-  document.getElementById('app')
-)
+ReactDOM.render(<ConnectedApp store={store} />, document.getElementById('app'))

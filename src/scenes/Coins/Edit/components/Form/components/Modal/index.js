@@ -19,4 +19,3 @@ export default class Modal extends BaseComponent {
     )
   }
 }
-

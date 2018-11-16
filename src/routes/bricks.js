@@ -13,7 +13,13 @@ export default {
     component: Edit
   },
   units: {
-    path: '/units/:id',
-    component: EditUnits
+    path: '/:id/units',
+    component: EditUnits,
+    routes: {
+      edit: {
+        path: '/edit/:unit_id',
+        component: EditUnits
+      }
+    }
   }
 }

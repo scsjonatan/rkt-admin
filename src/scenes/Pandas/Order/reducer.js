@@ -19,17 +19,15 @@ export const initialState = fromJS({
 })
 
 /**
-  * reducer of Pandas Order Detail Scene
-  * @param {object} state of reducer
-  * @param {object} action to dispatch
-  * @returns {object} next state
-*/
+ * reducer of Pandas Order Detail Scene
+ * @param {object} state of reducer
+ * @param {object} action to dispatch
+ * @returns {object} next state
+ */
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_ORDER:
-      return state.merge(fromJS({
-        order: action.data
-      }))
+      return state.merge(fromJS({ order: action.data }))
     default:
       return state
   }

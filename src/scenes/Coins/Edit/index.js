@@ -31,10 +31,9 @@ class Edit extends BaseComponent {
   _handleSearch(search) {
     this.props.resetCoinsForm()
     this.props.startSearch()
-    searchUserByEmail(search)
-      .then(user => {
-        this.props.setUserData(user)
-      })
+    searchUserByEmail(search).then(user => {
+      this.props.setUserData(user)
+    })
   }
 
   _validateUser() {
@@ -53,7 +52,9 @@ class Edit extends BaseComponent {
       <div className="CoinsEdit__Content__User__Loader">
         <ClipLoader color="#1d72db" />
       </div>
-    ) : this._validateUser()
+    ) : (
+      this._validateUser()
+    )
   }
 
   render() {
@@ -87,10 +88,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUserData: (user) => dispatch(setUserData(user)),
+    setUserData: user => dispatch(setUserData(user)),
     resetCoinsForm: () => dispatch(resetCoinsForm()),
     startSearch: () => dispatch(startSearch())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Edit)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Edit)

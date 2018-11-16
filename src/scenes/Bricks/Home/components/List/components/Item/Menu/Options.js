@@ -31,10 +31,8 @@ class Options extends BaseComponent {
   }
 }
 
-
 Options.propTypes = {
   id: PropTypes.string.isRequired
 }
-
 
 export default onClickOutside(Options)

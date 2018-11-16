@@ -13,9 +13,7 @@ export default class Header extends BaseComponent {
     return (
       <div className="ViewHeader">
         <h1>{this.props.title}</h1>
-        <div className="ViewHeader__Extras">
-          {this.props.children}
-        </div>
+        <div className="ViewHeader__Extras">{this.props.children}</div>
       </div>
     )
   }

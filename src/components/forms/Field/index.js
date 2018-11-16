@@ -11,9 +11,7 @@ import './styles.scss'
 export default class Field extends BaseComponent {
   _renderTitle() {
     const { title } = this.props
-    return title ? (
-      <p className="FormField__Title">{title}</p>
-    ) : null
+    return title ? <p className="FormField__Title">{title}</p> : null
   }
 
   render() {
@@ -46,7 +44,7 @@ Field.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   title: PropTypes.string,
-  value: PropTypes.string.isRequired
+  value: PropTypes.any.isRequired
 }
 
 Field.defaultProps = {

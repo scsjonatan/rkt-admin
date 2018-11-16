@@ -1,9 +1,9 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
-
 
 // Components
 import ReactSVG from 'react-svg'
@@ -36,8 +36,13 @@ export default class Menu extends BaseComponent {
   }
 
   _renderMenu() {
+    const { brickId } = this.props
     return this.state.isVisible ? (
-      <Options handleOutside={this._handleClickOutside}/>
+      <Options
+        handleOutside={this._handleClickOutside}
+        {...this.props}
+        brickId={brickId}
+      />
     ) : null
   }
 
@@ -51,4 +56,18 @@ export default class Menu extends BaseComponent {
       </div>
     )
   }
+}
+
+Menu.propTypes = {
+  id: PropTypes.string.isRequired,
+  brickId: PropTypes.string.isRequired,
+  baths: PropTypes.number.isRequired,
+  field: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  parking: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
+  rooms: PropTypes.number.isRequired,
+  surface: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired
 }

@@ -33,16 +33,18 @@ export default class List extends BaseComponent {
           slug_name: 'deleted'
         }
       ],
-      bricks: [{
-        ad_id: '364382747983',
-        category: 'Desarrollos inmobiliarios',
-        created: '04 Abr 2018 13:45',
-        email: 'hola@puntodestino.com',
-        name: 'Guillermo Prieto 40',
-        phone: '55 54968900',
-        price: '$3,000,000 MXN',
-        units: 24
-      }]
+      bricks: [
+        {
+          ad_id: '364382747983',
+          category: 'Desarrollos inmobiliarios',
+          created: '04 Abr 2018 13:45',
+          email: 'hola@puntodestino.com',
+          name: 'Guillermo Prieto 40',
+          phone: '55 54968900',
+          price: '$3,000,000 MXN',
+          units: 24
+        }
+      ]
     }
   }
 

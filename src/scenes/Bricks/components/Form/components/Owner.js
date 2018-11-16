@@ -12,7 +12,6 @@ import FormField from 'components/forms/Field'
 // Actions
 import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
-
 class Owner extends BaseComponent {
   constructor(props) {
     super(props)
@@ -25,15 +24,9 @@ class Owner extends BaseComponent {
   }
 
   render() {
-    const {
-      company_id,
-      email,
-      name,
-      phone
-    } = this.props.owner.toJS()
-
+    const { company_id, email, name, phone } = this.props.owner.toJS()
     return (
-      <FormContainer title="Información del desarrollador" >
+      <FormContainer title="Información del desarrollador">
         <div className="BricksFormCointaine">
           <FormField
             name="name"
@@ -72,11 +65,14 @@ const mapStateToProps = state => {
   }
 }
 
-
 const mapDispatchToProps = dispatch => {
   return {
-    updateField: (name, value, group) => dispatch(updateFieldByName(name, value, group))
+    updateField: (name, value, group) =>
+      dispatch(updateFieldByName(name, value, group))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Owner)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Owner)

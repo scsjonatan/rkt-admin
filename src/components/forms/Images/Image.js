@@ -18,7 +18,7 @@ export default class Image extends BaseComponent {
 
   componentDidMount() {
     let reader = new FileReader()
-    reader.onload = (e) => {
+    reader.onload = e => {
       this.setState({
         src: e.target.result
       })
@@ -40,7 +40,8 @@ export default class Image extends BaseComponent {
         <div
           className="FormImages__List__Add__Element__Delete"
           onClick={this._deleteImage}
-        >x
+        >
+          x
         </div>
       </div>
     )

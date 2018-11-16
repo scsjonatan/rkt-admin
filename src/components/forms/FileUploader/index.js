@@ -29,9 +29,7 @@ export default class FileUploader extends BaseComponent {
 
   _renderTitle() {
     const { title } = this.props
-    return title ? (
-      <p className="FileUploader__Title">{title}</p>
-    ) : null
+    return title ? <p className="FileUploader__Title">{title}</p> : null
   }
 
   _handleFile(e) {
@@ -43,19 +41,12 @@ export default class FileUploader extends BaseComponent {
   }
 
   render() {
-    const {
-      className,
-      disabled,
-      name
-    } = this.props
+    const { className, disabled, name } = this.props
     return (
       <div className={`FileUploader ${className}`}>
         {this._renderTitle()}
         <div className="FileUploader__Button">
-          <Button
-            action={this._handleUpload}
-            label="Subir Archivo"
-          />
+          <Button action={this._handleUpload} label="Subir Archivo" />
           <p className="FileUploader__Name">{this.state.name}</p>
         </div>
         <input

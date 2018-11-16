@@ -34,20 +34,12 @@ export default class Images extends BaseComponent {
   }
 
   _renderImage(image) {
-    return (
-      <Image
-        key={uuid()}
-        image={image}
-        deleteImage={this._handleDelete}
-      />
-    )
+    return <Image key={uuid()} image={image} deleteImage={this._handleDelete} />
   }
 
   _renderTitle() {
     const { title } = this.props
-    return title ? (
-      <p className="FormImages__Title">{title}</p>
-    ) : null
+    return title ? <p className="FormImages__Title">{title}</p> : null
   }
 
   _renderAddImage() {

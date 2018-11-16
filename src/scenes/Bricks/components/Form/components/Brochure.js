@@ -18,10 +18,7 @@ class Brochure extends BaseComponent {
   render() {
     return (
       <FormContainer title="Brochure">
-        <FileUploader
-          title="Formato PDF"
-          onChange={this._handleFile}
-        />
+        <FileUploader title="Formato PDF" onChange={this._handleFile} />
       </FormContainer>
     )
   }

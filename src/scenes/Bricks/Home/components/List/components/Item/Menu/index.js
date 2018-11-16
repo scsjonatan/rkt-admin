@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
-
 // Components
 import ReactSVG from 'react-svg'
 import Options from './Options'
@@ -38,10 +37,7 @@ export default class Menu extends BaseComponent {
 
   _renderMenu() {
     return this.state.isVisible ? (
-      <Options
-        handleOutside={this._handleClickOutside}
-        id={this.props.id}
-      />
+      <Options handleOutside={this._handleClickOutside} id={this.props.id} />
     ) : null
   }
 

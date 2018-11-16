@@ -3,11 +3,7 @@ import { fromJS } from 'immutable'
 
 // Action
 import { LOCATION_CHANGE } from 'react-router-redux'
-import {
-  UPDATE_FIELD,
-  UPDATE_CHECKBOX,
-  FETCH_BRICK_DATA
-} from './constants'
+import { UPDATE_FIELD, UPDATE_CHECKBOX, FETCH_BRICK_DATA } from './constants'
 
 export const initialState = fromJS({
   owner: {
@@ -49,11 +45,11 @@ export const initialState = fromJS({
 })
 
 /**
-  * reducer of Bricks Edit Scene
-  * @param {object} state of reducer
-  * @param {object} action to dispatch
-  * @returns {object} next state
-*/
+ * reducer of Bricks Edit Scene
+ * @param {object} state of reducer
+ * @param {object} action to dispatch
+ * @returns {object} next state
+ */
 export default function reducer(state = initialState, action) {
   const _state = state.toJS()
   switch (action.type) {
@@ -61,23 +57,27 @@ export default function reducer(state = initialState, action) {
       return state.merge(fromJS({ ...action.data }))
     case UPDATE_FIELD:
       const { name, group, value } = action
-      return state.merge(fromJS({
-        [group]: {
-          ..._state[group],
-          [name]: value
-        }
-      }))
+      return state.merge(
+        fromJS({
+          [group]: {
+            ..._state[group],
+            [name]: value
+          }
+        })
+      )
     case UPDATE_CHECKBOX:
       const { checked } = action
-      return state.merge(fromJS({
-        general: {
-          ..._state.general,
-          [action.name]: {
-            ..._state.general[action.name],
-            checked
+      return state.merge(
+        fromJS({
+          general: {
+            ..._state.general,
+            [action.name]: {
+              ..._state.general[action.name],
+              checked
+            }
           }
-        }
-      }))
+        })
+      )
     case LOCATION_CHANGE:
       return initialState
     default:

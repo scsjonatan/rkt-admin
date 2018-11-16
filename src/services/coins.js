@@ -1,5 +1,5 @@
 export const searchUserByEmail = email => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     resolve({
       id: '24343214321',
       email: email,

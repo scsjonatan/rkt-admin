@@ -58,9 +58,7 @@ class Form extends BaseComponent {
   }
 
   _renderModal() {
-    return this.props.showModal ? (
-      <Modal />
-    ) : null
+    return this.props.showModal ? <Modal /> : null
   }
 
   render() {
@@ -82,10 +80,7 @@ class Form extends BaseComponent {
             />
           </div>
           <div className="FormCoinsEdit__Actions__Button">
-            <Button
-              action={this._handleSave}
-              label="Aplicar"
-            />
+            <Button action={this._handleSave} label="Aplicar" />
           </div>
         </div>
         {this._renderModal()}
@@ -109,4 +104,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Form)

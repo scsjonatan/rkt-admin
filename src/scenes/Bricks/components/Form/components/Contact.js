@@ -25,10 +25,7 @@ class Contact extends BaseComponent {
   }
 
   render() {
-    const {
-      email,
-      phone
-    } = this.props.contact.toJS()
+    const { email, phone } = this.props.contact.toJS()
     return (
       <FormContainer title="Información de contacto del desarrollo">
         <div className="BricksFormCointaine">
@@ -58,8 +55,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateField: (name, value, group) => dispatch(updateFieldByName(name, value, group))
+    updateField: (name, value, group) =>
+      dispatch(updateFieldByName(name, value, group))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contact)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Contact)

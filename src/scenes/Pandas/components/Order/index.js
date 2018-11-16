@@ -108,8 +108,11 @@ Order.contextTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setOrder: (data) => dispatch(setOrderDetail(data))
+    setOrder: data => dispatch(setOrderDetail(data))
   }
 }
 
-export default connect(null, mapDispatchToProps)(Order)
+export default connect(
+  null,
+  mapDispatchToProps
+)(Order)
