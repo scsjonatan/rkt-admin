@@ -34,11 +34,11 @@ export default class Image extends BaseComponent {
     return (
       <div className="FormImages__List__Add__Element">
         <div
-          className="FormImages__List__Add__Element __Image"
+          className="FormImages__List__Add__Element__Image"
           style={setBackgroundImage(this.state.src)}
         />
         <div
-          className="FormImages__List__Add__Element __Delete"
+          className="FormImages__List__Add__Element__Delete"
           onClick={this._deleteImage}
         >x
         </div>

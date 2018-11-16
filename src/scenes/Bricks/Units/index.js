@@ -10,6 +10,7 @@ import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
 import FormArea from 'components/forms/Area'
 import Button from 'components/atoms/Button'
+import FormImages from 'components/forms/Images'
 
 import RowModel from './RowModel'
 import RowRooms from './RowRooms'
@@ -45,6 +46,7 @@ export default class EditUnitsBricks extends BaseComponent {
               title="Description"
               value=""
             />
+            <FormImages limit={6} title="Imágenes" />
           </FormContainer>
           <div className="EditUnitsBricks__Content__Controls">
             <Button
