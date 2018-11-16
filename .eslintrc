@@ -9,7 +9,7 @@
     "nconf": true
   },
   "parser": "babel-eslint",
-  "plugins": ["react"],
+  "plugins": ["react", "prettier"],
 
   "parserOptions": {
     "ecmaVersion": 6,
@@ -41,7 +41,7 @@
     },
 
   "rules": {
-
+    "prettier/prettier": "error",
     //
     //Possible Errors
     //
