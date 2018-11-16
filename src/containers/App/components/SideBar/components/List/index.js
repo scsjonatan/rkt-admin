@@ -19,16 +19,16 @@ export default class List extends BaseComponent {
 
   render() {
     const { isMain, items } = this.props
-    const headStyle = isMain ? 'SideBar__List__Head' : 'SideBar__List__HeadSecond'
     const navStyle = isMain ? 'Main' : ''
+    const headStyle = isMain
+      ? 'SideBar__List__Head'
+      : 'SideBar__List__HeadSecond'
     return (
       <div className={`SideBar__List ${navStyle}`}>
         <div className={headStyle}>
           <p>{this.props.title}</p>
         </div>
-        <ul className="SideBar__List__Items">
-          {items.map(this._renderItems)}
-        </ul>
+        <ul className="SideBar__List__Items">{items.map(this._renderItems)}</ul>
       </div>
     )
   }

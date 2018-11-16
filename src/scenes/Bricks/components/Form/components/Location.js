@@ -36,12 +36,7 @@ class Location extends BaseComponent {
   }
 
   render() {
-    const {
-      cp,
-      direction,
-      latitude,
-      longitude
-    } = this.props.location.toJS()
+    const { cp, direction, latitude, longitude } = this.props.location.toJS()
     const options = this.state.options
     return (
       <FormContainer title="Ubicación del desarrollo">
@@ -88,8 +83,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateField: (name, value, group) => dispatch(updateFieldByName(name, value, group))
+    updateField: (name, value, group) =>
+      dispatch(updateFieldByName(name, value, group))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Location)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Location)

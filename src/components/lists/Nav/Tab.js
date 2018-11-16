@@ -17,21 +17,14 @@ export default class Tab extends BaseComponent {
   }
 
   render() {
-    const {
-      active,
-      label,
-      number,
-      slug_name
-    } = this.props
+    const { active, label, number, slug_name } = this.props
     const activeClass = active === slug_name ? 'ActiveTab' : ''
     return (
       <div
         className={`BricksNavTab ${activeClass}`}
         onClick={this._handleClick}
       >
-        <p>
-          {`${label}(${number})`}
-        </p>
+        <p>{`${label}(${number})`}</p>
       </div>
     )
   }

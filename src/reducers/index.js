@@ -7,10 +7,10 @@ import scenePandasOrder from 'scenes/Pandas/Order/reducer'
 import sceneCoinsEdit from 'scenes/Coins/Edit/reducer'
 
 /**
-    * Combine all reducers from all components
-    * @param {object} history of reducer
-    * @return { combineReducers } from 'redux'
-*/
+ * Combine all reducers from all components
+ * @param {object} history of reducer
+ * @return { combineReducers } from 'redux'
+ */
 export default function createReducer(history) {
   return combineReducers({
     sceneCoinsEdit,

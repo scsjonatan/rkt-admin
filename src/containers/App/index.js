@@ -15,9 +15,7 @@ export default class App extends BaseComponent {
     return (
       <div className="AppContainer">
         <SideBar />
-        <div className="AppContainer__Content">
-          {this.props.children}
-        </div>
+        <div className="AppContainer__Content">{this.props.children}</div>
       </div>
     )
   }

@@ -13,11 +13,11 @@ export const setUserData = user => {
   }
 }
 
-
 export const updateFormByField = (field, value) => {
   return {
     type: UPDATE_FORM_FIELD,
-    field, value
+    field,
+    value
   }
 }
 

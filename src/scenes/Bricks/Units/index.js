@@ -49,10 +49,7 @@ export default class EditUnitsBricks extends BaseComponent {
             <FormImages limit={6} title="Imágenes" />
           </FormContainer>
           <div className="EditUnitsBricks__Content__Controls">
-            <Button
-              action={this._handleSave}
-              label="Agregar unidad"
-            />
+            <Button action={this._handleSave} label="Agregar unidad" />
           </div>
           <List />
         </div>

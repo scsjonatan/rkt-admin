@@ -10,13 +10,7 @@ import './styles.scss'
 
 export default class Area extends BaseComponent {
   render() {
-    const {
-      disabled,
-      handleChange,
-      placeholder,
-      title,
-      value
-    } = this.props
+    const { disabled, handleChange, placeholder, title, value } = this.props
     return (
       <div className="FormArea">
         <p className="FormArea__Title">{title}</p>

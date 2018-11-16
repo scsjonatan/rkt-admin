@@ -20,7 +20,12 @@ export default class Action extends BaseComponent {
       label: 'Action'
     }
 
-    this._bind('_toggleMenu', '_handleClickOutside', '_handleRemove', '_handleAdd')
+    this._bind(
+      '_toggleMenu',
+      '_handleClickOutside',
+      '_handleRemove',
+      '_handleAdd'
+    )
   }
 
   _toggleMenu() {
@@ -50,7 +55,8 @@ export default class Action extends BaseComponent {
       <Options
         handleAdd={this._handleAdd}
         handleRemove={this._handleRemove}
-        handleOutside={this._handleClickOutside}/>
+        handleOutside={this._handleClickOutside}
+      />
     ) : null
   }
 

@@ -13,13 +13,7 @@ import './styles.scss'
 
 export default class Button extends BaseComponent {
   _renderElement() {
-    const {
-      action,
-      children,
-      direction,
-      disabled,
-      label
-    } = this.props
+    const { action, children, direction, disabled, label } = this.props
     return this.props.isLink ? (
       <Link className="AtomButton" to={direction}>
         <div>
@@ -40,11 +34,7 @@ export default class Button extends BaseComponent {
   render() {
     const { className } = this.props
 
-    return (
-      <div className={className}>
-        {this._renderElement()}
-      </div>
-    )
+    return <div className={className}>{this._renderElement()}</div>
   }
 }
 

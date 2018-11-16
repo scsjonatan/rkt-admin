@@ -11,7 +11,6 @@ import Select from 'react-select'
 // Styles
 import './styles.scss'
 
-
 export default class FormSelect extends BaseComponent {
   constructor() {
     super()

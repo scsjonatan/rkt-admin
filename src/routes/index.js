@@ -198,8 +198,8 @@ const createRoutes = (
 }
 
 /**
-  * <Routes /> component to be included under react-router-redux's ConnectedRouter
-  * @returns { Switch } from 'react-router-dom'
+ * <Routes /> component to be included under react-router-redux's ConnectedRouter
+ * @returns { Switch } from 'react-router-dom'
  */
 export default function Routes() {
   return <Switch>{_map(AppRoutes, createRoutes)}</Switch>

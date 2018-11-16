@@ -31,14 +31,8 @@ export default class RowRooms extends BaseComponent {
   render() {
     return (
       <div className="EditUnitsBricks__Content__Row">
-        <FormSelect
-          options={this.state.options.type}
-          title="Habitaciones"
-        />
-        <FormSelect
-          options={this.state.options.unit}
-          title="Baños"
-        />
+        <FormSelect options={this.state.options.type} title="Habitaciones" />
+        <FormSelect options={this.state.options.unit} title="Baños" />
         <FormSelect
           options={this.state.options.type}
           title="Estacionamientos"

@@ -49,7 +49,8 @@ class BricksForm extends BaseComponent {
         phone: '5534543345'
       },
       growth: {
-        description: 'Definido por un lujo incomparable, es un proyecto extraordinario que...',
+        description:
+          'Definido por un lujo incomparable, es un proyecto extraordinario que...',
         external_key: '123',
         internal_key: '321',
         name: 'Vertiz 234'
@@ -98,10 +99,7 @@ class BricksForm extends BaseComponent {
         <General />
         <div className="BricksForm__Controls">
           <div className="BricksForm__Controls__Save">
-            <Button
-              action={this._handleSave}
-              label="Guardar y Continuar"
-            />
+            <Button action={this._handleSave} label="Guardar y Continuar" />
           </div>
         </div>
       </div>
@@ -111,8 +109,11 @@ class BricksForm extends BaseComponent {
 
 const dispatchStateToProps = dispatch => {
   return {
-    fetchData: (data) => dispatch(fetchBrickData(data))
+    fetchData: data => dispatch(fetchBrickData(data))
   }
 }
 
-export default connect(null, dispatchStateToProps)(BricksForm)
+export default connect(
+  null,
+  dispatchStateToProps
+)(BricksForm)

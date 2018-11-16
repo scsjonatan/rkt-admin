@@ -43,17 +43,19 @@ export default class List extends BaseComponent {
           slug_name: 'return'
         }
       ],
-      orders: [{
-        ad_id: '43242314',
-        buyer: 'lorenamc.qweryty@gmail.com',
-        carrier: 'ups (1ZA9T9200480374)',
-        conekta_id: '653465346345634',
-        created: '9 Noviembre 2018 12:40',
-        id: '181124400005405',
-        last_update: '9 noviembre 2018 12:40',
-        phone: '5554968900',
-        seller: 'mascalso_3@hotmail.com'
-      }]
+      orders: [
+        {
+          ad_id: '43242314',
+          buyer: 'lorenamc.qweryty@gmail.com',
+          carrier: 'ups (1ZA9T9200480374)',
+          conekta_id: '653465346345634',
+          created: '9 Noviembre 2018 12:40',
+          id: '181124400005405',
+          last_update: '9 noviembre 2018 12:40',
+          phone: '5554968900',
+          seller: 'mascalso_3@hotmail.com'
+        }
+      ]
     }
   }
 

@@ -10,13 +10,7 @@ import FormCheckbox from 'components/forms/Checkbox'
 // Utils
 import uuid from 'utils/uuid'
 
-export const renderField = (
-  disabled = false,
-  name,
-  onChange,
-  title,
-  value,
-) => {
+export const renderField = (disabled = false, name, onChange, title, value) => {
   return (
     <FormField
       disabled={disabled}
@@ -29,7 +23,6 @@ export const renderField = (
   )
 }
 
-
 export const renderSelect = (title, options, disabled = false) => {
   return (
     <FormSelect
@@ -41,15 +34,9 @@ export const renderSelect = (title, options, disabled = false) => {
   )
 }
 
-
 export const renderArea = (title, value, disabled = false) => {
   return (
-    <FormArea
-      disabled={disabled}
-      key={uuid()}
-      title={title}
-      value={value}
-    />
+    <FormArea disabled={disabled} key={uuid()} title={title} value={value} />
   )
 }
 

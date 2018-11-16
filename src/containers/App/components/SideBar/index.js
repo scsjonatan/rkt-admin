@@ -13,7 +13,6 @@ import { reverse } from 'routes'
 // Styles
 import './styles.scss'
 
-
 export default class SideBar extends BaseComponent {
   constructor() {
     super()
@@ -77,12 +76,8 @@ export default class SideBar extends BaseComponent {
   render() {
     return (
       <div className="SideBar">
-        <List
-          isMain
-          items={this.navItems}
-          title="Merlin Admin Panel"
-        />
-        <List items={this.metricsItems} title="Metrics"/>
+        <List isMain items={this.navItems} title="Merlin Admin Panel" />
+        <List items={this.metricsItems} title="Metrics" />
       </div>
     )
   }

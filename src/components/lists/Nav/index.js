@@ -40,17 +40,17 @@ export default class Nav extends BaseComponent {
 
   render() {
     return (
-      <div className="ListNav">
-        {this.props.tabs.map(this._renderTabs)}
-      </div>
+      <div className="ListNav">{this.props.tabs.map(this._renderTabs)}</div>
     )
   }
 }
 
 Nav.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
-    slug_name: PropTypes.string.isRequired
-  }))
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired,
+      slug_name: PropTypes.string.isRequired
+    })
+  )
 }

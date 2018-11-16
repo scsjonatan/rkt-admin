@@ -46,14 +46,8 @@ export default class RowModel extends BaseComponent {
           placeholder="1000000"
           value=""
         />
-        <FormSelect
-          options={this.state.options.type}
-          title="Tipo de Unidad"
-        />
-        <FormSelect
-          options={this.state.options.unit}
-          title="Estatus"
-        />
+        <FormSelect options={this.state.options.type} title="Tipo de Unidad" />
+        <FormSelect options={this.state.options.unit} title="Estatus" />
       </div>
     )
   }

@@ -52,8 +52,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateCheckbox: (name, checked) => dispatch(updateCheckboxByName(name, checked))
+    updateCheckbox: (name, checked) =>
+      dispatch(updateCheckboxByName(name, checked))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(General)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(General)
