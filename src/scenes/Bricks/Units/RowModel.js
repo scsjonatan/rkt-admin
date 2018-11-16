@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -9,7 +10,10 @@ import FormField from 'components/forms/Field'
 import FormNumberField from 'components/forms/NumberField'
 import FormSelect from 'components/forms/Select'
 
-export default class RowModel extends BaseComponent {
+// Actions
+import { updateValueByField } from 'scenes/Bricks/Units/actions'
+
+class RowModel extends BaseComponent {
   constructor(props) {
     super(props)
 
@@ -27,6 +31,14 @@ export default class RowModel extends BaseComponent {
         ]
       }
     }
+
+    this._bind('_handleFieldChange')
+  }
+
+  _handleFieldChange(e) {
+    e.preventDefault()
+    const { name, value } = e.target
+    this.props.updateField(name, value)
   }
 
   render() {
@@ -37,14 +49,14 @@ export default class RowModel extends BaseComponent {
           onChange={this._handleFieldChange}
           title="Modelo"
           placeholder="Nombre del modelo"
-          value=""
+          value={this.props.model}
         />
         <FormNumberField
           name="price"
           onChange={this._handleFieldChange}
           title="Precio"
           placeholder="1000000"
-          value=""
+          value={this.props.price}
         />
         <FormSelect options={this.state.options.type} title="Tipo de Unidad" />
         <FormSelect options={this.state.options.unit} title="Estatus" />
@@ -52,3 +64,21 @@ export default class RowModel extends BaseComponent {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    model: state.sceneBricksUnits.get('model'),
+    price: state.sceneBricksUnits.get('price')
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateField: (field, value) => dispatch(updateValueByField(field, value))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RowModel)

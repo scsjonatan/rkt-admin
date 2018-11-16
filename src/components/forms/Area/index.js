@@ -10,15 +10,16 @@ import './styles.scss'
 
 export default class Area extends BaseComponent {
   render() {
-    const { disabled, handleChange, placeholder, title, value } = this.props
+    const { disabled, onChange, name, placeholder, title, value } = this.props
     return (
       <div className="FormArea">
         <p className="FormArea__Title">{title}</p>
         <textarea
+          name={name}
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
         />
       </div>
     )
@@ -26,15 +27,16 @@ export default class Area extends BaseComponent {
 }
 
 Area.propTypes = {
+  name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func
+  onChange: PropTypes.func
 }
 
 Area.defaultProps = {
   disabled: false,
   placeholder: '',
-  handleChange: () => {}
+  onChange: () => {}
 }
