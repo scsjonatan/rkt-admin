@@ -8,17 +8,12 @@ import BaseComponent from 'utils/BaseComponent'
 // Components
 import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
-
-// Utils
-import { renderSelect, renderArea } from './utils/RenderComponents'
-
-// Constants
-import { TYPES, PHASES, DELIVERIES, YEARS } from 'constants/development'
+import Deliver from './Deliver'
 
 // Actions
 import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
-class Growth extends BaseComponent {
+class Development extends BaseComponent {
   constructor(props) {
     super(props)
     this._bind('_handleFieldChange')
@@ -26,16 +21,11 @@ class Growth extends BaseComponent {
 
   _handleFieldChange(e) {
     const { name, value } = e.target
-    this.props.updateField(name, value, 'growth')
+    this.props.updateField(name, value, 'development')
   }
 
   render() {
-    const {
-      description,
-      external_key,
-      internal_key,
-      name
-    } = this.props.growth.toJS()
+    const { external_key, internal_key, name } = this.props.development.toJS()
 
     return (
       <FormContainer title="Información del desarrollo">
@@ -46,11 +36,7 @@ class Growth extends BaseComponent {
             title="Nombre del proyecto"
             value={name}
           />
-          {renderSelect('Tipo de Unidad', TYPES)}
-          {renderArea('Descripción del proyecto', description, 'description')}
-          {renderSelect('Etapa de desarrollo', PHASES)}
-          {renderSelect('Entrega', DELIVERIES)}
-          {renderSelect('Año', YEARS)}
+          <Deliver />
           <FormField
             name="external_key"
             onChange={this._handleFieldChange}
@@ -71,7 +57,7 @@ class Growth extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    growth: state.sceneBricksComponentsForm.get('growth')
+    development: state.sceneBricksComponentsForm.get('development')
   }
 }
 
@@ -85,4 +71,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Growth)
+)(Development)

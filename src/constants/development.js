@@ -129,3 +129,18 @@ export const YEARS = [
     label: '2024'
   }
 ]
+
+export const LOCATION_RESTRICTIONS = [
+  {
+    value: 1,
+    label: 'Mostrar ubicación exacta'
+  },
+  {
+    value: 2,
+    label: 'Mostrar ubicación'
+  },
+  {
+    value: 3,
+    label: 'No mostrar en el mapa'
+  }
+]

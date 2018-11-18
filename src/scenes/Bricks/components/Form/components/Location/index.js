@@ -14,15 +14,22 @@ import Address from './Address'
 // Actions
 import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
+// Constants
+import { LOCATION_RESTRICTIONS } from 'constants/development'
+
 class Location extends BaseComponent {
   constructor(props) {
     super(props)
 
-    this._bind('_handleFieldChange')
+    this._bind('_handleFieldChange', '_handleRestriction')
   }
 
   _handleFieldChange(e) {
     const { name, value } = e.target
+    this.props.updateField(name, value, 'location')
+  }
+
+  _handleRestriction(name, value) {
     this.props.updateField(name, value, 'location')
   }
 
@@ -44,7 +51,12 @@ class Location extends BaseComponent {
             title="Código postal"
             value={cp}
           />
-          <FormSelect options={[]} title="Ubicación en mapa" />
+          <FormSelect
+            options={LOCATION_RESTRICTIONS}
+            title="Ubicación en mapa"
+            onChange={this._handleRestriction}
+            name="restriction"
+          />
           <FormField
             name="latitude"
             onChange={this._handleFieldChange}

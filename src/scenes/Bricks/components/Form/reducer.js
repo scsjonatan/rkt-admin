@@ -17,7 +17,7 @@ export const initialState = fromJS({
     email: '',
     phone: ''
   },
-  growth: {
+  development: {
     description: '',
     external_key: '',
     internal_key: '',
@@ -30,7 +30,8 @@ export const initialState = fromJS({
     longitude: '',
     state: '',
     municipality: '',
-    area: ''
+    area: '',
+    restriction: null
   },
   general: {
     alberca: {
