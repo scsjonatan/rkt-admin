@@ -9,7 +9,7 @@ import BaseComponent from 'utils/BaseComponent'
 // Components
 import Owner from './components/Owner'
 import Contact from './components/Contact'
-import Growth from './components/Growth'
+import Development from './components/Development'
 import Location from './components/Location'
 import Images from './components/Images'
 import Brochure from './components/Brochure'
@@ -61,7 +61,7 @@ class BricksForm extends BaseComponent {
       <div className="BricksForm">
         <Owner />
         <Contact />
-        <Growth />
+        <Development />
         <Location />
         <Images />
         <Brochure />

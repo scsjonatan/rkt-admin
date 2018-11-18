@@ -16,27 +16,30 @@ export default class FormSelect extends BaseComponent {
     super()
 
     this.state = {
-      value: null
+      selectedOption: null
     }
 
     this._bind('_handleChange')
   }
 
-  _handleChange(value) {
-    this.setState({ value })
+  _handleChange(option) {
+    this.setState({ selectedOption: option })
+    this.props.onChange(this.props.name, option.value)
   }
 
   render() {
-    const { title } = this.props
+    const { title, name, disabled } = this.props
     return (
       <div className="FormSelect">
         <p className="FormSelect__Title">{title}</p>
         <Select
-          value={this.state.value}
+          value={this.state.selectedOption}
           onChange={this._handleChange}
           options={this.props.options}
           className="FormSelect__Select"
           classNamePrefix="FormSelect__Select"
+          name={name}
+          isDisabled={disabled}
         />
       </div>
     )
@@ -45,5 +48,12 @@ export default class FormSelect extends BaseComponent {
 
 FormSelect.propTypes = {
   title: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.object)
+  options: PropTypes.arrayOf(PropTypes.object),
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  disabled: PropTypes.bool
+}
+
+FormSelect.defaultProps = {
+  disabled: false
 }

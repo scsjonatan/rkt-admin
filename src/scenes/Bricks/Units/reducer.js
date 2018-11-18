@@ -7,11 +7,16 @@ import { UPDATE_FIELD, SET_UNIT_DATA } from './constants'
 export const initialState = fromJS({
   title: '',
   model: '',
-  price: '',
+  price: 0,
   build_surface: '',
   field_surface: '',
   description: '',
-  id: ''
+  id: '',
+  unit_type: '',
+  status: '',
+  rooms: 0,
+  baths: 0,
+  parkings: 0
 })
 
 /**

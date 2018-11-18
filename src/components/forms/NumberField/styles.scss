@@ -2,8 +2,6 @@
 
 .FormNumberField {
   width: 100%;
-  display: flex;
-  flex-flow: wrap;
   &__Title {
     color: $dark-color;
     margin-bottom: .5rem;
@@ -12,6 +10,9 @@
     border-radius: 4px;
     border: 1px solid $medium-grey-color;
     padding: .5rem 1rem;
+    box-sizing : border-box;
+    min-width: 100%;
+    max-width: 100%;
     width: 100%;
     &:disabled {
       background: $light-grey-color;

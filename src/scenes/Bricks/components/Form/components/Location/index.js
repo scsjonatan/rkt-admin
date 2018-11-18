@@ -5,29 +5,23 @@ import { connect } from 'react-redux'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
-import { renderSelect } from './utils/RenderComponents'
-
 // Components
 import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
+import FormSelect from 'components/forms/Select'
+import Address from './Address'
 
 // Actions
 import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
+// Constants
+import { LOCATION_RESTRICTIONS } from 'constants/development'
+
 class Location extends BaseComponent {
   constructor(props) {
     super(props)
-    this.state = {
-      options: {
-        state: [
-          { value: 'chocolate', label: 'Chocolate' },
-          { value: 'strawberry', label: 'Strawberry' },
-          { value: 'vanilla', label: 'Vanilla' }
-        ]
-      }
-    }
 
-    this._bind('_handleFieldChange')
+    this._bind('_handleFieldChange', '_handleRestriction')
   }
 
   _handleFieldChange(e) {
@@ -35,9 +29,12 @@ class Location extends BaseComponent {
     this.props.updateField(name, value, 'location')
   }
 
+  _handleRestriction(name, value) {
+    this.props.updateField(name, value, 'location')
+  }
+
   render() {
     const { cp, direction, latitude, longitude } = this.props.location.toJS()
-    const options = this.state.options
     return (
       <FormContainer title="Ubicación del desarrollo">
         <div className="BricksFormCointaine">
@@ -47,16 +44,19 @@ class Location extends BaseComponent {
             title="Dirección"
             value={direction}
           />
-          {renderSelect('Estado', options.state)}
-          {renderSelect('Municipio', options.state)}
-          {renderSelect('Colonia', options.state)}
+          <Address />
           <FormField
             name="cp"
             onChange={this._handleFieldChange}
             title="Código postal"
             value={cp}
           />
-          {renderSelect('Ubicación en mapa', options.state)}
+          <FormSelect
+            options={LOCATION_RESTRICTIONS}
+            title="Ubicación en mapa"
+            onChange={this._handleRestriction}
+            name="restriction"
+          />
           <FormField
             name="latitude"
             onChange={this._handleFieldChange}

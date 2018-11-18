@@ -1,7 +1,7 @@
 /**
  * setBackgroundImage
  * set image from url to background style
- * @params {string} url of image
+ * @param {string} url of image
  * @returns {object} styles for background
  */
 
@@ -12,4 +12,23 @@ export const setBackgroundImage = url => {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
   }
+}
+
+/**
+ * setSelectOptionsFromList
+ * @param {array} list of items
+ * @returns {array} of objects with valid values to `react-select`
+ */
+export const setSelectOptionsFromList = list => {
+  let _list = []
+  list.forEach(item => {
+    _list = [
+      {
+        value: item,
+        label: item
+      },
+      ..._list
+    ]
+  })
+  return _list
 }

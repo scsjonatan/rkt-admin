@@ -6,8 +6,7 @@ import { connect } from 'react-redux'
 import BaseComponent from 'utils/BaseComponent'
 
 // Components
-import FormField from 'components/forms/Field'
-import FormSelect from 'components/forms/Select'
+import FormNumberField from 'components/forms/NumberField'
 
 // Actions
 import { updateValueByField } from 'scenes/Bricks/Units/actions'
@@ -15,21 +14,6 @@ import { updateValueByField } from 'scenes/Bricks/Units/actions'
 class RowRooms extends BaseComponent {
   constructor(props) {
     super(props)
-
-    this.state = {
-      options: {
-        type: [
-          { value: 'chocolate', label: 'Chocolate' },
-          { value: 'strawberry', label: 'Strawberry' },
-          { value: 'vanilla', label: 'Vanilla' }
-        ],
-        unit: [
-          { value: 'chocolate', label: 'Chocolate' },
-          { value: 'strawberry', label: 'Strawberry' },
-          { value: 'vanilla', label: 'Vanilla' }
-        ]
-      }
-    }
 
     this._bind('_handleFieldChange')
   }
@@ -43,26 +27,51 @@ class RowRooms extends BaseComponent {
   render() {
     return (
       <div className="EditUnitsBricks__Content__Row">
-        <FormSelect options={this.state.options.type} title="Habitaciones" />
-        <FormSelect options={this.state.options.unit} title="Baños" />
-        <FormSelect
-          options={this.state.options.type}
-          title="Estacionamientos"
-        />
-        <FormField
-          name="build_surface"
-          onChange={this._handleFieldChange}
-          title="Superficie construida"
-          placeholder="0"
-          value={this.props.build_surface}
-        />
-        <FormField
-          name="field_surface"
-          onChange={this._handleFieldChange}
-          title="Superficie terreno"
-          placeholder="0"
-          value={this.props.field_surface}
-        />
+        <div className="EditUnitsBricks__Content__Row__RoomChild">
+          <FormNumberField
+            name="rooms"
+            onChange={this._handleFieldChange}
+            title="Habitaciones"
+            placeholder="Número de habitaciones"
+            value={this.props.rooms}
+          />
+        </div>
+        <div className="EditUnitsBricks__Content__Row__RoomChild">
+          <FormNumberField
+            name="baths"
+            onChange={this._handleFieldChange}
+            title="Baños"
+            placeholder="Número de baños"
+            value={this.props.baths}
+          />
+        </div>
+        <div className="EditUnitsBricks__Content__Row__RoomChild">
+          <FormNumberField
+            name="parkings"
+            onChange={this._handleFieldChange}
+            title="Estacionamientos"
+            placeholder="Estacionamientos"
+            value={this.props.parkings}
+          />
+        </div>
+        <div className="EditUnitsBricks__Content__Row__RoomChild">
+          <FormNumberField
+            name="build_surface"
+            onChange={this._handleFieldChange}
+            title="Superficie construida"
+            placeholder="0"
+            value={this.props.build_surface}
+          />
+        </div>
+        <div className="EditUnitsBricks__Content__Row__RoomChild">
+          <FormNumberField
+            name="field_surface"
+            onChange={this._handleFieldChange}
+            title="Superficie terreno"
+            placeholder="0"
+            value={this.props.field_surface}
+          />
+        </div>
       </div>
     )
   }
@@ -71,7 +80,10 @@ class RowRooms extends BaseComponent {
 const mapStateToProps = state => {
   return {
     build_surface: state.sceneBricksUnits.get('build_surface'),
-    field_surface: state.sceneBricksUnits.get('field_surface')
+    field_surface: state.sceneBricksUnits.get('field_surface'),
+    rooms: state.sceneBricksUnits.get('rooms'),
+    baths: state.sceneBricksUnits.get('baths'),
+    parkings: state.sceneBricksUnits.get('parkings')
   }
 }
 

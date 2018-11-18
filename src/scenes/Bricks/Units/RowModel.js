@@ -10,6 +10,9 @@ import FormField from 'components/forms/Field'
 import FormNumberField from 'components/forms/NumberField'
 import FormSelect from 'components/forms/Select'
 
+// Costants
+import { TYPES, STATUS } from 'constants/units'
+
 // Actions
 import { updateValueByField } from 'scenes/Bricks/Units/actions'
 
@@ -17,27 +20,16 @@ class RowModel extends BaseComponent {
   constructor(props) {
     super(props)
 
-    this.state = {
-      options: {
-        type: [
-          { value: 'chocolate', label: 'Chocolate' },
-          { value: 'strawberry', label: 'Strawberry' },
-          { value: 'vanilla', label: 'Vanilla' }
-        ],
-        unit: [
-          { value: 'chocolate', label: 'Chocolate' },
-          { value: 'strawberry', label: 'Strawberry' },
-          { value: 'vanilla', label: 'Vanilla' }
-        ]
-      }
-    }
-
-    this._bind('_handleFieldChange')
+    this._bind('_handleFieldChange', '_handleSelectChange')
   }
 
   _handleFieldChange(e) {
     e.preventDefault()
     const { name, value } = e.target
+    this.props.updateField(name, value)
+  }
+
+  _handleSelectChange(name, value) {
     this.props.updateField(name, value)
   }
 
@@ -58,8 +50,18 @@ class RowModel extends BaseComponent {
           placeholder="1000000"
           value={this.props.price}
         />
-        <FormSelect options={this.state.options.type} title="Tipo de Unidad" />
-        <FormSelect options={this.state.options.unit} title="Estatus" />
+        <FormSelect
+          options={TYPES}
+          title="Tipo de Unidad"
+          name="unit_type"
+          onChange={this._handleSelectChange}
+        />
+        <FormSelect
+          options={STATUS}
+          title="Estatus"
+          name="status"
+          onChange={this._handleSelectChange}
+        />
       </div>
     )
   }
