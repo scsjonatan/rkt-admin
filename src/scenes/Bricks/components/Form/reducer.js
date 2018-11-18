@@ -27,7 +27,10 @@ export const initialState = fromJS({
     cp: '',
     direction: '',
     latitude: '',
-    longitude: ''
+    longitude: '',
+    state: '',
+    municipality: '',
+    area: ''
   },
   general: {
     alberca: {

@@ -12,27 +12,15 @@ import FormField from 'components/forms/Field'
 // Utils
 import { renderSelect, renderArea } from './utils/RenderComponents'
 
+// Constants
+import { TYPES, PHASES, DELIVERIES, YEARS } from 'constants/development'
+
 // Actions
 import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
 class Growth extends BaseComponent {
   constructor(props) {
     super(props)
-
-    this.state = {
-      options: {
-        type: [
-          { value: 'chocolate', label: 'Chocolate' },
-          { value: 'strawberry', label: 'Strawberry' },
-          { value: 'vanilla', label: 'Vanilla' }
-        ],
-        unit: [
-          { value: 'chocolate', label: 'Chocolate' },
-          { value: 'strawberry', label: 'Strawberry' },
-          { value: 'vanilla', label: 'Vanilla' }
-        ]
-      }
-    }
     this._bind('_handleFieldChange')
   }
 
@@ -48,7 +36,6 @@ class Growth extends BaseComponent {
       internal_key,
       name
     } = this.props.growth.toJS()
-    const options = this.state.options
 
     return (
       <FormContainer title="Información del desarrollo">
@@ -59,11 +46,11 @@ class Growth extends BaseComponent {
             title="Nombre del proyecto"
             value={name}
           />
-          {renderSelect('Tipo de Unidad', options.unit)}
+          {renderSelect('Tipo de Unidad', TYPES)}
           {renderArea('Descripción del proyecto', description, 'description')}
-          {renderSelect('Etapa de desarrollo', options.unit)}
-          {renderSelect('Entrega', options.unit)}
-          {renderSelect('Año', options.unit)}
+          {renderSelect('Etapa de desarrollo', PHASES)}
+          {renderSelect('Entrega', DELIVERIES)}
+          {renderSelect('Año', YEARS)}
           <FormField
             name="external_key"
             onChange={this._handleFieldChange}
