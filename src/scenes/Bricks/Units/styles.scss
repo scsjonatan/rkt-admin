@@ -15,10 +15,12 @@
       }
     }
     &__Row {
-      display: flex;
-      flex-grow: 0;
-      justify-content: space-between;
       margin-bottom: 1.375rem;
+      display: flex;
+      align-items:
+      flex-start;
+      flex-wrap: nowrap;
+      justify-content: space-between;
       .FormField, .FormNumberField, .FormSelect {
         margin: 0 .3rem;
         &:first-child {
@@ -30,6 +32,9 @@
       }
       .FormSelect {
         margin-bottom: 0;
+      }
+      &__RoomChild {
+        width: 19%;
       }
     }
   }
