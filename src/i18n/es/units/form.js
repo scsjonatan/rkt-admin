@@ -7,5 +7,9 @@ export const UNITS_FORM = {
   'Model name': 'Nombre del modelo',
   Price: 'Precio',
   'Unit type': 'Tipo de Unidad',
-  Status: 'Estatus'
+  Status: 'Estatus',
+  'Rooms number': 'Número de habitaciones',
+  'Baths number': 'Número de baños',
+  'Build surface': 'Superficie construida',
+  'Field surface': 'Superficie terreno'
 }

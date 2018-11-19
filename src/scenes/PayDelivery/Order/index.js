@@ -3,13 +3,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Header from 'components/views/Header'
-import PandasOrder from 'scenes/Pandas/components/Order'
+import PayDeliveryOrder from 'scenes/PayDelivery/components/Order'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
-import { setOrderDetail } from 'scenes/Pandas/Order/actions'
+import { setOrderDetail } from 'scenes/PayDelivery/Order/actions'
 
 // Styles
 import './styles.scss'
@@ -43,27 +46,28 @@ class Order extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
-      <div className="PandasOrderDetail">
+      <div className="PayDeliveryOrderDetail">
         <Header title="Secadora Conair" />
-        <div className="PandasOrderDetail__Content">
-          <PandasOrder isDetail {...this.props.order.toJS()} />
-          <div className="PandasOrderDetail__Content__History">
-            <p className="PandasOrderDetail__Content__History__Title">
-              Historial de la orden
+        <div className="PayDeliveryOrderDetail__Content">
+          <PayDeliveryOrder isDetail {...this.props.order.toJS()} />
+          <div className="PayDeliveryOrderDetail__Content__History">
+            <p className="PayDeliveryOrderDetail__Content__History__Title">
+              {t('Order History')}
             </p>
-            <div className="PandasOrderDetail__Content__History__Content">
+            <div className="PayDeliveryOrderDetail__Content__History__Content">
               <ul>
                 <li>
-                  <p>New</p>
+                  <p>{t('New')}</p>
                   <span>9 noviembre 2018 12:40</span>
                 </li>
                 <li>
-                  <p>Preauthorized</p>
+                  <p>{t('Preauthorized')}</p>
                   <span>9 noviembre 2018 12:40</span>
                 </li>
                 <li>
-                  <p>Pending PickUp</p>
+                  <p>{t('Pending PickUp')}</p>
                   <span>9 noviembre 2018 12:40</span>
                 </li>
               </ul>
@@ -81,7 +85,7 @@ Order.contextTypes = {
 
 const mapStateToProps = state => {
   return {
-    order: state.scenePandasOrder.get('order')
+    order: state.scenePayDeliveryOrder.get('order')
   }
 }
 
@@ -91,7 +95,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Order)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Order)
+)

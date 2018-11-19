@@ -45,7 +45,7 @@ class SideBar extends BaseComponent {
       {
         icon: require('containers/App/components/SideBar/assets/icons/houston.svg'),
         label: t('Houston'),
-        path: reverse('pandas')
+        path: reverse('payDelivery')
       },
       {
         icon: require('containers/App/components/SideBar/assets/icons/coins.svg'),

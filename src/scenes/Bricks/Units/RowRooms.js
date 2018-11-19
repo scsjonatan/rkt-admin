@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import FormNumberField from 'components/forms/NumberField'
 
@@ -25,14 +28,15 @@ class RowRooms extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <div className="EditUnitsBricks__Content__Row">
         <div className="EditUnitsBricks__Content__Row__RoomChild">
           <FormNumberField
             name="rooms"
             onChange={this._handleFieldChange}
-            title="Habitaciones"
-            placeholder="Número de habitaciones"
+            title={t('Rooms')}
+            placeholder={t('Rooms number')}
             value={this.props.rooms}
           />
         </div>
@@ -40,8 +44,8 @@ class RowRooms extends BaseComponent {
           <FormNumberField
             name="baths"
             onChange={this._handleFieldChange}
-            title="Baños"
-            placeholder="Número de baños"
+            title={t('Baths')}
+            placeholder={t('Baths number')}
             value={this.props.baths}
           />
         </div>
@@ -49,8 +53,8 @@ class RowRooms extends BaseComponent {
           <FormNumberField
             name="parkings"
             onChange={this._handleFieldChange}
-            title="Estacionamientos"
-            placeholder="Estacionamientos"
+            title={t('Parking')}
+            placeholder={t('Parking')}
             value={this.props.parkings}
           />
         </div>
@@ -58,7 +62,7 @@ class RowRooms extends BaseComponent {
           <FormNumberField
             name="build_surface"
             onChange={this._handleFieldChange}
-            title="Superficie construida"
+            title={t('Build surface')}
             placeholder="0"
             value={this.props.build_surface}
           />
@@ -67,7 +71,7 @@ class RowRooms extends BaseComponent {
           <FormNumberField
             name="field_surface"
             onChange={this._handleFieldChange}
-            title="Superficie terreno"
+            title={t('Field surface')}
             placeholder="0"
             value={this.props.field_surface}
           />
@@ -93,7 +97,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RowRooms)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RowRooms)
+)

@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 import BaseComponent from 'utils/BaseComponent'
 import onClickOutside from 'react-onclickoutside'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Actions
 import { setCompleteUnitData } from 'scenes/Bricks/Units/actions'
 
@@ -49,11 +52,12 @@ class Options extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <div className="BricksMenuOptions">
         <ul className="GeneralContainerSmall">
-          <li onClick={this._handleEditClick}>Editar Unidad</li>
-          <a href="#">Eliminar Desarrollo</a>
+          <li onClick={this._handleEditClick}>{t('Edit unit')}</li>
+          <a href="#">{t('Delete unit')}</a>
         </ul>
       </div>
     )
@@ -66,10 +70,12 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(onClickOutside(Options))
+export default withNamespaces()(
+  connect(
+    null,
+    mapDispatchToProps
+  )(onClickOutside(Options))
+)
 
 Options.propTypes = {
   id: PropTypes.string.isRequired,

@@ -1,4 +1,4 @@
-import Order from 'scenes/Pandas/Order'
+import Order from 'scenes/PayDelivery/Order'
 
 export default {
   order: {
