@@ -1,5 +1,12 @@
 @import 'styles/general/containers.scss';
-
+.PayDelivery {
+  &__Loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+}
 .PayDelivverysList {
   position: relative;
 }

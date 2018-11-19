@@ -12,7 +12,7 @@ import { withNamespaces } from 'react-i18next'
 import FormNumberField from 'components/forms/NumberField'
 
 // Actions
-import { updateValueByField } from 'scenes/Bricks/Units/actions'
+import { updateValueByField } from 'scenes/Bricks/Units/redux/actions'
 
 class RowRooms extends BaseComponent {
   constructor(props) {

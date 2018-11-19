@@ -11,7 +11,7 @@ import onClickOutside from 'react-onclickoutside'
 import { withNamespaces } from 'react-i18next'
 
 // Actions
-import { setCompleteUnitData } from 'scenes/Bricks/Units/actions'
+import { setCompleteUnitData } from 'scenes/Bricks/Units/redux/actions'
 
 // Routes
 import { reverse } from 'routes'

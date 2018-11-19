@@ -17,7 +17,7 @@ import FormSelect from 'components/forms/Select'
 import { TYPES, STATUS } from 'constants/units'
 
 // Actions
-import { updateValueByField } from 'scenes/Bricks/Units/actions'
+import { updateValueByField } from 'scenes/Bricks/Units/redux/actions'
 
 class RowModel extends BaseComponent {
   constructor(props) {

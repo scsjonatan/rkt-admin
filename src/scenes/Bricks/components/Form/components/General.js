@@ -4,16 +4,17 @@ import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
-import { renderCheckbox } from './utils/RenderComponents'
+import uuid from 'utils/uuid'
 
 // Internalization
 import { withNamespaces } from 'react-i18next'
 
 // Components
 import FormContainer from 'components/forms/Container'
+import FormCheckbox from 'components/forms/Checkbox'
 
 // Actions
-import { updateCheckboxByName } from 'scenes/Bricks/components/Form/actions'
+import { updateCheckboxByName } from 'scenes/Bricks/components/Form/redux/actions'
 
 class General extends BaseComponent {
   constructor() {
@@ -30,7 +31,15 @@ class General extends BaseComponent {
   _renderCheckbox(name) {
     const fields = this.props.general.toJS()
     const { label, checked } = fields[name]
-    return renderCheckbox(name, label, checked, this._handleChange)
+    return (
+      <FormCheckbox
+        name={name}
+        checked={checked}
+        key={uuid()}
+        onChange={this._handleChange}
+        title={label}
+      />
+    )
   }
 
   render() {

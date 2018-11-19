@@ -14,7 +14,8 @@ export const initialState = fromJS({
     id: '',
     last_update: '',
     phone: '',
-    seller: ''
+    seller: '',
+    name: ''
   }
 })
 

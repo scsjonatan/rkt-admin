@@ -22,7 +22,7 @@ import RowRooms from './RowRooms'
 import List from './List'
 
 // Actions
-import { updateValueByField, setCompleteUnitData } from './actions'
+import { updateValueByField, setCompleteUnitData } from './redux/actions'
 
 // Services
 import { fetchUnitDataById } from 'services/units'

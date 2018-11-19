@@ -14,7 +14,7 @@ import { withNamespaces } from 'react-i18next'
 import { reverse } from 'routes'
 
 // Actions
-import { setOrderDetail } from 'scenes/PayDelivery/Order/actions'
+import { setOrderDetail } from 'scenes/PayDelivery/Order/redux/actions'
 
 // Styles
 import './styles.scss'
