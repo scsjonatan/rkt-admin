@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import FormField from 'components/forms/Field'
 import FormNumberField from 'components/forms/NumberField'
@@ -34,31 +37,32 @@ class RowModel extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <div className="EditUnitsBricks__Content__Row">
         <FormField
           name="model"
           onChange={this._handleFieldChange}
-          title="Modelo"
-          placeholder="Nombre del modelo"
+          title={t('Model')}
+          placeholder={t('Model name')}
           value={this.props.model}
         />
         <FormNumberField
           name="price"
           onChange={this._handleFieldChange}
-          title="Precio"
+          title={t('Price')}
           placeholder="1000000"
           value={this.props.price}
         />
         <FormSelect
           options={TYPES}
-          title="Tipo de Unidad"
+          title={t('Unit type')}
           name="unit_type"
           onChange={this._handleSelectChange}
         />
         <FormSelect
           options={STATUS}
-          title="Estatus"
+          title={t('Status')}
           name="status"
           onChange={this._handleSelectChange}
         />
@@ -80,7 +84,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RowModel)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RowModel)
+)

@@ -25,7 +25,7 @@ export const initialState = fromJS({
   },
   location: {
     cp: '',
-    direction: '',
+    address: '',
     latitude: '',
     longitude: '',
     state: '',

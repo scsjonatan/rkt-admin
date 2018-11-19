@@ -4,6 +4,9 @@ import React from 'react'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Header from 'components/views/Header'
 import SearchBox from 'components/forms/SearchBox'
@@ -13,20 +16,21 @@ import List from './components/List'
 // Styles.scss
 import './styles.scss'
 
-export default class Pandas extends BaseComponent {
+class PayDelivery extends BaseComponent {
   _handleAction(search) {
     console.log(search)
   }
 
   render() {
+    const { t } = this.props
     return (
-      <div className="ScenePandasHome">
-        <Header title="P&D: Order Admin" />
-        <div className="ScenePandasHome__Content">
-          <div className="ScenePandasHome__Content__Search">
+      <div className="ScenePayDeliveryHome">
+        <Header title={t('Order Admin')} />
+        <div className="ScenePayDeliveryHome__Content">
+          <div className="ScenePayDeliveryHome__Content__Search">
             <SearchBox
-              placeholder="Número de orden, email o número de teléfono"
-              title="Buscar Orden"
+              placeholder={t('Order subdata')}
+              title={t('Search order')}
               action={this._handleAction}
             />
           </div>
@@ -36,3 +40,5 @@ export default class Pandas extends BaseComponent {
     )
   }
 }
+
+export default withNamespaces()(PayDelivery)

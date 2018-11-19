@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import FileUploader from 'components/forms/FileUploader'
 
@@ -16,9 +19,10 @@ class Brochure extends BaseComponent {
     console.log(file)
   }
   render() {
+    const { t } = this.props
     return (
-      <FormContainer title="Brochure">
-        <FileUploader title="Formato PDF" onChange={this._handleFile} />
+      <FormContainer title={t('Brochure')}>
+        <FileUploader title={t('PDF format')} onChange={this._handleFile} />
       </FormContainer>
     )
   }
@@ -30,4 +34,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Brochure)
+export default withNamespaces()(connect(mapStateToProps)(Brochure))

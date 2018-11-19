@@ -4,6 +4,9 @@ import React from 'react'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import List from './components/List'
 
@@ -13,9 +16,10 @@ import { reverse } from 'routes'
 // Styles
 import './styles.scss'
 
-export default class SideBar extends BaseComponent {
-  constructor() {
-    super()
+class SideBar extends BaseComponent {
+  constructor(props) {
+    super(props)
+    const { t } = this.props
     this.navItems = [
       {
         icon: require('containers/App/components/SideBar/assets/icons/home.svg'),
@@ -35,17 +39,17 @@ export default class SideBar extends BaseComponent {
       },
       {
         icon: require('containers/App/components/SideBar/assets/icons/bricks.svg'),
-        label: 'Bricks',
+        label: t('Bricks'),
         path: reverse('bricks')
       },
       {
         icon: require('containers/App/components/SideBar/assets/icons/houston.svg'),
-        label: 'Houston',
-        path: reverse('pandas')
+        label: t('Houston'),
+        path: reverse('payDelivery')
       },
       {
         icon: require('containers/App/components/SideBar/assets/icons/coins.svg'),
-        label: 'Monedas',
+        label: t('Coins'),
         path: reverse('coins')
       }
     ]
@@ -58,3 +62,5 @@ export default class SideBar extends BaseComponent {
     )
   }
 }
+
+export default withNamespaces()(SideBar)

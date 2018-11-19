@@ -14,13 +14,13 @@ import App from 'containers/App'
 import Home from 'scenes/Home'
 import BricksHome from 'scenes/Bricks/Home'
 
-import PandasHome from 'scenes/Pandas/Home'
+import PayDeliveryHome from 'scenes/PayDelivery/Home'
 
 import CoinstEdit from 'scenes/Coins/Edit'
 
 // Routes
 import bricks from './bricks'
-import pandas from './pandas'
+import payDelivery from './payDelivery'
 
 /*
  * Routes Object. Accepts nested routes.
@@ -76,11 +76,11 @@ const AppRoutes = {
     component: BricksHome,
     routes: { ...bricks }
   },
-  pandas: {
+  payDelivery: {
     path: '/rocket/panda',
     container: App,
-    component: PandasHome,
-    routes: { ...pandas }
+    component: PayDeliveryHome,
+    routes: { ...payDelivery }
   },
   coins: {
     path: '/rocket/coins',

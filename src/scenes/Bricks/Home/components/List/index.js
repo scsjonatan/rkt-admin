@@ -4,6 +4,9 @@ import React from 'react'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Nav from 'components/lists/Nav'
 import Item from './components/Item'
@@ -11,24 +14,25 @@ import Item from './components/Item'
 // Styles
 import './styles.scss'
 
-export default class List extends BaseComponent {
-  constructor() {
-    super()
+class List extends BaseComponent {
+  constructor(props) {
+    super(props)
 
+    const { t } = props
     this.state = {
       tabs: [
         {
-          label: 'Todos',
+          label: t('All'),
           number: 0,
           slug_name: 'all'
         },
         {
-          label: 'Publicados',
+          label: t('Publics'),
           number: 0,
           slug_name: 'public'
         },
         {
-          label: 'Eliminados',
+          label: t('Deleted'),
           number: 0,
           slug_name: 'deleted'
         }
@@ -63,3 +67,5 @@ export default class List extends BaseComponent {
     )
   }
 }
+
+export default withNamespaces()(List)

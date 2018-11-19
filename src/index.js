@@ -1,6 +1,9 @@
 // Dependencies
 import React, { Component } from 'react'
 
+// Intenalization
+import './i18n'
+
 // React Router & Dom
 import { ConnectedRouter, routerMiddleware } from 'connected-react-router'
 import ReactDOM from 'react-dom'

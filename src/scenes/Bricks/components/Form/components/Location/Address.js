@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Component
 import FormSelect from 'components/forms/Select'
 
@@ -51,6 +54,7 @@ class Address extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     const { state, municipality } = this.props.location.toJS()
     return [
       <FormSelect
@@ -58,7 +62,7 @@ class Address extends BaseComponent {
         name="state"
         onChange={this._handleChange}
         options={this.state.states}
-        title="Estado"
+        title={t('State')}
       />,
       <FormSelect
         disabled={!state}
@@ -66,7 +70,7 @@ class Address extends BaseComponent {
         name="municipality"
         onChange={this._handleChange}
         options={this.state.municipalites}
-        title="Municipio"
+        title={t('Municipality')}
       />,
       <FormSelect
         disabled={!municipality}
@@ -74,7 +78,7 @@ class Address extends BaseComponent {
         name="area"
         onChange={this._handleChange}
         options={this.state.areas}
-        title="Colonia"
+        title={t('Area')}
       />
     ]
   }
@@ -93,7 +97,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Address)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Address)
+)

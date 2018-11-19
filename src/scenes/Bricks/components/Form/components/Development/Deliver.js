@@ -2,6 +2,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
@@ -32,19 +35,20 @@ class Deliver extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     const { description } = this.props.development.toJS()
     return [
       <FormSelect
         key="bricks-form-develop-unit-type"
         name="unit_type"
         options={TYPES}
-        title="Tipo de Unidad"
+        title={t('Unit type')}
         onChange={this._handleSelectChange}
       />,
       <FormArea
         key="bricks-form-develop-description"
         name="description"
-        title="Descripción del proyecto"
+        title={t('Proyect description')}
         value={description}
         onChange={this._handleFieldChange}
       />,
@@ -52,21 +56,21 @@ class Deliver extends BaseComponent {
         key="bricks-form-develop-phase"
         name="phase"
         options={PHASES}
-        title="Etapa de desarrollo"
+        title={t('Develop phase')}
         onChange={this._handleSelectChange}
       />,
       <FormSelect
         key="bricks-form-develop-delivery"
         name="delivery"
         options={DELIVERIES}
-        title="Entrega"
+        title={t('Delivery')}
         onChange={this._handleSelectChange}
       />,
       <FormSelect
         key="bricks-form-develop-year"
         name="year"
         options={YEARS}
-        title="Año"
+        title={t('Year')}
         onChange={this._handleSelectChange}
       />
     ]
@@ -86,7 +90,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Deliver)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Deliver)
+)

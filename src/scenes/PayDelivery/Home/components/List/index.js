@@ -4,41 +4,45 @@ import React from 'react'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Nav from 'components/lists/Nav'
-import Order from 'scenes/Pandas/components/Order'
+import Order from 'scenes/PayDelivery/components/Order'
 
 // Styles
 import './styles.scss'
 
-export default class List extends BaseComponent {
-  constructor() {
-    super()
+class List extends BaseComponent {
+  constructor(props) {
+    super(props)
+    const { t } = props
 
     this.state = {
       tabs: [
         {
-          label: 'Todos',
+          label: t('All'),
           number: 0,
           slug_name: 'all'
         },
         {
-          label: 'New',
+          label: t('News'),
           number: 0,
           slug_name: 'new'
         },
         {
-          label: 'Pending PickUp',
+          label: t('Pending PickUp'),
           number: 0,
           slug_name: 'pending'
         },
         {
-          label: 'Exception',
+          label: t('Exception'),
           number: 0,
           slug_name: 'exception'
         },
         {
-          label: 'Return Asked',
+          label: t('Return Asked'),
           number: 0,
           slug_name: 'return'
         }
@@ -65,12 +69,14 @@ export default class List extends BaseComponent {
 
   render() {
     return (
-      <div className="GeneralContainer Pandas">
+      <div className="GeneralContainer PayDelivery">
         <Nav tabs={this.state.tabs} />
-        <div className="Pandas__Content">
+        <div className="PayDelivery__Content">
           {this.state.orders.map(this._renderOrder)}
         </div>
       </div>
     )
   }
 }
+
+export default withNamespaces()(List)

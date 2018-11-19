@@ -7,11 +7,14 @@ import { connect } from 'react-redux'
 import BaseComponent from 'utils/BaseComponent'
 import { setBackgroundImage } from 'utils/data'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Routes
 import { reverse } from 'routes'
 
 // Actions
-import { setOrderDetail } from 'scenes/Pandas/Order/actions'
+import { setOrderDetail } from 'scenes/PayDelivery/Order/actions'
 
 // Styles
 import './styles.scss'
@@ -25,7 +28,7 @@ class Order extends BaseComponent {
 
   _handleClick() {
     this.props.setOrder(this.props)
-    const path = reverse('pandas:order', { id: this.props.id })
+    const path = reverse('payDelivery:order', { id: this.props.id })
     this.context.router.history.push(path)
   }
 
@@ -40,48 +43,49 @@ class Order extends BaseComponent {
       last_update,
       phone,
       seller,
-      isDetail
+      isDetail,
+      t
     } = this.props
     const onClick = isDetail ? () => {} : this._handleClick
     const detailClass = isDetail ? '' : 'Pointer'
     return (
-      <div className={`PandasListItem ${detailClass}`} onClick={onClick}>
-        <div className="PandasListItem__Image">
+      <div className={`PayDeliveryListItem ${detailClass}`} onClick={onClick}>
+        <div className="PayDeliveryListItem__Image">
           <div
-            className="PandasListItem__Image__Element"
+            className="PayDeliveryListItem__Image__Element"
             style={setBackgroundImage('https://picsum.photos/75/75')}
           />
         </div>
-        <div className="PandasListItem__Data">
-          <div className="PandasListItem__Data__Column">
-            <p className="PandasListItem__Data__Column__Focus">
-              Orden: <span>{id}</span>
+        <div className="PayDeliveryListItem__Data">
+          <div className="PayDeliveryListItem__Data__Column">
+            <p className="PayDeliveryListItem__Data__Column__Focus">
+              {t('Order')}: <span>{id}</span>
             </p>
             <p>
-              Creada: <span>{created}</span>
+              {t('Created')}: <span>{created}</span>
             </p>
             <p>
-              Carrier: <span>{carrier}</span>
+              {t('Carrier')}: <span>{carrier}</span>
             </p>
             <p>
-              Último cambio: <span>{last_update}</span>
+              {t('Last update')}: <span>{last_update}</span>
             </p>
           </div>
-          <div className="PandasListItem__Data__Column">
-            <p className="PandasListItem__Data__Column__Focus">
-              Ad ID: <span>{ad_id}</span>
+          <div className="PayDeliveryListItem__Data__Column">
+            <p className="PayDeliveryListItem__Data__Column__Focus">
+              {t('Ad id')}: <span>{ad_id}</span>
             </p>
             <p>
-              Conekta ID: <span>{conekta_id}</span>
+              {t('Conekta id')}: <span>{conekta_id}</span>
             </p>
             <p>
-              Vendedor: <span>{seller}</span>
+              {t('Seller')}: <span>{seller}</span>
             </p>
             <p>
-              Comprador: <span>{buyer}</span>
+              {t('Buyer')}: <span>{buyer}</span>
             </p>
             <p>
-              Teléfono del comprador: <span>{phone}</span>
+              {t('Buyer phone')}: <span>{phone}</span>
             </p>
           </div>
         </div>
@@ -112,7 +116,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Order)
+export default withNamespaces()(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Order)
+)

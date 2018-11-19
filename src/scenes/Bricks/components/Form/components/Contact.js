@@ -2,6 +2,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
@@ -25,20 +28,21 @@ class Contact extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     const { email, phone } = this.props.contact.toJS()
     return (
-      <FormContainer title="Información de contacto del desarrollo">
+      <FormContainer title={t('Contact info')}>
         <div className="BricksFormCointaine">
           <FormField
             name="email"
             onChange={this._handleFieldChange}
-            title="Email del contacto"
+            title={t('Contact email')}
             value={email}
           />
           <FormField
             name="phone"
             onChange={this._handleFieldChange}
-            title="Teléfono del contacto"
+            title={t('Phone email')}
             value={phone}
           />
         </div>
@@ -60,7 +64,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Contact)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Contact)
+)

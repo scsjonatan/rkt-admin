@@ -6,13 +6,16 @@ import PropTypes from 'prop-types'
 import BaseComponent from 'utils/BaseComponent'
 import { setBackgroundImage } from 'utils/data'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Menu from './Menu'
 
 // Styles
 import './styles.scss'
 
-export default class Item extends BaseComponent {
+class Item extends BaseComponent {
   render() {
     const {
       baths,
@@ -24,7 +27,8 @@ export default class Item extends BaseComponent {
       price,
       rooms,
       surface,
-      type
+      type,
+      t
     } = this.props
     return (
       <div className="UnitsListItem">
@@ -38,30 +42,30 @@ export default class Item extends BaseComponent {
               <span />
               {name}
             </p>
-            <p>{`Desde ${price} MXN`}</p>
+            <p>{`${t('From')} ${price} MXN`}</p>
           </div>
         </div>
         <div className="UnitsListItem__MetaData">
           <div className="UnitsListItem__MetaData__List">
             <p>
-              Tipo: <span>{type}</span>
+              {t('Type')}: <span>{type}</span>
             </p>
             <p>
-              Habitaciones: <span>{rooms}</span>
+              {t('Rooms')}: <span>{rooms}</span>
             </p>
             <p>
-              Baños: <span>{baths}</span>
+              {t('Baths')}: <span>{baths}</span>
             </p>
           </div>
           <div className="UnitsListItem__MetaData__List">
             <p>
-              Estacionamiento: <span>{parking}</span>
+              {t('Parking')}: <span>{parking}</span>
             </p>
             <p>
-              Superficie: <span>{`${surface}m2`}</span>
+              {t('Surface')}: <span>{`${surface}m2`}</span>
             </p>
             <p>
-              Terreno: <span>{`${field}m2`}</span>
+              {t('Field')}: <span>{`${field}m2`}</span>
             </p>
           </div>
           <Menu {...this.props} brickId={brickId} />
@@ -84,3 +88,5 @@ Item.propTypes = {
   surface: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired
 }
+
+export default withNamespaces()(Item)

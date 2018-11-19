@@ -6,6 +6,9 @@ import { connect } from 'react-redux'
 import BaseComponent from 'utils/BaseComponent'
 import { renderCheckbox } from './utils/RenderComponents'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import FormContainer from 'components/forms/Container'
 
@@ -57,7 +60,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(General)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(General)
+)

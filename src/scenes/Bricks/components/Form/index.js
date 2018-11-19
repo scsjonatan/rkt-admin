@@ -6,8 +6,11 @@ import PropTypes from 'prop-types'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
-import Owner from './components/Owner'
+import Developer from './components/Developer'
 import Contact from './components/Contact'
 import Development from './components/Development'
 import Location from './components/Location'
@@ -57,9 +60,10 @@ class BricksForm extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <div className="BricksForm">
-        <Owner />
+        <Developer />
         <Contact />
         <Development />
         <Location />
@@ -68,7 +72,7 @@ class BricksForm extends BaseComponent {
         <General />
         <div className="BricksForm__Controls">
           <div className="BricksForm__Controls__Save">
-            <Button action={this._handleSave} label="Guardar y Continuar" />
+            <Button action={this._handleSave} label={t('Save Continue')} />
           </div>
         </div>
       </div>
@@ -86,7 +90,9 @@ const dispatchStateToProps = dispatch => {
   }
 }
 
-export default connect(
-  null,
-  dispatchStateToProps
-)(BricksForm)
+export default withNamespaces()(
+  connect(
+    null,
+    dispatchStateToProps
+  )(BricksForm)
+)

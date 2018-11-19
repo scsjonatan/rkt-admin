@@ -19,7 +19,7 @@ export const initialState = fromJS({
 })
 
 /**
- * reducer of Pandas Order Detail Scene
+ * reducer of PayDelivery Order Detail Scene
  * @param {object} state of reducer
  * @param {object} action to dispatch
  * @returns {object} next state

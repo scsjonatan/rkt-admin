@@ -4,6 +4,9 @@ import React from 'react'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Header from 'components/views/Header'
 import Button from 'components/atoms/Button'
@@ -19,7 +22,7 @@ import { reverse } from 'routes'
 // Styles
 import './styles.scss'
 
-export default class Bricks extends BaseComponent {
+class Bricks extends BaseComponent {
   _handleNewGrowth(e) {
     e.preventDefault()
   }
@@ -29,11 +32,12 @@ export default class Bricks extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <div className="SceneBricksHome">
         <Header title="Bricks">
           <Button
-            label="Nuevo Desarrollo"
+            label={t('New development')}
             action={this._handleNewGrowth}
             isLink
             direction={reverse('bricks:create')}
@@ -44,8 +48,8 @@ export default class Bricks extends BaseComponent {
         <div className="SceneBricksHome__Content">
           <div className="SceneBricksHome__Content__Search">
             <SearchBox
-              placeholder="Nombre del desarrollo"
-              title="Buscar Desarrollo"
+              placeholder={t('Develpment name')}
+              title={t('Search')}
               action={this._handleAction}
             />
           </div>
@@ -55,3 +59,5 @@ export default class Bricks extends BaseComponent {
     )
   }
 }
+
+export default withNamespaces()(Bricks)

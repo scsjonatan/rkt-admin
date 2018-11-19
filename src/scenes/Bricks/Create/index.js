@@ -4,6 +4,9 @@ import React from 'react'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Header from 'components/views/Header'
 
@@ -12,11 +15,12 @@ import BrickForm from 'scenes/Bricks/components/Form'
 // Styles
 import './styles.scss'
 
-export default class CreateBrick extends BaseComponent {
+class CreateBrick extends BaseComponent {
   render() {
+    const { t } = this.props
     return (
       <div className="SceneBricksCreate">
-        <Header title="Crear nuevo desarrollo" />
+        <Header title={t('Create Development')} />
         <div className="SceneBricksCreate__Content">
           <BrickForm />
         </div>
@@ -24,3 +28,5 @@ export default class CreateBrick extends BaseComponent {
     )
   }
 }
+
+export default withNamespaces()(CreateBrick)

@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Nav from 'components/lists/Nav'
 import Item from './Item'
@@ -16,29 +19,30 @@ import { fetchUnitsByBricksId } from 'services/units'
 // Styles
 import './styles.scss'
 
-export default class List extends BaseComponent {
-  constructor() {
-    super()
+class List extends BaseComponent {
+  constructor(props) {
+    super(props)
 
+    const { t } = props
     this.state = {
       tabs: [
         {
-          label: 'Todos',
+          label: t('All'),
           number: 0,
           slug_name: 'all'
         },
         {
-          label: 'Disponibles',
+          label: t('Availables'),
           number: 0,
           slug_name: 'available'
         },
         {
-          label: 'Vendidos',
+          label: t('Sold'),
           number: 0,
           slug_name: 'sold'
         },
         {
-          label: 'Eliminados',
+          label: t('Deleted'),
           number: 0,
           slug_name: 'deleted'
         }
@@ -87,3 +91,5 @@ export default class List extends BaseComponent {
 List.contextTypes = {
   router: PropTypes.object.isRequired
 }
+
+export default withNamespaces()(List)
