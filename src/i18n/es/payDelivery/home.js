@@ -13,5 +13,6 @@ export const PAY_DELIVERY_HOME = {
   'Conekta id': 'Conekta ID',
   Seller: 'Vendedor',
   Buyer: 'Comprador',
-  'Buyer phone': 'Teléfono del comprador'
+  'Buyer phone': 'Teléfono del comprador',
+  'No results': 'Filtro sin resultados'
 }

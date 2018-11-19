@@ -16,7 +16,7 @@ import FormArea from 'components/forms/Area'
 import { TYPES, PHASES, DELIVERIES, YEARS } from 'constants/development'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/redux/actions'
 
 class Deliver extends BaseComponent {
   constructor() {

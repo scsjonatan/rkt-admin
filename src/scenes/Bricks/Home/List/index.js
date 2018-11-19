@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -9,7 +10,7 @@ import { withNamespaces } from 'react-i18next'
 
 // Components
 import Nav from 'components/lists/Nav'
-import Item from './components/Item'
+import Item from './Item'
 
 // Styles
 import './styles.scss'
@@ -36,18 +37,6 @@ class List extends BaseComponent {
           number: 0,
           slug_name: 'deleted'
         }
-      ],
-      bricks: [
-        {
-          ad_id: '364382747983',
-          category: 'Desarrollos inmobiliarios',
-          created: '04 Abr 2018 13:45',
-          email: 'hola@puntodestino.com',
-          name: 'Guillermo Prieto 40',
-          phone: '55 54968900',
-          price: '$3,000,000 MXN',
-          units: 24
-        }
       ]
     }
   }
@@ -61,11 +50,15 @@ class List extends BaseComponent {
       <div className="GeneralContainer BricksList">
         <Nav tabs={this.state.tabs} />
         <div className="BricksList__Content">
-          {this.state.bricks.map(this._renderBricks)}
+          {this.props.bricks.map(this._renderBricks)}
         </div>
       </div>
     )
   }
+}
+
+List.propTypes = {
+  bricks: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default withNamespaces()(List)

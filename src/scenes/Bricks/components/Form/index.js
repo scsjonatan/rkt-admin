@@ -24,7 +24,7 @@ import Button from 'components/atoms/Button'
 import { searchBricksDataById } from 'services/bricks'
 
 // Actions
-import { fetchBrickData } from './actions'
+import { fetchBrickData } from './redux/actions'
 
 // Styles
 import './styles.scss'

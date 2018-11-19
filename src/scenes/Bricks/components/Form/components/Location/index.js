@@ -15,7 +15,7 @@ import FormSelect from 'components/forms/Select'
 import Address from './Address'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/redux/actions'
 
 // Constants
 import { LOCATION_RESTRICTIONS } from 'constants/development'

@@ -14,7 +14,10 @@ import SearchBox from 'components/forms/SearchBox'
 
 import ReactSVG from 'react-svg'
 
-import List from './components/List'
+import List from './List'
+
+// Services
+import { fetchBricksBySearch } from 'services/bricks'
 
 // Routes
 import { reverse } from 'routes'
@@ -23,12 +26,32 @@ import { reverse } from 'routes'
 import './styles.scss'
 
 class Bricks extends BaseComponent {
+  constructor() {
+    super()
+
+    this.state = {
+      bricks: []
+    }
+
+    this._bind('_handleAction')
+  }
+
+  componentDidMount() {
+    this._fetchBricks()
+  }
+
+  _fetchBricks(search = '') {
+    fetchBricksBySearch(search).then(bricks => {
+      this.setState({ bricks })
+    })
+  }
+
   _handleNewGrowth(e) {
     e.preventDefault()
   }
 
   _handleAction(search) {
-    console.log(search)
+    this._fetchBricks(search)
   }
 
   render() {
@@ -53,7 +76,7 @@ class Bricks extends BaseComponent {
               action={this._handleAction}
             />
           </div>
-          <List />
+          <List bricks={this.state.bricks} />
         </div>
       </div>
     )

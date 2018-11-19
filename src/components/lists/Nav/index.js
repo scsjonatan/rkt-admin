@@ -25,6 +25,7 @@ export default class Nav extends BaseComponent {
 
   _handleTab(slug_name) {
     this.setState({ active: slug_name })
+    this.props.handleTab(slug_name)
   }
 
   _renderTabs(tab) {
@@ -52,5 +53,6 @@ Nav.propTypes = {
       number: PropTypes.number.isRequired,
       slug_name: PropTypes.string.isRequired
     })
-  )
+  ),
+  handleTab: PropTypes.func.isRequired
 }

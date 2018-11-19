@@ -10,7 +10,7 @@ import BaseComponent from 'utils/BaseComponent'
 import Button from 'components/atoms/Button'
 
 // Actions
-import { resetCoinsForm, toggleModal } from 'scenes/Coins/Edit/actions'
+import { resetCoinsForm, toggleModal } from 'scenes/Coins/Edit/redux/actions'
 
 class Content extends BaseComponent {
   constructor() {

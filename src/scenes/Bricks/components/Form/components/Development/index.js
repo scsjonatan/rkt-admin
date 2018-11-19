@@ -14,7 +14,7 @@ import FormField from 'components/forms/Field'
 import Deliver from './Deliver'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/redux/actions'
 
 class Development extends BaseComponent {
   constructor(props) {

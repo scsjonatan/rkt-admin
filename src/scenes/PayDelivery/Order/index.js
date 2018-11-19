@@ -9,18 +9,29 @@ import { withNamespaces } from 'react-i18next'
 // Components
 import Header from 'components/views/Header'
 import PayDeliveryOrder from 'scenes/PayDelivery/components/Order'
+import History from './History'
+import { ClipLoader } from 'react-spinners'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
-import { setOrderDetail } from 'scenes/PayDelivery/Order/actions'
+import { setOrderDetail } from 'scenes/PayDelivery/Order/redux/actions'
+
+// Services
+import { fetchOrderById, fetchOrderHistoryById } from 'services/orders'
 
 // Styles
 import './styles.scss'
 
 class Order extends BaseComponent {
-  constructor() {
-    super()
-    this._bind('_fetchDataById')
+  constructor(props) {
+    super(props)
+    const order = props.order.toJS()
+    this.state = {
+      isLoading: !order.id,
+      history: []
+    }
+
+    this._bind('_fetchDataById', '_renderContent')
   }
   componentDidMount() {
     const order = this.props.order.toJS()
@@ -31,49 +42,44 @@ class Order extends BaseComponent {
 
   _fetchDataById() {
     // Simulate Get data with url id param
-    console.log(this.context.router.route.match.params.id)
-    this.props.setOrder({
-      ad_id: '43242314',
-      buyer: 'lorenamc.qweryty@gmail.com',
-      carrier: 'ups (1ZA9T9200480374)',
-      conekta_id: '653465346345634',
-      created: '9 Noviembre 2018 12:40',
-      id: '181124400005405',
-      last_update: '9 noviembre 2018 12:40',
-      phone: '5554968900',
-      seller: 'mascalso_3@hotmail.com'
+    const id = this.context.router.route.match.params.id
+    fetchOrderById(id).then(order => {
+      this.props.setOrder(order)
+      fetchOrderHistoryById(id).then(history => {
+        this.setState({
+          history,
+          isLoading: false
+        })
+      })
     })
   }
 
-  render() {
+  _renderContent() {
     const { t } = this.props
+    const order = this.props.order.toJS()
+    return this.state.isLoading ? (
+      <div className="PayDeliveryOrderDetail__Content">
+        <ClipLoader color="#1d72db" />
+      </div>
+    ) : (
+      <div className="PayDeliveryOrderDetail__Content">
+        <PayDeliveryOrder isDetail {...order} />
+        <div className="PayDeliveryOrderDetail__Content__History">
+          <p className="PayDeliveryOrderDetail__Content__History__Title">
+            {t('Order History')}
+          </p>
+          <History history={this.state.history} />
+        </div>
+      </div>
+    )
+  }
+
+  render() {
+    const order = this.props.order.toJS()
     return (
       <div className="PayDeliveryOrderDetail">
-        <Header title="Secadora Conair" />
-        <div className="PayDeliveryOrderDetail__Content">
-          <PayDeliveryOrder isDetail {...this.props.order.toJS()} />
-          <div className="PayDeliveryOrderDetail__Content__History">
-            <p className="PayDeliveryOrderDetail__Content__History__Title">
-              {t('Order History')}
-            </p>
-            <div className="PayDeliveryOrderDetail__Content__History__Content">
-              <ul>
-                <li>
-                  <p>{t('New')}</p>
-                  <span>9 noviembre 2018 12:40</span>
-                </li>
-                <li>
-                  <p>{t('Preauthorized')}</p>
-                  <span>9 noviembre 2018 12:40</span>
-                </li>
-                <li>
-                  <p>{t('Pending PickUp')}</p>
-                  <span>9 noviembre 2018 12:40</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <Header title={order.name} />
+        {this._renderContent()}
       </div>
     )
   }

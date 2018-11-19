@@ -14,7 +14,7 @@ import Action from './components/Action'
 import Modal from './components/Modal'
 
 // Actions
-import { updateFormByField, toggleModal } from 'scenes/Coins/Edit/actions'
+import { updateFormByField, toggleModal } from 'scenes/Coins/Edit/redux/actions'
 
 // Styles
 import './styles.scss'

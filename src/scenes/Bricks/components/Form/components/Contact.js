@@ -13,7 +13,7 @@ import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/redux/actions'
 
 class Contact extends BaseComponent {
   constructor(props) {

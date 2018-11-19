@@ -14,7 +14,7 @@ import { ClipLoader } from 'react-spinners'
 import Form from './components/Form'
 
 // Actions
-import { setUserData, resetCoinsForm, startSearch } from './actions'
+import { setUserData, resetCoinsForm, startSearch } from './redux/actions'
 
 // Services
 import { searchUserByEmail } from 'services/coins'
@@ -28,6 +28,7 @@ class Edit extends BaseComponent {
 
     this._bind('_handleSearch', '_validateUser', '_renderUser')
   }
+
   _handleSearch(search) {
     this.props.resetCoinsForm()
     this.props.startSearch()

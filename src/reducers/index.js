@@ -2,10 +2,11 @@ import { combineReducers } from 'redux'
 
 import { connectRouter } from 'connected-react-router'
 
-import sceneBricksComponentsForm from 'scenes/Bricks/components/Form/reducer'
-import sceneBricksUnits from 'scenes/Bricks/Units/reducer'
-import scenePayDeliveryOrder from 'scenes/PayDelivery/Order/reducer'
-import sceneCoinsEdit from 'scenes/Coins/Edit/reducer'
+import sceneBricksComponentsForm from 'scenes/Bricks/components/Form/redux/reducer'
+import sceneBricksUnits from 'scenes/Bricks/Units/redux/reducer'
+import scenePayDeliveryOrder from 'scenes/PayDelivery/Order/redux/reducer'
+import sceneCoinsEdit from 'scenes/Coins/Edit/redux/reducer'
+import scenePayDeliveryHome from 'scenes/PayDelivery/Home/redux/reducer'
 
 /**
  * Combine all reducers from all components
@@ -18,6 +19,7 @@ export default function createReducer(history) {
     sceneCoinsEdit,
     sceneBricksComponentsForm,
     scenePayDeliveryOrder,
+    scenePayDeliveryHome,
     router: connectRouter(history)
   })
 }

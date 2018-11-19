@@ -19,7 +19,7 @@ import {
 } from 'services/locations'
 
 // Actions
-import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
+import { updateFieldByName } from 'scenes/Bricks/components/Form/redux/actions'
 
 class Address extends BaseComponent {
   constructor() {
