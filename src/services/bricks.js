@@ -31,7 +31,7 @@ export const searchBricksDataById = id => {
       },
       location: {
         cp: '09360',
-        direction: 'Dr Vertiz 234',
+        address: 'Dr Vertiz 234',
         latitude: '40.43243',
         longitude: '-23.432'
       },
@@ -66,7 +66,8 @@ export const fetchBricksBySearch = search => {
           name: 'Guillermo Prieto 40',
           phone: '55 54968900',
           price: '$3,000,000 MXN',
-          units: 24
+          units: 24,
+          status: 'public'
         },
         {
           ad_id: '856787658',
@@ -76,7 +77,8 @@ export const fetchBricksBySearch = search => {
           name: 'Juan Romero 20',
           phone: '55 88857473',
           price: '$2,300,000 MXN',
-          units: 10
+          units: 10,
+          status: 'deleted'
         }
       ],
       public: [
@@ -88,7 +90,8 @@ export const fetchBricksBySearch = search => {
           name: 'Guillermo Prieto 40',
           phone: '55 54968900',
           price: '$3,000,000 MXN',
-          units: 24
+          units: 24,
+          status: 'public'
         }
       ],
       deleted: [
@@ -100,7 +103,8 @@ export const fetchBricksBySearch = search => {
           name: 'Juan Romero 20',
           phone: '55 88857473',
           price: '$2,300,000 MXN',
-          units: 10
+          units: 10,
+          status: 'deleted'
         }
       ]
     })

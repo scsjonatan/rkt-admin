@@ -43,4 +43,7 @@ export default class App extends Component {
 // The main `store` component of the application:
 const ConnectedApp = connect(null)(App)
 
-ReactDOM.render(<ConnectedApp store={store} />, document.getElementById('app'))
+ReactDOM.render(
+  <ConnectedApp store={store} />,
+  document.getElementById('app') || document.createElement('div')
+)

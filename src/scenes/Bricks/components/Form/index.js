@@ -52,10 +52,11 @@ class BricksForm extends BaseComponent {
 
   _handleSave(e) {
     e.preventDefault()
+    const data = this.props.data.toJS()
     if (this.props.isEdit) {
-      console.log('Editado')
+      console.log('Editado', data)
     } else {
-      console.log('Guardar Nuevo')
+      console.log('Guardar Nuevo', data)
     }
   }
 
@@ -84,6 +85,12 @@ BricksForm.contextTypes = {
   router: PropTypes.object.isRequired
 }
 
+const mapStateToProps = state => {
+  return {
+    data: state.sceneBricksComponentsForm
+  }
+}
+
 const dispatchStateToProps = dispatch => {
   return {
     fetchData: data => dispatch(fetchBrickData(data))
@@ -92,7 +99,7 @@ const dispatchStateToProps = dispatch => {
 
 export default withNamespaces()(
   connect(
-    null,
+    mapStateToProps,
     dispatchStateToProps
   )(BricksForm)
 )

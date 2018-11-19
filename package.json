@@ -73,9 +73,18 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "prepush": "CI=true yarn test",
     "precommit": "pretty-quick --staged",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
+  },
+  "husky": {
+    "hooks": {  
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,less}": ["eslint --fix", "git add"]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -134,6 +143,8 @@
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.0",
-    "json-loader": "^0.5.7"
+    "husky": "^1.1.4",
+    "json-loader": "^0.5.7",
+    "lint-staged": "^8.0.5"
   }
 }

@@ -31,6 +31,9 @@
             margin-right: .5rem;
             width: .5rem;
           }
+          .Deleted {
+            background: $error-color;
+          }
         }
       }
     }

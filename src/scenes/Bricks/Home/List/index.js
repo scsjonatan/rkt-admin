@@ -22,22 +22,22 @@ class List extends BaseComponent {
   constructor(props) {
     super(props)
 
-    const { t } = props
+    const { t, bricks } = props
     this.state = {
       tabs: [
         {
           label: t('All'),
-          number: 0,
+          number: bricks.all.length,
           slug_name: 'all'
         },
         {
           label: t('Publics'),
-          number: 0,
+          number: bricks.public.length,
           slug_name: 'public'
         },
         {
           label: t('Deleted'),
-          number: 0,
+          number: bricks.deleted.length,
           slug_name: 'deleted'
         }
       ]
