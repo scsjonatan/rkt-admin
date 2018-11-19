@@ -1,9 +1,11 @@
 // Dependencies
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
+import { getParamByName } from 'utils/url'
 
 // Internalization
 import { withNamespaces } from 'react-i18next'
@@ -28,8 +30,10 @@ class PayDelivery extends BaseComponent {
   }
 
   componentDidMount() {
-    const { filter, search } = this.props
-    this.props.fetchOrders(filter, search)
+    const paramQ = getParamByName('q')
+    const _search = paramQ ? paramQ : ''
+    const { filter } = this.props
+    this.props.fetchOrders(filter, _search)
   }
 
   _handleAction(search) {
@@ -50,6 +54,7 @@ class PayDelivery extends BaseComponent {
             placeholder={t('Order subdata')}
             title={t('Search order')}
             action={this._handleAction}
+            startValue={this.props.search}
           />
         </div>
         <List orders={this.props.orders} />
@@ -66,6 +71,10 @@ class PayDelivery extends BaseComponent {
       </div>
     )
   }
+}
+
+PayDelivery.contextTypes = {
+  router: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => {
