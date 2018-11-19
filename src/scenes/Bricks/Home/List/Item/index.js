@@ -26,8 +26,10 @@ class Item extends BaseComponent {
       phone,
       price,
       units,
+      status,
       t
     } = this.props
+    const statusClass = status === 'deleted' ? 'Deleted' : ''
     return (
       <div className="BricksListItem">
         <div className="BricksListItem__MainData">
@@ -38,7 +40,7 @@ class Item extends BaseComponent {
             />
             <div className="BricksListItem__MainData__Brick__Data">
               <p className="BricksListItem__MainData__Brick__Data__Name">
-                <span />
+                <span className={statusClass} />
                 {name}
               </p>
               <p>{`Desde ${price}`}</p>
@@ -84,7 +86,8 @@ Item.propTypes = {
   name: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  units: PropTypes.number.isRequired
+  units: PropTypes.number.isRequired,
+  status: PropTypes.string.isRequired
 }
 
 export default withNamespaces()(Item)

@@ -74,7 +74,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "precommit": "pretty-quick --staged",
+    "prepush": "CI=true yarn test",
+    "precommit": "lint-staged pretty-quick --staged",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },
   "eslintConfig": {
