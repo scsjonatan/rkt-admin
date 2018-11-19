@@ -56,27 +56,53 @@ export const searchBricksDataById = id => {
 export const fetchBricksBySearch = search => {
   console.log(search)
   return new Promise(resolve => {
-    resolve([
-      {
-        ad_id: '364382747983',
-        category: 'Desarrollos inmobiliarios',
-        created: '04 Abr 2018 13:45',
-        email: 'hola@puntodestino.com',
-        name: 'Guillermo Prieto 40',
-        phone: '55 54968900',
-        price: '$3,000,000 MXN',
-        units: 24
-      },
-      {
-        ad_id: '856787658',
-        category: 'Desarrollos',
-        created: '10 Abr 2019 13:45',
-        email: 'adios@puntodestino.com',
-        name: 'Juan Romero 20',
-        phone: '55 88857473',
-        price: '$2,300,000 MXN',
-        units: 10
-      }
-    ])
+    resolve({
+      all: [
+        {
+          ad_id: '364382747983',
+          category: 'Desarrollos inmobiliarios',
+          created: '04 Abr 2018 13:45',
+          email: 'hola@puntodestino.com',
+          name: 'Guillermo Prieto 40',
+          phone: '55 54968900',
+          price: '$3,000,000 MXN',
+          units: 24
+        },
+        {
+          ad_id: '856787658',
+          category: 'Desarrollos',
+          created: '10 Abr 2019 13:45',
+          email: 'adios@puntodestino.com',
+          name: 'Juan Romero 20',
+          phone: '55 88857473',
+          price: '$2,300,000 MXN',
+          units: 10
+        }
+      ],
+      public: [
+        {
+          ad_id: '364382747983',
+          category: 'Desarrollos inmobiliarios',
+          created: '04 Abr 2018 13:45',
+          email: 'hola@puntodestino.com',
+          name: 'Guillermo Prieto 40',
+          phone: '55 54968900',
+          price: '$3,000,000 MXN',
+          units: 24
+        }
+      ],
+      deleted: [
+        {
+          ad_id: '856787658',
+          category: 'Desarrollos',
+          created: '10 Abr 2019 13:45',
+          email: 'adios@puntodestino.com',
+          name: 'Juan Romero 20',
+          phone: '55 88857473',
+          price: '$2,300,000 MXN',
+          units: 10
+        }
+      ]
+    })
   })
 }

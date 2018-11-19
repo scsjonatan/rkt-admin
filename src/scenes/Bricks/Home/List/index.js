@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 // Utils
 import BaseComponent from 'utils/BaseComponent'
@@ -11,6 +11,9 @@ import { withNamespaces } from 'react-i18next'
 // Components
 import Nav from 'components/lists/Nav'
 import Item from './Item'
+
+// Actions
+import { changeTab } from 'scenes/Bricks/Home/redux/actions'
 
 // Styles
 import './styles.scss'
@@ -39,26 +42,47 @@ class List extends BaseComponent {
         }
       ]
     }
+
+    this._bind('_handleTab')
   }
 
   _renderBricks(brick) {
     return <Item key={brick.ad_id} {...brick} />
   }
 
+  _handleTab(tab) {
+    this.props.changeTab(tab)
+  }
+
   render() {
+    const { bricks, filter } = this.props
     return (
       <div className="GeneralContainer BricksList">
-        <Nav tabs={this.state.tabs} />
+        <Nav tabs={this.state.tabs} handleTab={this._handleTab} />
         <div className="BricksList__Content">
-          {this.props.bricks.map(this._renderBricks)}
+          {bricks[filter].map(this._renderBricks)}
         </div>
       </div>
     )
   }
 }
 
-List.propTypes = {
-  bricks: PropTypes.arrayOf(PropTypes.object).isRequired
+const mapStateToProps = state => {
+  return {
+    filter: state.sceneBricksHome.get('filter'),
+    bricks: state.sceneBricksHome.get('bricks')
+  }
 }
 
-export default withNamespaces()(List)
+const mapDispatchToProps = dispatch => {
+  return {
+    changeTab: tab => dispatch(changeTab(tab))
+  }
+}
+
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(List)
+)
