@@ -50,7 +50,7 @@ export const initialState = fromJS({
 })
 
 /**
- * reducer of Bricks Edit Scene
+ * reducer of Bricks Form
  * @param {object} state of reducer
  * @param {object} action to dispatch
  * @returns {object} next state

@@ -15,7 +15,6 @@ export default class Item extends BaseComponent {
   render() {
     const { label, icon, path } = this.props
     const _path = path ? path : '/'
-
     return (
       <li className="SideBar__Item">
         <NavLink
@@ -24,7 +23,7 @@ export default class Item extends BaseComponent {
           activeClassName="SideBar__Item__Active"
           className="SideBar__Item__Link"
         >
-          <ReactSVG src={icon} />
+          <ReactSVG src={icon.toString()} />
           <p>{label}</p>
         </NavLink>
       </li>

@@ -3,7 +3,7 @@ import i18n from 'i18next'
 import { reactI18nextModule } from 'react-i18next'
 
 // Languages
-import { en, es } from 'i18n/index'
+import { en, es } from './internalization'
 
 const resources = {
   en: {
