@@ -2,6 +2,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
@@ -12,7 +15,7 @@ import FormField from 'components/forms/Field'
 // Actions
 import { updateFieldByName } from 'scenes/Bricks/components/Form/actions'
 
-class Owner extends BaseComponent {
+class Developer extends BaseComponent {
   constructor(props) {
     super(props)
     this._bind('_handleFieldChange')
@@ -24,33 +27,34 @@ class Owner extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     const { company_id, email, name, phone } = this.props.owner.toJS()
     return (
-      <FormContainer title="Información del desarrollador">
+      <FormContainer title={t('Developer info')}>
         <div className="BricksFormCointaine">
           <FormField
             name="name"
             onChange={this._handleFieldChange}
-            title="Nombre del desarrollador"
+            title={t('Developer name')}
             value={name}
           />
           <FormField
             disabled
             name="company_id"
             onChange={this._handleFieldChange}
-            title="Identificador de compañia"
+            title={t('Company id')}
             value={company_id}
           />
           <FormField
             name="email"
             onChange={this._handleFieldChange}
-            title="Email"
+            title={t('Email')}
             value={email}
           />
           <FormField
             name="phone"
             onChange={this._handleFieldChange}
-            title="Phone"
+            title={t('Phone')}
             value={phone}
           />
         </div>
@@ -71,8 +75,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateFieldByName(name, value, group))
   }
 }
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Owner)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Developer)
+)

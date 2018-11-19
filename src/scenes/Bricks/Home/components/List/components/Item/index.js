@@ -2,6 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 import { setBackgroundImage } from 'utils/data'
@@ -12,7 +15,7 @@ import Menu from './Menu'
 // Styles
 import './styles.scss'
 
-export default class Item extends BaseComponent {
+class Item extends BaseComponent {
   render() {
     const {
       ad_id,
@@ -22,9 +25,9 @@ export default class Item extends BaseComponent {
       name,
       phone,
       price,
-      units
+      units,
+      t
     } = this.props
-
     return (
       <div className="BricksListItem">
         <div className="BricksListItem__MainData">
@@ -42,28 +45,28 @@ export default class Item extends BaseComponent {
             </div>
           </div>
           <div className="BricksListItem__MainData__Units">
-            <p>{`${units} Unidades`}</p>
+            <p>{`${units} ${t('Units')}`}</p>
           </div>
         </div>
         <div className="BricksListItem__MetaData">
           <div className="BricksListItem__MetaData__List">
             <p className="BricksListItem__MetaData__List__Focus">
-              Email: <span>{email}</span>
+              {t('Email')}: <span>{email}</span>
             </p>
             <p>
-              Categoría: <span>{category}</span>
+              {t('Category')}: <span>{category}</span>
             </p>
             <p>
-              Fecha de creación: <span>{created}</span>
+              {t('Created at')}: <span>{created}</span>
             </p>
             <p>
-              ID de Anuncio: <span>{ad_id}</span>
+              {t('Ad id')}: <span>{ad_id}</span>
             </p>
             <p>
-              Teléfono: <span>{phone}</span>
+              {t('Phone')}: <span>{phone}</span>
             </p>
             <p className="BricksListItem__MetaData__List__Focus">
-              <span>Historial</span>
+              <span>{t('Hostory')}</span>
             </p>
           </div>
           <Menu id={ad_id} />
@@ -83,3 +86,5 @@ Item.propTypes = {
   price: PropTypes.string.isRequired,
   units: PropTypes.number.isRequired
 }
+
+export default withNamespaces()(Item)

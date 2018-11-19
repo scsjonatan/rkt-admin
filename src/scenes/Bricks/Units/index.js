@@ -6,6 +6,9 @@ import PropTypes from 'prop-types'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import Header from 'components/views/Header'
 import FormContainer from 'components/forms/Container'
@@ -63,32 +66,33 @@ class EditUnitsBricks extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     return (
       <div className="EditUnitsBricks">
         <Header title="Editar unidades" />
         <div className="EditUnitsBricks__Content">
-          <FormContainer title="Agregar Unidad">
+          <FormContainer title={t('Add unit')}>
             <FormField
               className="EditUnitsBricks__Content__Title"
               name="title"
               onChange={this._handleFieldChange}
-              title="Titulo de la unidad"
-              placeholder="Escribe el título que aparecerá en la vista de la unidad"
+              title={t('Unit title')}
+              placeholder={t('Write title')}
               value={this.props.title}
             />
             <RowModel />
             <RowRooms />
             <FormArea
               name="description"
-              placeholder="Describe las características de la unidad"
+              placeholder={t('Describe unit')}
               title="Description"
               onChange={this._handleFieldChange}
               value={this.props.description}
             />
-            <FormImages limit={6} title="Imágenes" />
+            <FormImages limit={6} title={t('Images')} />
           </FormContainer>
           <div className="EditUnitsBricks__Content__Controls">
-            <Button action={this._handleSave} label="Agregar unidad" />
+            <Button action={this._handleSave} label={t('Add unit')} />
           </div>
           {this._renderList()}
         </div>
@@ -116,7 +120,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EditUnitsBricks)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(EditUnitsBricks)
+)

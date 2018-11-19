@@ -2,6 +2,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
@@ -25,6 +28,7 @@ class Development extends BaseComponent {
   }
 
   render() {
+    const { t } = this.props
     const { external_key, internal_key, name } = this.props.development.toJS()
 
     return (
@@ -33,20 +37,20 @@ class Development extends BaseComponent {
           <FormField
             name="name"
             onChange={this._handleFieldChange}
-            title="Nombre del proyecto"
+            title={t('Proyect name')}
             value={name}
           />
           <Deliver />
           <FormField
             name="external_key"
             onChange={this._handleFieldChange}
-            title="Clave externa"
+            title={t('External key')}
             value={external_key}
           />
           <FormField
             name="internal_key"
             onChange={this._handleFieldChange}
-            title="Clave interna"
+            title={t('Internal key')}
             value={internal_key}
           />
         </div>
@@ -67,8 +71,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateFieldByName(name, value, group))
   }
 }
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Development)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Development)
+)

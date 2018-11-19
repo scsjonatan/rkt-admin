@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 // Utils
 import BaseComponent from 'utils/BaseComponent'
 
+// Internalization
+import { withNamespaces } from 'react-i18next'
+
 // Components
 import FormContainer from 'components/forms/Container'
 import FormField from 'components/forms/Field'
@@ -34,39 +37,40 @@ class Location extends BaseComponent {
   }
 
   render() {
-    const { cp, direction, latitude, longitude } = this.props.location.toJS()
+    const { t } = this.props
+    const { cp, address, latitude, longitude } = this.props.location.toJS()
     return (
-      <FormContainer title="Ubicación del desarrollo">
+      <FormContainer title={t('Develop location')}>
         <div className="BricksFormCointaine">
           <FormField
-            name="direction"
+            name="address"
             onChange={this._handleFieldChange}
-            title="Dirección"
-            value={direction}
+            title={t('Address')}
+            value={address}
           />
           <Address />
           <FormField
             name="cp"
             onChange={this._handleFieldChange}
-            title="Código postal"
+            title={t('Postal Code')}
             value={cp}
           />
           <FormSelect
             options={LOCATION_RESTRICTIONS}
-            title="Ubicación en mapa"
+            title={t('Map location')}
             onChange={this._handleRestriction}
             name="restriction"
           />
           <FormField
             name="latitude"
             onChange={this._handleFieldChange}
-            title="Map Lat"
+            title={t('Latitude')}
             value={latitude}
           />
           <FormField
             name="longitude"
             onChange={this._handleFieldChange}
-            title="Map Long"
+            title={t('Longitude')}
             value={longitude}
           />
         </div>
@@ -88,7 +92,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Location)
+export default withNamespaces()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Location)
+)
