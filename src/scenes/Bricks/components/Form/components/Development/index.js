@@ -28,7 +28,7 @@ class Development extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors } = this.props
     const { external_key, internal_key, name } = this.props.development.toJS()
 
     return (
@@ -39,19 +39,22 @@ class Development extends BaseComponent {
             onChange={this._handleFieldChange}
             title={t('Proyect name')}
             value={name}
+            errors={errors['development.name']}
           />
-          <Deliver />
+          <Deliver errors={errors} />
           <FormField
             name="external_key"
             onChange={this._handleFieldChange}
             title={t('External key')}
             value={external_key}
+            errors={errors['development.external_key']}
           />
           <FormField
             name="internal_key"
             onChange={this._handleFieldChange}
             title={t('Internal key')}
             value={internal_key}
+            errors={errors['development.internal_key']}
           />
         </div>
       </FormContainer>

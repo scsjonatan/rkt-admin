@@ -19,4 +19,9 @@
       color: $medium-grey-color;
     }
   }
+  &__Error {
+    font-size: .7rem;
+    margin: .1rem 0;
+    color: $error-color;
+  }
 }

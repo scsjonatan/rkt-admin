@@ -28,8 +28,10 @@ class Item extends BaseComponent {
       rooms,
       surface,
       type,
-      t
+      t,
+      status
     } = this.props
+    const statusClass = status === 'deleted' ? 'Deleted' : ''
     return (
       <div className="UnitsListItem">
         <div className="UnitsListItem__MainData">
@@ -39,7 +41,7 @@ class Item extends BaseComponent {
           />
           <div className="UnitsListItem__MainData__Data">
             <p className="UnitsListItem__MainData__Data__Name">
-              <span />
+              <span className={statusClass} />
               {name}
             </p>
             <p>{`${t('From')} ${price} MXN`}</p>

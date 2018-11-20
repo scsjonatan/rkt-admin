@@ -1,3 +1,5 @@
+/* eslint-disable */
+// Remove disable after set correct services
 export const searchUserByEmail = email => {
   return new Promise(resolve => {
     resolve({

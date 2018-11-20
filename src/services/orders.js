@@ -1,3 +1,5 @@
+/* eslint-disable */
+// Remove disable after set correct services
 export const fetchOrderById = id => {
   console.log(id)
   return new Promise(resolve => {

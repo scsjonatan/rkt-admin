@@ -10,6 +10,9 @@ import { setBackgroundImage } from 'utils/data'
 // Internalization
 import { withNamespaces } from 'react-i18next'
 
+// Components
+import Column from './Column'
+
 // Routes
 import { reverse } from 'routes'
 
@@ -48,6 +51,21 @@ class Order extends BaseComponent {
     } = this.props
     const onClick = isDetail ? () => {} : this._handleClick
     const detailClass = isDetail ? '' : 'Pointer'
+
+    const columnA = [
+      { field: t('Order'), value: id, focus: true },
+      { field: t('Created'), value: created },
+      { field: t('Carrier'), value: carrier },
+      { field: t('Last update'), value: last_update }
+    ]
+    const columnB = [
+      { field: t('Ad id'), value: ad_id, focus: true },
+      { field: t('Conekta id'), value: conekta_id },
+      { field: t('Seller'), value: seller },
+      { field: t('Buyer'), value: buyer },
+      { field: t('Buyer phone'), value: phone }
+    ]
+
     return (
       <div className={`PayDeliveryListItem ${detailClass}`} onClick={onClick}>
         <div className="PayDeliveryListItem__Image">
@@ -57,37 +75,8 @@ class Order extends BaseComponent {
           />
         </div>
         <div className="PayDeliveryListItem__Data">
-          <div className="PayDeliveryListItem__Data__Column">
-            <p className="PayDeliveryListItem__Data__Column__Focus">
-              {t('Order')}: <span>{id}</span>
-            </p>
-            <p>
-              {t('Created')}: <span>{created}</span>
-            </p>
-            <p>
-              {t('Carrier')}: <span>{carrier}</span>
-            </p>
-            <p>
-              {t('Last update')}: <span>{last_update}</span>
-            </p>
-          </div>
-          <div className="PayDeliveryListItem__Data__Column">
-            <p className="PayDeliveryListItem__Data__Column__Focus">
-              {t('Ad id')}: <span>{ad_id}</span>
-            </p>
-            <p>
-              {t('Conekta id')}: <span>{conekta_id}</span>
-            </p>
-            <p>
-              {t('Seller')}: <span>{seller}</span>
-            </p>
-            <p>
-              {t('Buyer')}: <span>{buyer}</span>
-            </p>
-            <p>
-              {t('Buyer phone')}: <span>{phone}</span>
-            </p>
-          </div>
+          <Column items={columnA} />
+          <Column items={columnB} />
         </div>
       </div>
     )
@@ -106,14 +95,10 @@ Order.propTypes = {
   seller: PropTypes.string.isRequired
 }
 
-Order.contextTypes = {
-  router: PropTypes.object.isRequired
-}
+Order.contextTypes = { router: PropTypes.object.isRequired }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setOrder: data => dispatch(setOrderDetail(data))
-  }
+  return { setOrder: data => dispatch(setOrderDetail(data)) }
 }
 
 export default withNamespaces()(

@@ -9,8 +9,24 @@ import BaseComponent from 'utils/BaseComponent'
 import './styles.scss'
 
 export default class Area extends BaseComponent {
+  _renderErrors(error) {
+    return (
+      <p key={error} className="FormField__Error">
+        {`* ${error}`}
+      </p>
+    )
+  }
+
   render() {
-    const { disabled, onChange, name, placeholder, title, value } = this.props
+    const {
+      disabled,
+      onChange,
+      name,
+      placeholder,
+      title,
+      value,
+      errors
+    } = this.props
     return (
       <div className="FormArea">
         <p className="FormArea__Title">{title}</p>
@@ -21,6 +37,7 @@ export default class Area extends BaseComponent {
           value={value}
           onChange={onChange}
         />
+        {errors.map(this._renderErrors)}
       </div>
     )
   }
@@ -32,11 +49,13 @@ Area.propTypes = {
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  errors: PropTypes.array
 }
 
 Area.defaultProps = {
   disabled: false,
   placeholder: '',
-  onChange: () => {}
+  onChange: () => {},
+  errors: []
 }

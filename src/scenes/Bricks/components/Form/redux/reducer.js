@@ -21,7 +21,11 @@ export const initialState = fromJS({
     description: '',
     external_key: '',
     internal_key: '',
-    name: ''
+    name: '',
+    phase: '',
+    unit_type: '',
+    delivery: '',
+    year: ''
   },
   location: {
     cp: '',

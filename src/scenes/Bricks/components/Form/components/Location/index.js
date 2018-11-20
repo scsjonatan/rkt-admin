@@ -37,7 +37,7 @@ class Location extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors } = this.props
     const { cp, address, latitude, longitude } = this.props.location.toJS()
     return (
       <FormContainer title={t('Develop location')}>
@@ -47,31 +47,36 @@ class Location extends BaseComponent {
             onChange={this._handleFieldChange}
             title={t('Address')}
             value={address}
+            errors={errors['location.address']}
           />
-          <Address />
+          <Address errors={errors} />
           <FormField
             name="cp"
             onChange={this._handleFieldChange}
             title={t('Postal Code')}
             value={cp}
+            errors={errors['location.cp']}
           />
           <FormSelect
             options={LOCATION_RESTRICTIONS}
             title={t('Map location')}
             onChange={this._handleRestriction}
             name="restriction"
+            errors={errors['location.restriction']}
           />
           <FormField
             name="latitude"
             onChange={this._handleFieldChange}
             title={t('Latitude')}
             value={latitude}
+            errors={errors['location.latitude']}
           />
           <FormField
             name="longitude"
             onChange={this._handleFieldChange}
             title={t('Longitude')}
             value={longitude}
+            errors={errors['location.longitude']}
           />
         </div>
       </FormContainer>
