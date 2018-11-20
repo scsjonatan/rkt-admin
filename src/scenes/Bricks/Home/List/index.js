@@ -43,7 +43,7 @@ class List extends BaseComponent {
       ]
     }
 
-    this._bind('_handleTab')
+    this._bind('_handleTab', '_renderContent')
   }
 
   _renderBricks(brick) {
@@ -54,14 +54,22 @@ class List extends BaseComponent {
     this.props.changeTab(tab)
   }
 
-  render() {
+  _renderContent() {
     const { bricks, filter } = this.props
+    return bricks[filter].length ? (
+      <div className="BricksList__Content">
+        {bricks[filter].map(this._renderBricks)}
+      </div>
+    ) : (
+      <div className="BricksList__NoResults">Sin resultados</div>
+    )
+  }
+
+  render() {
     return (
       <div className="GeneralContainer BricksList">
         <Nav tabs={this.state.tabs} handleTab={this._handleTab} />
-        <div className="BricksList__Content">
-          {bricks[filter].map(this._renderBricks)}
-        </div>
+        {this._renderContent()}
       </div>
     )
   }

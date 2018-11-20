@@ -1,5 +1,5 @@
 export const SIDEBAR = {
   Bricks: 'Bricks',
-  Houston: 'Houston',
+  PD: 'P&D: Order Admin',
   Coins: 'Monedas'
 }
