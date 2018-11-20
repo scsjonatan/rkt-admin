@@ -12,6 +12,8 @@ import Item from './Item'
 // Styles
 import './styles.scss'
 
+const LOGO_IMG = require('containers/App/components/SideBar/assets/logo.jpg')
+
 export default class List extends BaseComponent {
   _renderItems(item) {
     return item.path ? <Item {...item} key={uuid()} /> : null
@@ -27,6 +29,7 @@ export default class List extends BaseComponent {
       <div className={`SideBar__List ${navStyle}`}>
         <div className={headStyle}>
           <p>{this.props.title}</p>
+          <img src={LOGO_IMG} />
         </div>
         <ul className="SideBar__List__Items">{items.map(this._renderItems)}</ul>
       </div>
