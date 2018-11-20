@@ -44,7 +44,7 @@ class SideBar extends BaseComponent {
       },
       {
         icon: require('containers/App/components/SideBar/assets/icons/houston.svg'),
-        label: t('Houston'),
+        label: t('PD'),
         path: reverse('payDelivery')
       },
       {
