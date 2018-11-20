@@ -14,6 +14,14 @@ export default class Field extends BaseComponent {
     return title ? <p className="FormField__Title">{title}</p> : null
   }
 
+  _renderErrors(error) {
+    return (
+      <p key={error} className="FormField__Error">
+        {`* ${error}`}
+      </p>
+    )
+  }
+
   render() {
     const {
       className,
@@ -21,7 +29,8 @@ export default class Field extends BaseComponent {
       name,
       onChange,
       placeholder,
-      value
+      value,
+      errors
     } = this.props
     return (
       <div className={`FormField ${className}`}>
@@ -33,6 +42,7 @@ export default class Field extends BaseComponent {
           value={value}
           onChange={onChange}
         />
+        {errors.map(this._renderErrors)}
       </div>
     )
   }
@@ -44,7 +54,8 @@ Field.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   title: PropTypes.string,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
+  errors: PropTypes.array
 }
 
 Field.defaultProps = {
@@ -52,5 +63,6 @@ Field.defaultProps = {
   disabled: false,
   onChange: () => {},
   placeholder: '',
-  title: ''
+  title: '',
+  errors: []
 }
