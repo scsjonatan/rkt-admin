@@ -38,7 +38,18 @@ class Location extends BaseComponent {
 
   render() {
     const { t, errors } = this.props
-    const { cp, address, latitude, longitude } = this.props.location.toJS()
+    const {
+      cp,
+      address,
+      latitude,
+      longitude,
+      restriction
+    } = this.props.location.toJS()
+    let restrictionOption = LOCATION_RESTRICTIONS[0]
+    if (restriction) {
+      restrictionOption = LOCATION_RESTRICTIONS[restriction - 1]
+    }
+
     return (
       <FormContainer title={t('Develop location')}>
         <div className="BricksFormCointaine">
@@ -63,6 +74,7 @@ class Location extends BaseComponent {
             onChange={this._handleRestriction}
             name="restriction"
             errors={errors['location.restriction']}
+            value={restrictionOption}
           />
           <FormField
             name="latitude"

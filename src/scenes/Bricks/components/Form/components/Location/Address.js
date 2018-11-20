@@ -38,6 +38,18 @@ class Address extends BaseComponent {
     this._fetchData(fetchStateList, 'states')
   }
 
+  componentDidUpdate() {
+    const { state, municipality } = this.props.location.toJS()
+    const { municipalites, areas } = this.state
+    if (state && !municipalites.length) {
+      this._fetchData(fetchMunicipalitiesListByState, 'municipalites', state)
+    }
+
+    if (municipality && !areas.length) {
+      this._fetchData(fetchAreasListByMunicipability, 'areas', municipality)
+    }
+  }
+
   _handleChange(name, value) {
     if (name === 'state' && value) {
       this._fetchData(fetchMunicipalitiesListByState, 'municipalites', value)
@@ -55,7 +67,7 @@ class Address extends BaseComponent {
 
   render() {
     const { t, errors } = this.props
-    const { state, municipality } = this.props.location.toJS()
+    const { state, municipality, area } = this.props.location.toJS()
     return [
       <FormSelect
         key="location-form-state"
@@ -64,6 +76,7 @@ class Address extends BaseComponent {
         options={this.state.states}
         title={t('State')}
         errors={errors['location.state']}
+        value={{ label: state, value: state }}
       />,
       <FormSelect
         disabled={!state}
@@ -73,6 +86,7 @@ class Address extends BaseComponent {
         options={this.state.municipalites}
         title={t('Municipality')}
         errors={errors['location.municipality']}
+        value={{ label: municipality, value: municipality }}
       />,
       <FormSelect
         disabled={!municipality}
@@ -82,6 +96,7 @@ class Address extends BaseComponent {
         options={this.state.areas}
         title={t('Area')}
         errors={errors['location.area']}
+        value={{ label: area, value: area }}
       />
     ]
   }

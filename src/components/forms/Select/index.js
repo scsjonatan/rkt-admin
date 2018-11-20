@@ -15,10 +15,6 @@ export default class FormSelect extends BaseComponent {
   constructor() {
     super()
 
-    this.state = {
-      selectedOption: null
-    }
-
     this._bind('_handleChange')
   }
 
@@ -31,8 +27,7 @@ export default class FormSelect extends BaseComponent {
   }
 
   _handleChange(option) {
-    this.setState({ selectedOption: option })
-    this.props.onChange(this.props.name, option.value)
+    this.props.onChange(this.props.name, option.value, option.label)
   }
 
   render() {
@@ -41,7 +36,7 @@ export default class FormSelect extends BaseComponent {
       <div className="FormSelect">
         <p className="FormSelect__Title">{title}</p>
         <Select
-          value={this.state.selectedOption}
+          value={this.props.value}
           onChange={this._handleChange}
           options={this.props.options}
           className="FormSelect__Select"
@@ -61,7 +56,11 @@ FormSelect.propTypes = {
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  errors: PropTypes.array
+  errors: PropTypes.array,
+  value: PropTypes.shape({
+    value: PropTypes.isRequired,
+    label: PropTypes.isRequired
+  })
 }
 
 FormSelect.defaultProps = {

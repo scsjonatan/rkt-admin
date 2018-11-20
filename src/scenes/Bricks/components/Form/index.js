@@ -29,7 +29,7 @@ import { searchBricksDataById } from 'services/bricks'
 // Actions
 import { fetchBrickData } from './redux/actions'
 
-// Others
+// Validation
 import { rules, messages } from './validator'
 
 // Styles

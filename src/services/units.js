@@ -76,8 +76,8 @@ export const fetchUnitDataById = id => {
       field_surface: '342',
       description: 'Description',
       id,
-      unit_type: '',
-      status: '',
+      unit_type: 2,
+      status: 1,
       rooms: 34,
       baths: 54,
       parkings: 3

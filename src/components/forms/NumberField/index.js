@@ -9,6 +9,14 @@ import BaseComponent from 'utils/BaseComponent'
 import './styles.scss'
 
 export default class Field extends BaseComponent {
+  _renderErrors(error) {
+    return (
+      <p key={error} className="FormNumberField__Error">
+        {`* ${error}`}
+      </p>
+    )
+  }
+
   render() {
     const {
       disabled,
@@ -18,7 +26,8 @@ export default class Field extends BaseComponent {
       value,
       name,
       max,
-      min
+      min,
+      errors
     } = this.props
     return (
       <div className="FormNumberField">
@@ -33,6 +42,7 @@ export default class Field extends BaseComponent {
           value={value}
           onChange={onChange}
         />
+        {errors.map(this._renderErrors)}
       </div>
     )
   }
@@ -45,7 +55,8 @@ Field.propTypes = {
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   value: PropTypes.any.isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  errors: PropTypes.array
 }
 
 Field.defaultProps = {
@@ -53,5 +64,6 @@ Field.defaultProps = {
   max: 100000,
   disabled: false,
   placeholder: '',
-  onChange: () => {}
+  onChange: () => {},
+  errors: []
 }

@@ -28,7 +28,7 @@ class RowRooms extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors } = this.props
     return (
       <div className="EditUnitsBricks__Content__Row">
         <div className="EditUnitsBricks__Content__Row__RoomChild">
@@ -38,6 +38,7 @@ class RowRooms extends BaseComponent {
             title={t('Rooms')}
             placeholder={t('Rooms number')}
             value={this.props.rooms}
+            errors={errors.rooms}
           />
         </div>
         <div className="EditUnitsBricks__Content__Row__RoomChild">
@@ -47,6 +48,7 @@ class RowRooms extends BaseComponent {
             title={t('Baths')}
             placeholder={t('Baths number')}
             value={this.props.baths}
+            errors={errors.baths}
           />
         </div>
         <div className="EditUnitsBricks__Content__Row__RoomChild">
@@ -56,6 +58,7 @@ class RowRooms extends BaseComponent {
             title={t('Parking')}
             placeholder={t('Parking')}
             value={this.props.parkings}
+            errors={errors.parkings}
           />
         </div>
         <div className="EditUnitsBricks__Content__Row__RoomChild">
@@ -65,6 +68,7 @@ class RowRooms extends BaseComponent {
             title={t('Build surface')}
             placeholder="0"
             value={this.props.build_surface}
+            errors={errors.build_surface}
           />
         </div>
         <div className="EditUnitsBricks__Content__Row__RoomChild">
@@ -74,6 +78,7 @@ class RowRooms extends BaseComponent {
             title={t('Field surface')}
             placeholder="0"
             value={this.props.field_surface}
+            errors={errors.field_surface}
           />
         </div>
       </div>

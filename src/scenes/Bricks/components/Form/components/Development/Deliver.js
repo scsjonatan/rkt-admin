@@ -37,6 +37,7 @@ class Deliver extends BaseComponent {
   render() {
     const { t, errors } = this.props
     const { description } = this.props.development.toJS()
+    // TODO: Make Selects in this components update and recive data
 
     return [
       <FormSelect

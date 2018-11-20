@@ -6,8 +6,9 @@ import { connect } from 'react-redux'
 // Internalization
 import { withNamespaces } from 'react-i18next'
 
-// Dependencies
+// Utils
 import BaseComponent from 'utils/BaseComponent'
+import Validator from 'validatorjs'
 
 // Components
 import FormContainer from 'components/forms/Container'
@@ -23,10 +24,16 @@ import List from './List'
 // Actions
 import { updateValueByField } from 'scenes/Bricks/Units/redux/actions'
 
+// Validation
+import { rules, messages } from './validator'
+
 class Content extends BaseComponent {
   constructor() {
     super()
-    this._bind('_handleFieldChange')
+    this.state = {
+      errors: []
+    }
+    this._bind('_handleFieldChange', '_handleSave')
   }
 
   _handleFieldChange(e) {
@@ -42,7 +49,16 @@ class Content extends BaseComponent {
 
   _handleSave(e) {
     e.preventDefault()
-    console.log('Save')
+    const data = this.props.data.toJS()
+    let validation = new Validator(data, rules, messages)
+    if (validation.passes()) {
+      this.setState({ errors: {} })
+      console.log('Save')
+    } else {
+      this.setState({
+        errors: validation.errors.errors
+      })
+    }
   }
 
   render() {
@@ -57,15 +73,17 @@ class Content extends BaseComponent {
             title={t('Unit title')}
             placeholder={t('Write title')}
             value={this.props.title}
+            errors={this.state.errors.title}
           />
-          <RowModel />
-          <RowRooms />
+          <RowModel errors={this.state.errors} />
+          <RowRooms errors={this.state.errors} />
           <FormArea
             name="description"
             placeholder={t('Describe unit')}
             title="Description"
             onChange={this._handleFieldChange}
             value={this.props.description}
+            errors={this.state.errors.description}
           />
           <FormImages limit={6} title={t('Images')} />
         </FormContainer>
@@ -81,7 +99,8 @@ class Content extends BaseComponent {
 const mapStateToProps = state => {
   return {
     title: state.sceneBricksUnits.get('title'),
-    description: state.sceneBricksUnits.get('description')
+    description: state.sceneBricksUnits.get('description'),
+    data: state.sceneBricksUnits
   }
 }
 
