@@ -13,10 +13,8 @@ import { withNamespaces } from 'react-i18next'
 // Components
 import Header from 'components/views/Header'
 import Button from 'components/atoms/Button'
-import SearchBox from 'components/forms/SearchBox'
-import { ClipLoader } from 'react-spinners'
 import ReactSVG from 'react-svg'
-import List from './List'
+import Content from './Content'
 
 // Actions
 import { fetchBricksByFilterSearch } from './redux/actions'
@@ -28,11 +26,6 @@ import { reverse } from 'routes'
 import './styles.scss'
 
 class Bricks extends BaseComponent {
-  constructor() {
-    super()
-    this._bind('_handleAction', '_renderContent', '_handleAction')
-  }
-
   componentDidMount() {
     const paramQ = getParamByName('q')
     const _search = paramQ ? paramQ : ''
@@ -42,32 +35,6 @@ class Bricks extends BaseComponent {
 
   _handleNewGrowth(e) {
     e.preventDefault()
-  }
-
-  _handleAction(search) {
-    const { filter } = this.props
-    this.props.fetchBricks(filter, search)
-  }
-
-  _renderContent() {
-    const { t, isLoading } = this.props
-    return isLoading ? (
-      <div className="SceneBricksHome__Loading">
-        <ClipLoader color="#1d72db" />
-      </div>
-    ) : (
-      <div className="SceneBricksHome__Content">
-        <div className="SceneBricksHome__Content__Search">
-          <SearchBox
-            placeholder={t('Develpment name')}
-            title={t('Search')}
-            action={this._handleAction}
-            startValue={this.props.search}
-          />
-        </div>
-        <List />
-      </div>
-    )
   }
 
   render() {
@@ -84,7 +51,7 @@ class Bricks extends BaseComponent {
             <ReactSVG src={require('./assets/add.svg')} />
           </Button>
         </Header>
-        {this._renderContent()}
+        <Content />
       </div>
     )
   }

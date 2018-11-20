@@ -1,3 +1,5 @@
+/* eslint-disable */
+// TODO: More than 100 lines
 // Dependencies
 import React from 'react'
 import { connect } from 'react-redux'

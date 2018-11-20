@@ -25,8 +25,6 @@ class Content extends BaseComponent {
 
   _handleConfirmation(e) {
     e.preventDefault()
-    console.log('save')
-    // Fake save
     this.props.resetForm()
     this.props.toggleModal(false)
   }

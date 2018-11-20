@@ -71,11 +71,16 @@ export const fetchUnitDataById = id => {
     resolve({
       title: 'Titulo Bonito',
       model: 'Modelo A',
-      price: '432',
-      build_surface: 34,
-      field_surface: 43,
-      description: 'Mi Descripción',
-      id
+      price: '4324',
+      build_surface: '123',
+      field_surface: '342',
+      description: 'Description',
+      id,
+      unit_type: '',
+      status: '',
+      rooms: 34,
+      baths: 54,
+      parkings: 3
     })
   })
 }

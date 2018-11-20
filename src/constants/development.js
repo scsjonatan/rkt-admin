@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const TYPES = [
   {
     value: 1,

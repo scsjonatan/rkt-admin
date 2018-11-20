@@ -76,10 +76,9 @@ class Order extends BaseComponent {
   }
 
   render() {
-    const order = this.props.order.toJS()
     return (
       <div className="PayDeliveryOrderDetail">
-        <Header title={order.name} />
+        <Header title={this.props.order.toJS().name} />
         {this._renderContent()}
       </div>
     )

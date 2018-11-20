@@ -12,10 +12,9 @@ import { withNamespaces } from 'react-i18next'
 
 // Components
 import Header from 'components/views/Header'
-import SearchBox from 'components/forms/SearchBox'
 import { ClipLoader } from 'react-spinners'
 
-import List from './components/List'
+import Content from './Content'
 
 // Actions
 import { fetchOrdersByFilterSearch } from 'scenes/PayDelivery/Home/redux/actions'
@@ -26,7 +25,7 @@ import './styles.scss'
 class PayDelivery extends BaseComponent {
   constructor() {
     super()
-    this._bind('_renderContent', '_handleAction')
+    this._bind('_renderContent')
   }
 
   componentDidMount() {
@@ -36,29 +35,13 @@ class PayDelivery extends BaseComponent {
     this.props.fetchOrders(filter, _search)
   }
 
-  _handleAction(search) {
-    const { filter } = this.props
-    this.props.fetchOrders(filter, search)
-  }
-
   _renderContent() {
-    const { t } = this.props
     return this.props.isLoading ? (
       <div className="PayDelivery__Loading">
         <ClipLoader color="#1d72db" />
       </div>
     ) : (
-      <div className="ScenePayDeliveryHome__Content">
-        <div className="ScenePayDeliveryHome__Content__Search">
-          <SearchBox
-            placeholder={t('Order subdata')}
-            title={t('Search order')}
-            action={this._handleAction}
-            startValue={this.props.search}
-          />
-        </div>
-        <List orders={this.props.orders} />
-      </div>
+      <Content />
     )
   }
 

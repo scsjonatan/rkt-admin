@@ -30,12 +30,8 @@ class Form extends BaseComponent {
   }
 
   _validateData() {
-    const rules = {
-      coins: 'required|numeric',
-      action: 'required|string'
-    }
+    const rules = { coins: 'required|numeric', action: 'required|string' }
     const data = this.props.form.toJS()
-
     let validation = new Validator(data, rules)
     if (validation.passes()) {
       this._saveData()
