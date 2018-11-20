@@ -9,9 +9,7 @@ import BaseComponent from 'utils/BaseComponent'
 import Header from 'components/views/Header'
 import SearchBox from 'components/forms/SearchBox'
 
-import { ClipLoader } from 'react-spinners'
-
-import Form from './components/Form'
+import Content from './Content'
 
 // Actions
 import { setUserData, resetCoinsForm, startSearch } from './redux/actions'
@@ -26,7 +24,7 @@ class Edit extends BaseComponent {
   constructor() {
     super()
 
-    this._bind('_handleSearch', '_validateUser', '_renderUser')
+    this._bind('_handleSearch')
   }
 
   _handleSearch(search) {
@@ -35,27 +33,6 @@ class Edit extends BaseComponent {
     searchUserByEmail(search).then(user => {
       this.props.setUserData(user)
     })
-  }
-
-  _validateUser() {
-    const user = this.props.user.toJS()
-    return user.id ? (
-      <div className="GeneralContainer CoinsEdit__Content__User__Form">
-        <Form />
-      </div>
-    ) : (
-      <div className="CoinsEdit__Content__User__NoResul">No result</div>
-    )
-  }
-
-  _renderUser() {
-    return this.props.isLoading ? (
-      <div className="CoinsEdit__Content__User__Loader">
-        <ClipLoader color="#1d72db" />
-      </div>
-    ) : (
-      this._validateUser()
-    )
   }
 
   render() {
@@ -71,19 +48,11 @@ class Edit extends BaseComponent {
             />
           </div>
           <div className="CoinsEdit__Content__User">
-            {this.props.isSearched && this._renderUser()}
+            <Content />
           </div>
         </div>
       </div>
     )
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    user: state.sceneCoinsEdit.get('user'),
-    isLoading: state.sceneCoinsEdit.get('isLoading'),
-    isSearched: state.sceneCoinsEdit.get('isSearched')
   }
 }
 
@@ -96,6 +65,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Edit)

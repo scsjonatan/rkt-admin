@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 
 import sceneBricksComponentsForm from 'scenes/Bricks/components/Form/redux/reducer'
+import sceneBricksUnitsList from 'scenes/Bricks/Units/Content/List/redux/reducer'
 import sceneBricksHome from 'scenes/Bricks/Home/redux/reducer'
 import sceneBricksUnits from 'scenes/Bricks/Units/redux/reducer'
 import scenePayDeliveryOrder from 'scenes/PayDelivery/Order/redux/reducer'
@@ -22,6 +23,7 @@ export default function createReducer(history) {
     sceneBricksComponentsForm,
     scenePayDeliveryOrder,
     scenePayDeliveryHome,
+    sceneBricksUnitsList,
     router: connectRouter(history)
   })
 }

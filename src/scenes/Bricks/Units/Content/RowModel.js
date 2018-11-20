@@ -37,7 +37,16 @@ class RowModel extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors, unit_type, status } = this.props
+    let typeOption = TYPES[0]
+    let statusOption = STATUS[0]
+    if (unit_type) {
+      typeOption = TYPES[unit_type - 1]
+    }
+    if (status) {
+      statusOption = STATUS[status - 1]
+    }
+
     return (
       <div className="EditUnitsBricks__Content__Row">
         <FormField
@@ -46,6 +55,7 @@ class RowModel extends BaseComponent {
           title={t('Model')}
           placeholder={t('Model name')}
           value={this.props.model}
+          errors={errors.model}
         />
         <FormNumberField
           name="price"
@@ -53,18 +63,23 @@ class RowModel extends BaseComponent {
           title={t('Price')}
           placeholder="1000000"
           value={this.props.price}
+          errors={errors.price}
         />
         <FormSelect
           options={TYPES}
           title={t('Unit type')}
           name="unit_type"
           onChange={this._handleSelectChange}
+          errors={errors.unit_type}
+          value={typeOption}
         />
         <FormSelect
           options={STATUS}
           title={t('Status')}
           name="status"
           onChange={this._handleSelectChange}
+          errors={errors.status}
+          value={statusOption}
         />
       </div>
     )
@@ -74,7 +89,9 @@ class RowModel extends BaseComponent {
 const mapStateToProps = state => {
   return {
     model: state.sceneBricksUnits.get('model'),
-    price: state.sceneBricksUnits.get('price')
+    price: state.sceneBricksUnits.get('price'),
+    unit_type: state.sceneBricksUnits.get('unit_type'),
+    status: state.sceneBricksUnits.get('status')
   }
 }
 

@@ -27,7 +27,7 @@ class Developer extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors } = this.props
     const { company_id, email, name, phone } = this.props.owner.toJS()
     return (
       <FormContainer title={t('Developer info')}>
@@ -37,6 +37,7 @@ class Developer extends BaseComponent {
             onChange={this._handleFieldChange}
             title={t('Developer name')}
             value={name}
+            errors={errors['owner.name']}
           />
           <FormField
             disabled
@@ -44,18 +45,21 @@ class Developer extends BaseComponent {
             onChange={this._handleFieldChange}
             title={t('Company id')}
             value={company_id}
+            errors={errors['owner.company_id']}
           />
           <FormField
             name="email"
             onChange={this._handleFieldChange}
             title={t('Email')}
             value={email}
+            errors={errors['owner.email']}
           />
           <FormField
             name="phone"
             onChange={this._handleFieldChange}
             title={t('Phone')}
             value={phone}
+            errors={errors['owner.phone']}
           />
         </div>
       </FormContainer>

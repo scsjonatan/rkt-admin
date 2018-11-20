@@ -44,6 +44,7 @@ class General extends BaseComponent {
 
   render() {
     const fields = this.props.general.toJS()
+    // TODO: Set all general features list
     return (
       <FormContainer title="Características generales">
         <div className="BricksEditGeneral">

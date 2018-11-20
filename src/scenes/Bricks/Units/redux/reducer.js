@@ -31,15 +31,7 @@ export default function reducer(state = initialState, action) {
       const { name, value } = action
       return state.set(name, value)
     case SET_UNIT_DATA:
-      return fromJS({
-        title: action.data.title,
-        model: action.data.model,
-        price: action.data.price,
-        build_surface: action.data.build_surface,
-        field_surface: action.data.field_surface,
-        description: action.data.description,
-        id: action.data.id
-      })
+      return state.merge(action.data)
     default:
       return state
   }

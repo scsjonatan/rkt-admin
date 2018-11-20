@@ -1,3 +1,5 @@
+/* eslint-disable */
+// Remove disable after set correct services
 export const searchUserByEmail = email => {
   return new Promise(resolve => {
     resolve({
@@ -22,18 +24,23 @@ export const searchBricksDataById = id => {
         email: 'j@ihk.io',
         phone: '5534543345'
       },
-      growth: {
+      development: {
         description:
           'Definido por un lujo incomparable, es un proyecto extraordinario que...',
         external_key: '123',
         internal_key: '321',
-        name: 'Vertiz 234'
+        name: 'Vertiz 234',
+        unit_type: 1
       },
       location: {
         cp: '09360',
         address: 'Dr Vertiz 234',
         latitude: '40.43243',
-        longitude: '-23.432'
+        longitude: '-23.432',
+        state: 'Sonora',
+        municipality: 'Monterrey',
+        area: 'Roma',
+        restriction: 1
       },
       general: {
         alberca: {

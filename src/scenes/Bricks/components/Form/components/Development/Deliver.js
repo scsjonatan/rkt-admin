@@ -35,8 +35,10 @@ class Deliver extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors } = this.props
     const { description } = this.props.development.toJS()
+    // TODO: Make Selects in this components update and recive data
+
     return [
       <FormSelect
         key="bricks-form-develop-unit-type"
@@ -44,6 +46,7 @@ class Deliver extends BaseComponent {
         options={TYPES}
         title={t('Unit type')}
         onChange={this._handleSelectChange}
+        errors={errors['development.unit_type']}
       />,
       <FormArea
         key="bricks-form-develop-description"
@@ -51,6 +54,7 @@ class Deliver extends BaseComponent {
         title={t('Proyect description')}
         value={description}
         onChange={this._handleFieldChange}
+        errors={errors['development.description']}
       />,
       <FormSelect
         key="bricks-form-develop-phase"
@@ -58,6 +62,7 @@ class Deliver extends BaseComponent {
         options={PHASES}
         title={t('Develop phase')}
         onChange={this._handleSelectChange}
+        errors={errors['development.phase']}
       />,
       <FormSelect
         key="bricks-form-develop-delivery"
@@ -65,6 +70,7 @@ class Deliver extends BaseComponent {
         options={DELIVERIES}
         title={t('Delivery')}
         onChange={this._handleSelectChange}
+        errors={errors['development.delivery']}
       />,
       <FormSelect
         key="bricks-form-develop-year"
@@ -72,6 +78,7 @@ class Deliver extends BaseComponent {
         options={YEARS}
         title={t('Year')}
         onChange={this._handleSelectChange}
+        errors={errors['development.year']}
       />
     ]
   }

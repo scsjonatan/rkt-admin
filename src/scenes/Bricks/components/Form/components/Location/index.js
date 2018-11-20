@@ -37,8 +37,19 @@ class Location extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
-    const { cp, address, latitude, longitude } = this.props.location.toJS()
+    const { t, errors } = this.props
+    const {
+      cp,
+      address,
+      latitude,
+      longitude,
+      restriction
+    } = this.props.location.toJS()
+    let restrictionOption = LOCATION_RESTRICTIONS[0]
+    if (restriction) {
+      restrictionOption = LOCATION_RESTRICTIONS[restriction - 1]
+    }
+
     return (
       <FormContainer title={t('Develop location')}>
         <div className="BricksFormCointaine">
@@ -47,31 +58,37 @@ class Location extends BaseComponent {
             onChange={this._handleFieldChange}
             title={t('Address')}
             value={address}
+            errors={errors['location.address']}
           />
-          <Address />
+          <Address errors={errors} />
           <FormField
             name="cp"
             onChange={this._handleFieldChange}
             title={t('Postal Code')}
             value={cp}
+            errors={errors['location.cp']}
           />
           <FormSelect
             options={LOCATION_RESTRICTIONS}
             title={t('Map location')}
             onChange={this._handleRestriction}
             name="restriction"
+            errors={errors['location.restriction']}
+            value={restrictionOption}
           />
           <FormField
             name="latitude"
             onChange={this._handleFieldChange}
             title={t('Latitude')}
             value={latitude}
+            errors={errors['location.latitude']}
           />
           <FormField
             name="longitude"
             onChange={this._handleFieldChange}
             title={t('Longitude')}
             value={longitude}
+            errors={errors['location.longitude']}
           />
         </div>
       </FormContainer>

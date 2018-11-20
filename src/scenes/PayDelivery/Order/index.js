@@ -35,9 +35,16 @@ class Order extends BaseComponent {
   }
   componentDidMount() {
     const order = this.props.order.toJS()
+    const id = this.context.router.route.match.params.id
     if (!order.id) {
       this._fetchDataById()
     }
+    fetchOrderHistoryById(id).then(history => {
+      this.setState({
+        history,
+        isLoading: false
+      })
+    })
   }
 
   _fetchDataById() {
@@ -45,12 +52,6 @@ class Order extends BaseComponent {
     const id = this.context.router.route.match.params.id
     fetchOrderById(id).then(order => {
       this.props.setOrder(order)
-      fetchOrderHistoryById(id).then(history => {
-        this.setState({
-          history,
-          isLoading: false
-        })
-      })
     })
   }
 
@@ -75,10 +76,9 @@ class Order extends BaseComponent {
   }
 
   render() {
-    const order = this.props.order.toJS()
     return (
       <div className="PayDeliveryOrderDetail">
-        <Header title={order.name} />
+        <Header title={this.props.order.toJS().name} />
         {this._renderContent()}
       </div>
     )

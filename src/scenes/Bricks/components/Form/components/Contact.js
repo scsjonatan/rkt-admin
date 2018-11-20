@@ -28,7 +28,7 @@ class Contact extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors } = this.props
     const { email, phone } = this.props.contact.toJS()
     return (
       <FormContainer title={t('Contact info')}>
@@ -38,12 +38,14 @@ class Contact extends BaseComponent {
             onChange={this._handleFieldChange}
             title={t('Contact email')}
             value={email}
+            errors={errors['contact.email']}
           />
           <FormField
             name="phone"
             onChange={this._handleFieldChange}
             title={t('Phone email')}
             value={phone}
+            errors={errors['contact.phone']}
           />
         </div>
       </FormContainer>

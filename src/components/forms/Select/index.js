@@ -15,25 +15,28 @@ export default class FormSelect extends BaseComponent {
   constructor() {
     super()
 
-    this.state = {
-      selectedOption: null
-    }
-
     this._bind('_handleChange')
   }
 
+  _renderErrors(error) {
+    return (
+      <p key={error} className="FormField__Error">
+        {`* ${error}`}
+      </p>
+    )
+  }
+
   _handleChange(option) {
-    this.setState({ selectedOption: option })
-    this.props.onChange(this.props.name, option.value)
+    this.props.onChange(this.props.name, option.value, option.label)
   }
 
   render() {
-    const { title, name, disabled } = this.props
+    const { title, name, disabled, errors } = this.props
     return (
       <div className="FormSelect">
         <p className="FormSelect__Title">{title}</p>
         <Select
-          value={this.state.selectedOption}
+          value={this.props.value}
           onChange={this._handleChange}
           options={this.props.options}
           className="FormSelect__Select"
@@ -41,6 +44,7 @@ export default class FormSelect extends BaseComponent {
           name={name}
           isDisabled={disabled}
         />
+        {errors.map(this._renderErrors)}
       </div>
     )
   }
@@ -51,9 +55,15 @@ FormSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  errors: PropTypes.array,
+  value: PropTypes.shape({
+    value: PropTypes.isRequired,
+    label: PropTypes.isRequired
+  })
 }
 
 FormSelect.defaultProps = {
-  disabled: false
+  disabled: false,
+  errors: []
 }

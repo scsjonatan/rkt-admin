@@ -9,6 +9,9 @@
   justify-content: space-around;
   padding: .5rem;
   width: 100%;
+  &:disabled {
+    opacity: .6;
+  }
   div {
     align-items: center;
     display: flex;
