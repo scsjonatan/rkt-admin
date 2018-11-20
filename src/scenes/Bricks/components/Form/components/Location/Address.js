@@ -54,7 +54,7 @@ class Address extends BaseComponent {
   }
 
   render() {
-    const { t } = this.props
+    const { t, errors } = this.props
     const { state, municipality } = this.props.location.toJS()
     return [
       <FormSelect
@@ -63,6 +63,7 @@ class Address extends BaseComponent {
         onChange={this._handleChange}
         options={this.state.states}
         title={t('State')}
+        errors={errors['location.state']}
       />,
       <FormSelect
         disabled={!state}
@@ -71,6 +72,7 @@ class Address extends BaseComponent {
         onChange={this._handleChange}
         options={this.state.municipalites}
         title={t('Municipality')}
+        errors={errors['location.municipality']}
       />,
       <FormSelect
         disabled={!municipality}
@@ -79,6 +81,7 @@ class Address extends BaseComponent {
         onChange={this._handleChange}
         options={this.state.areas}
         title={t('Area')}
+        errors={errors['location.area']}
       />
     ]
   }

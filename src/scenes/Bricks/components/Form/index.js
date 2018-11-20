@@ -62,6 +62,7 @@ class BricksForm extends BaseComponent {
     const data = this.props.data.toJS()
     let validation = new Validator(data, rules, messages)
     if (validation.passes()) {
+      this.setState({ errors: {} })
       if (this.props.isEdit) {
         console.log('Editado', data)
       } else {
@@ -71,7 +72,6 @@ class BricksForm extends BaseComponent {
       this.setState({
         errors: validation.errors.errors
       })
-      console.log(validation)
     }
   }
 

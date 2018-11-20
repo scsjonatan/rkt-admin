@@ -49,7 +49,7 @@ class Location extends BaseComponent {
             value={address}
             errors={errors['location.address']}
           />
-          <Address />
+          <Address errors={errors} />
           <FormField
             name="cp"
             onChange={this._handleFieldChange}
@@ -62,6 +62,7 @@ class Location extends BaseComponent {
             title={t('Map location')}
             onChange={this._handleRestriction}
             name="restriction"
+            errors={errors['location.restriction']}
           />
           <FormField
             name="latitude"

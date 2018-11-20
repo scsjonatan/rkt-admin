@@ -41,7 +41,7 @@ class Development extends BaseComponent {
             value={name}
             errors={errors['development.name']}
           />
-          <Deliver />
+          <Deliver errors={errors} />
           <FormField
             name="external_key"
             onChange={this._handleFieldChange}

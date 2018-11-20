@@ -12,13 +12,21 @@ export const rules = {
     description: 'required|string|min:5',
     external_key: 'required|string',
     internal_key: 'required|string',
-    name: 'required|string|min:2'
+    name: 'required|string|min:2',
+    phase: 'required',
+    unit_type: 'required',
+    delivery: 'required',
+    year: 'required'
   },
   location: {
     cp: 'required|size:5',
     address: 'required|string|min:5',
     latitude: 'required|numeric',
-    longitude: 'required|numeric'
+    longitude: 'required|numeric',
+    state: 'required',
+    municipality: 'required',
+    area: 'required',
+    restriction: 'required'
   }
 }
 
