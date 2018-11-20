@@ -60,7 +60,7 @@ class EditUnitsBricks extends BaseComponent {
     this.props.updateField(name, value)
   }
 
-  _renderList() {
+  _validateUnitId() {
     const paramId = this.context.router.route.match.params.unit_id
     return paramId ? null : <List />
   }
@@ -94,7 +94,7 @@ class EditUnitsBricks extends BaseComponent {
           <div className="EditUnitsBricks__Content__Controls">
             <Button action={this._handleSave} label={t('Add unit')} />
           </div>
-          {this._renderList()}
+          {this._validateUnitId()}
         </div>
       </div>
     )
