@@ -7,7 +7,8 @@ import onClickOutside from 'react-onclickoutside'
 import BaseComponent from 'utils/BaseComponent'
 
 // Components
-import Button from 'components/atoms/Button'
+import Preview from './Views/Preview'
+import Complete from './Views/Complete'
 
 // Actions
 import { resetCoinsForm, toggleModal } from 'scenes/Coins/Edit/redux/actions'
@@ -15,67 +16,43 @@ import { resetCoinsForm, toggleModal } from 'scenes/Coins/Edit/redux/actions'
 class Content extends BaseComponent {
   constructor() {
     super()
+    this.state = {
+      isComplete: false,
+      editStatus: false
+    }
     this._bind(
       'handleClickOutside',
-      '_handleConfirmation',
-      '_renderAction',
-      '_renderTotal'
-    )
-  }
-
-  _handleConfirmation(e) {
-    e.preventDefault()
-    this.props.resetForm()
-    this.props.toggleModal(false)
-  }
-
-  _renderTotal() {
-    const form = this.props.form.toJS()
-    const user = this.props.user.toJS()
-
-    const currentCoins = parseInt(user.coins, 10)
-    const actionCoins = parseInt(form.coins, 10)
-    const totalCoins =
-      form.action === 'add'
-        ? currentCoins + actionCoins
-        : currentCoins - actionCoins
-    return <p>{`Total: ${totalCoins} monedas`}</p>
-  }
-
-  _renderAction() {
-    const { action, coins } = this.props.form.toJS()
-    const className = action === 'add' ? 'Add' : 'Remove'
-    const label = action === 'add' ? 'Agregar' : 'Quitar'
-
-    return (
-      <p className={`CoinsModal__Content__Data__${className}`}>
-        {`${label}: ${coins} monedas`}
-      </p>
+      '_renderContent',
+      '_handleEdit',
+      '_renderContent'
     )
   }
 
   handleClickOutside() {
     this.props.toggleModal(false)
+    this.props.resetForm()
+  }
+
+  _handleEdit(status) {
+    this.setState({
+      isComplete: true,
+      editStatus: status
+    })
+  }
+
+  _renderContent() {
+    const user = this.props.user.toJS()
+    const form = this.props.form.toJS()
+    const { isComplete, editStatus } = this.state
+    return isComplete ? (
+      <Complete status={editStatus} action={form.action} />
+    ) : (
+      <Preview user={user} form={form} handleEdit={this._handleEdit} />
+    )
   }
 
   render() {
-    const user = this.props.user.toJS()
-    return (
-      <div className="CoinsModal__Content">
-        <p className="CoinsModal__Content__Title">Confirmación de la edición</p>
-        <div className="CoinsModal__Content__Data">
-          <p>
-            Usuario: <span>{user.email}</span>
-          </p>
-          {this._renderAction()}
-          {this._renderTotal()}
-        </div>
-        <Button
-          label="Confirmar la operación"
-          action={this._handleConfirmation}
-        />
-      </div>
-    )
+    return this._renderContent()
   }
 }
 
