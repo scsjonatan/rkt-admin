@@ -31,6 +31,7 @@ class Edit extends BaseComponent {
     this.props.resetCoinsForm()
     this.props.startSearch()
     searchUserByEmail(search).then(user => {
+      console.log(user)
       this.props.setUserData(user)
     })
   }
