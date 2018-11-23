@@ -36,5 +36,16 @@
         color: $error-color;
       }
     }
+    &__Complete__Title {
+      text-align: center;
+      margin: auto;
+      padding: 2rem 0;
+      font-weight: 900;
+      font-size: 1.5rem;
+      max-width: 60%;
+    }
+    .false {
+      color: $error-color;
+    }
   }
 }

@@ -3,10 +3,19 @@
   justify-content: space-between;
   padding: 1.5rem;
   &__Data {
-    &__Email {
+    &__Id {
       font-weight: 500;
       line-height: 1.5;
       margin-bottom: .5rem;
+    }
+    &__Coins {
+      display: flex;
+      align-items: center;
+      img {
+        width: 1.125rem;
+        height: 1.125rem;
+        margin-left: .5rem;
+      }
     }
   }
   &__Actions {

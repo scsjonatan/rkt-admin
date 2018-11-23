@@ -16,12 +16,21 @@ import Modal from './components/Modal'
 // Actions
 import { updateFormByField, toggleModal } from 'scenes/Coins/Edit/redux/actions'
 
+// Validations
+import { rules, messages } from './validator'
+
 // Styles
 import './styles.scss'
+
+const COINS_IMAGE = require('./assets/coins.png')
 
 class Form extends BaseComponent {
   constructor() {
     super()
+
+    this.state = {
+      errors: {}
+    }
     this._bind('_handleChange', '_handleSave', '_handleAction', '_renderModal')
   }
   _handleSave(e) {
@@ -30,11 +39,12 @@ class Form extends BaseComponent {
   }
 
   _validateData() {
-    const rules = { coins: 'required|numeric', action: 'required|string' }
     const data = this.props.form.toJS()
-    let validation = new Validator(data, rules)
+    let validation = new Validator(data, rules, messages)
     if (validation.passes()) {
       this._saveData()
+    } else {
+      this.setState({ errors: validation.errors.errors })
     }
   }
 
@@ -63,8 +73,11 @@ class Form extends BaseComponent {
     return (
       <div className="FormCoinsEdit">
         <div className="FormCoinsEdit__Data">
-          <p className="FormCoinsEdit__Data__Email">{user.email}</p>
-          <p>{user.coins}</p>
+          <p className="FormCoinsEdit__Data__Id">Id: {user.id}</p>
+          <div className="FormCoinsEdit__Data__Coins">
+            <p>{user.coins}</p>
+            <img src={COINS_IMAGE} alt="Coins" />
+          </div>
         </div>
         <div className="FormCoinsEdit__Actions">
           <Action handleAction={this._handleAction} />
@@ -73,6 +86,7 @@ class Form extends BaseComponent {
               placeholder="Número de Monedas"
               value={form.coins}
               onChange={this._handleChange}
+              errors={this.state.errors.coins}
             />
           </div>
           <div className="FormCoinsEdit__Actions__Button">
