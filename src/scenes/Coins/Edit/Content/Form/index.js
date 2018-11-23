@@ -19,6 +19,8 @@ import { updateFormByField, toggleModal } from 'scenes/Coins/Edit/redux/actions'
 // Styles
 import './styles.scss'
 
+const COINS_IMAGE = require('./assets/coins.png')
+
 class Form extends BaseComponent {
   constructor() {
     super()
@@ -63,8 +65,11 @@ class Form extends BaseComponent {
     return (
       <div className="FormCoinsEdit">
         <div className="FormCoinsEdit__Data">
-          <p className="FormCoinsEdit__Data__Email">{user.email}</p>
-          <p>{user.coins}</p>
+          <p className="FormCoinsEdit__Data__Id">Id: {user.id}</p>
+          <div className="FormCoinsEdit__Data__Coins">
+            <p>{user.coins}</p>
+            <img src={COINS_IMAGE} alt="Coins" />
+          </div>
         </div>
         <div className="FormCoinsEdit__Actions">
           <Action handleAction={this._handleAction} />

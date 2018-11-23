@@ -15,7 +15,7 @@ import Content from './Content'
 import { setUserData, resetCoinsForm, startSearch } from './redux/actions'
 
 // Services
-import { searchUserByEmail } from 'services/coins'
+import { searchUserByAccounId } from 'services/coins'
 
 // Styles.scss
 import './styles.scss'
@@ -30,7 +30,7 @@ class Edit extends BaseComponent {
   _handleSearch(search) {
     this.props.resetCoinsForm()
     this.props.startSearch()
-    searchUserByEmail(search).then(user => {
+    searchUserByAccounId(search).then(user => {
       this.props.setUserData(user)
     })
   }
@@ -43,8 +43,8 @@ class Edit extends BaseComponent {
           <div className="CoinsEdit__Content__Search">
             <SearchBox
               action={this._handleSearch}
-              placeholder="Buscar por email"
-              title="Buscar por email"
+              placeholder="Buscar por ID de cuenta"
+              title="Buscar por ID de cuenta"
             />
           </div>
           <div className="CoinsEdit__Content__User">
